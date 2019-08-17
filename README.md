@@ -9,18 +9,18 @@ Things you may want to cover:
 
 |Column|Type|Options| 
 |-------|----|-------| 
-|Nickname|string|null: false| 
-|Email|string|null: false, unique: true| 
-|Password|string|null: false, unique: true| 
-|FirstName|string|null: false| 
-|FirstName_kana|string|null: false| 
-|LastName|string|null: false| 
-|LastName_kana|string|null: false| 
-|BirthYear|string|null: false| 
-|BirthMonth|string|null: false| 
-|BirthDay|string|null: false| 
-|PhoneNumber|integer|null: false,unique: true|
-|Profile|text|
+|nickname|string|null: false| 
+|email|string|null: false, unique: true| 
+|password|string|null: false| 
+|first_name|string|null: false| 
+|first_name_kana|string|null: false| 
+|last_name|string|null: false| 
+|last_name_kana|string|null: false| 
+|birth_year|integer|null: false| 
+|birth_month|integer|null: false| 
+|birth_day|integer|null: false| 
+|phone_number|integer|null: false,unique: true|
+|profile|text|
 
 ### Association 
 - belongs_to :creditcard
@@ -31,9 +31,9 @@ Things you may want to cover:
 
 |Column|Type|Options| 
 |-------|----|-------| 
-|UserId|references|null: false,foreign_key: true|
-|CardNumber|integer|null: false| 
-|ExpirationDate|string|null: false| 
+|user_id|references|null: false,foreign_key: true|
+|card_number|integer|null: false| 
+|expiration_date|string|null: false| 
 
 ### Association 
 - belongs_to :user
@@ -42,12 +42,12 @@ Things you may want to cover:
 
 |Column|Type|Options| 
 |-------|----|-------| 
-|UserId|references|null: false,foreign_key: true|
-|PostalCode|integer|null: false|
-|Prefectures|string|null: false|
-|Cities|string|null: false|
-|Address|string|null: false|
-|BuildingName|string|null: false|
+|user_id|references|null: false,foreign_key: true|
+|postal_code|integer|null: false|
+|prefectures|string|null: false|
+|cities|string|null: false|
+|address|string|null: false|
+|building_name|string|null: false|
 
 ### Association 
 - belongs_to :user
@@ -56,16 +56,16 @@ Things you may want to cover:
 
 |Column|Type|Options| 
 |-------|----|-------| 
-|BuyerId|references|null: false|
-|SellerId|references|null: false,foreign_key: true|
-|CategoryId|references|null: false,foreign_key: true|
-|Name|string|null: false|
-|Comment|text|null: false|
-|Price|integer|null: false|
-|State|string|null: false|
-|Postage|integer|null: false|
-|ShippingDate|string|null: false|
-|ShippingWay|string|null: false|
+|buyer_id|references|null: false|
+|seller_id|references|null: false,foreign_key: true|
+|category_id|references|null: false,foreign_key: true|
+|name|string|null: false|
+|comment|text|null: false|
+|price|integer|null: false|
+|state|string|null: false|
+|postage|integer|null: false|
+|shipping_date|string|null: false|
+|shipping_way|string|null: false|
 
 
 ### Association 
@@ -78,7 +78,7 @@ Things you may want to cover:
 
 |Column|Type|Options| 
 |-------|----|-------| 
-|ItemId|references|null: false,oreign_key: true|
+|item_id|references|null: false,oreign_key: true|
 |image|string|null: false|
 
 ### Association 
@@ -88,8 +88,8 @@ Things you may want to cover:
 
 |Column|Type|Options| 
 |-------|----|-------| 
-|Name|string|null: false|
-|Ancestry|string|
+|name|string|null: false|
+|ancestry|string|
 
 ### Association 
 - belongs_to: category_option
@@ -100,9 +100,9 @@ Things you may want to cover:
 
 |Column|Type|Options| 
 |-------|----|-------| 
-|CategoryId|references|null: false,oreign_key: true|
-|Size|string|null: false|
-|Brand|string|null: false|
+|category_id|references|null: false,oreign_key: true|
+|size|string|null: false|
+|brand|string|null: false|
 
 ### Association 
 - belongs_to: category
