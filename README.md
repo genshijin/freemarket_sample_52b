@@ -93,7 +93,6 @@ Things you may want to cover:
 
 ### Association 
 - has_one :category_option
-- belongs_to :category_option
 - has_many :item
 - has_ancestry
 
