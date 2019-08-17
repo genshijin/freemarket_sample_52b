@@ -23,13 +23,8 @@ Things you may want to cover:
 |profile|text|
 
 ### Association 
-<<<<<<< HEAD
 - has_one :creditcard
 - has_one :address
-=======
-- belongs_to :creditcard
-- belongs_to :address
->>>>>>> 8d623a644f7b935c14b03fc5750ca5852f1a9d0a
 - has_many :items
 
 ## creditcardsテーブル
@@ -77,7 +72,7 @@ Things you may want to cover:
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
 - belongs_to :category
-- has_many: images
+- has_many :images
 
 ## imagesテーブル
 
@@ -87,7 +82,7 @@ Things you may want to cover:
 |image|string|null: false|
 
 ### Association 
-- belongs_to: item
+- belongs_to :item
 
 ## categoriesテーブル
 
@@ -97,12 +92,9 @@ Things you may want to cover:
 |ancestry|string|
 
 ### Association 
-<<<<<<< HEAD
-- has_one: category_option
-=======
-- belongs_to: category_option
->>>>>>> 8d623a644f7b935c14b03fc5750ca5852f1a9d0a
-- has_many: item
+- has_one :category_option
+- belongs_to :category_option
+- has_many :item
 - has_ancestry
 
 ## category_optionsテーブル
@@ -114,4 +106,4 @@ Things you may want to cover:
 |brand|string|null: false|
 
 ### Association 
-- belongs_to: category
+- belongs_to :category
