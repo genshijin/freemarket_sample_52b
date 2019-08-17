@@ -23,8 +23,8 @@ Things you may want to cover:
 |profile|text|
 
 ### Association 
-- belongs_to :creditcard
-- belongs_to :address
+- has_one :creditcard
+- has_one :address
 - has_many :items
 
 ## creditcardsテーブル
@@ -92,7 +92,7 @@ Things you may want to cover:
 |ancestry|string|
 
 ### Association 
-- belongs_to: category_option
+- has_one: category_option
 - has_many: item
 - has_ancestry
 
