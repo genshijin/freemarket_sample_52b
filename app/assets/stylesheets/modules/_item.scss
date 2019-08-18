@@ -1,0 +1,47 @@
+.pickup{
+  padding: 20px 0;
+  background: #f5f5f5;
+
+  @include tb{
+    padding: 40px 0;
+  }
+
+  &__title{
+    @include title(28px);
+  }
+
+  .itembox{
+    @include tb{
+      &:last-child{
+        display: none;
+      }
+    }
+    @include pc{
+      &:last-child{
+        display: block;
+      }
+    }
+    
+    &__photo{
+      @include tb{
+        width: 213px;
+      }
+    }
+  }
+}
+
+.item{
+  margin: 0 auto;
+  @include tb{
+    width: 700px;
+  }
+  @include pc{
+    width: 940px;
+  }
+
+  &__title{
+    @include title(22px);
+    margin: 26px 11px;
+    color: $merucari-blue;
+  }
+}
