@@ -5,16 +5,20 @@
         <p>今すぐ無料ダウンロード！</p>
       <div class="app-banner__pc__inner__icon">
         <figure>
-          <img src="images/mercari_icon.png" width="68" alt="">
+          <%= image_tag 'mercari_icon.png', size: '68x68' %>
         </figure>
         <ul>
-          <li><a href=""><img src="images/app-store.svg" width="133" height="40" alt=""></a></li>
-          <li><a href=""><img src="images/google-play.svg" width="133" height="40" alt=""></a></li>
+          <li><a href="">
+            <%= image_tag 'app-store.svg', size: '133x40' %>
+          </a></li>
+          <li><a href="">
+            <%= image_tag 'google-play.svg', size: '133x40' %>
+          </a></li>
         </ul>
       </div>
     </div>
     <figure>
-      <img src="images/download_content_pc.png" alt="">
+      <%= image_tag 'download_content_pc.png' %>
     </figure>
   </div>
 </aside>
