@@ -1,6 +1,16 @@
 <%= content_for :header do %>
   <%= render 'shared/header' %>
 <% end %>
+<%= content_for :app_banner do %>
+  <%= render 'shared/app-banner' %>
+<% end %>
+<%= content_for :footer do %>
+  <%= render 'shared/footer' %>
+<% end %>
+<%= content_for :sell_btn do %>
+  <%= render 'shared/sell-btn' %>
+<% end %>
+
   <section class="pickup">
     <h2 class="pickup__title">ピックアップカテゴリー</h2>
     <!-- item ここから -->
@@ -344,10 +354,3 @@
       <!-- item ここまで -->
 
   </section>
-
-<%= content_for :app_banner do %>
-  <%= render 'shared/app-banner' %>
-<% end %>
-<%= content_for :footer do %>
-  <%= render 'shared/footer' %>
-<% end %>
