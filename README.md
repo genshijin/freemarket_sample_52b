@@ -24,7 +24,7 @@ Things you may want to cover:
 
 ### Association 
 - has_one :creditcard
-- has_one :address
+- has_many :addresses
 - has_many :items
 
 ## creditcardsテーブル
@@ -43,6 +43,10 @@ Things you may want to cover:
 |Column|Type|Options| 
 |-------|----|-------| 
 |user_id|references|null: false,foreign_key: true|
+|first_name|string|null: false| 
+|first_name_kana|string|null: false| 
+|last_name|string|null: false| 
+|last_name_kana|string|null: false| 
 |postal_code|integer|null: false|
 |prefectures|string|null: false|
 |cities|string|null: false|
