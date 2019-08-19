@@ -1,0 +1,26 @@
+%body
+  %header.header
+    .header__container
+      .header__logo
+        %h1
+          %a{:href => ""}
+            = image_tag 'logo.svg', size: '134x36', alt: 'mercari'
+      .header__user-nav
+        %a.signup-btn{:href => ""}
+          新規会員登録
+        %a.login-btn{:href => ""}
+          ログイン
+      .header__search
+        %form.header__form{:action => ""}
+          %input.header__form__input{:name => "keyword", :placeholder => "なにかお探しですか？", :type => "text", :value => ""}/
+          %button.header__form__icon{:type => "submit"}
+            %i.fas.fa-search
+      %ul.header__navigation
+        %li#category-menu.category-menu
+          %a{:href => ""}
+            %i.fas.fa-list.navigation-icon
+            %span カテゴリーから探す
+        %li#brand-menu.category-menu
+          %a{:href => ""}
+            %i.fas.fa-tag.navigation-icon
+            %span ブランドから探す
