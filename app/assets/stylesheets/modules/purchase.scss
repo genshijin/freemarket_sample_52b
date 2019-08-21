@@ -1,0 +1,147 @@
+.buy-item > .buy-content__inner {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buy-item img {
+  width: 64px;
+}
+
+.buy-item img.is-higher-height {
+  width: 64px;
+}
+
+.buy-item{
+  text-align: center;
+  &__name {
+    width: calc(100% - 80px);
+    margin: 0 0 0 16px;
+    text-align: left;
+  }
+}
+
+.buy-form {
+  width: 100%;
+}
+
+.buy-you-pay {
+  font-size: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .buy-you-pay {
+      font-size: 18px;
+  }
+} 
+
+.buy-price__total span {
+  font-size: 28px;
+}
+
+.buy-item .btn-red {
+  margin: 8px 0 0;
+}
+
+.buy-content:last-of-type {
+  padding: 24px 12.5% 40px;
+}
+
+.buy-content:first-of-type{
+  margin: 0;
+}
+
+.buy-content{
+  margin: 40px;
+  padding: 24px 12.5% 0;
+  border-top: 1px solid #f5f5f5;
+  &__inner{
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+.buy-price__including-postage .item-shipping-fee{
+  margin: 0 0 0 8px;
+  font-size: 14px;
+  font-weight: 400px;
+}
+
+.item-shipping-fee{
+  display: inline-block;
+}
+
+.buy-accordion{
+  margin: 16px 0 0;
+}
+
+.buy-accordion.not-have{
+  background: #ccc;
+}
+
+.buy-accordion.not-have .accordion-toggle{
+  padding: 16px;
+}
+
+.accordion-toggle{
+  font-size: 14px;
+}
+
+.buy-price{
+  display: table;
+  border-collapse: collape;
+  width: 100%;
+  &__total{
+    display: table-cell;
+    padding: 16px 0;
+    text-align: right;
+    span{
+      font-size: 28px;
+      font-weight: bold;
+    }    
+  }
+  &__including-postage {
+    margin: 16px 0 0;
+    font-size: 22px;
+  }
+}
+
+.buy-price__total:first-child{
+  text-align: left;
+  width: 100%;
+}
+
+.buy-content__inner>figure{
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.buy-user-info h3{
+  font-size: 14px;
+  margin: 40px 0 0;
+  font-weight: bold;
+}
+
+.buy-user-info h3:first-child{
+  margin: 0;
+}
+
+.buy-user-info address{
+  display: block;
+}
+
+.buy-user-info{
+  &__text{
+    margin: 8px 0 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  &__fix{
+    display: block;
+    text-align: right;
+  }
+}
+
+.change{
+  font-size: 14px;
+}
+
