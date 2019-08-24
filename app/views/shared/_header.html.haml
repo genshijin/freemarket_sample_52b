@@ -1,0 +1,26 @@
+%body
+  %header.header
+    .header__container
+      .header__logo
+        %h1
+          = link_to root_path do
+            = image_tag 'logo.svg', size: '134x36', alt: 'mercari'
+      .header__user-nav
+        = link_to '#', class: 'signup-btn' do
+          新規会員登録
+        = link_to '#', class: 'login-btn' do
+          ログイン
+      .header__search
+        = form_with urls: '#', class: 'header__form' do |form|
+          = text_field_tag :keywprd, "" , class: 'header__form__input', placeholder: 'なにかお探しですか？'
+          = button_tag type: 'submit', class: 'header__form__icon' do
+            %i.fas.fa-search
+      %ul.header__navigation
+        %li#category-menu.category-menu
+          = link_to '#' do
+            %i.fas.fa-list.navigation-icon
+            %span カテゴリーから探す
+        %li#brand-menu.category-menu
+          = link_to '#' do
+            %i.fas.fa-tag.navigation-icon
+            %span ブランドから探す

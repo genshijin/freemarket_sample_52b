@@ -1,0 +1,14 @@
+// メディアクエリ
+$tb: 768px; // タブレット
+$pc: 1068px; // PC
+
+@mixin tb {
+  @media screen and (min-width: ($tb)) {
+    @content;
+  }
+}
+@mixin pc {
+  @media screen and (min-width: ($pc)) {
+    @content;
+  }
+}
