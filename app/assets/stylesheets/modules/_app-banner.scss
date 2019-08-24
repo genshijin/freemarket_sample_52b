@@ -1,0 +1,88 @@
+.app-banner{
+  background: url(download_bg_pc.jpg);
+  background-position: center;
+  background-size: center;
+  
+  &__pc{
+    overflow: hidden;
+    position: relative;
+    display: none;
+    width: 750px;
+    height: 260px;
+    margin: 0 auto;
+    color: #fff;
+
+    @include tb{
+      display: block;
+    }
+
+    &__inner{
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translate(0, -50%);
+      @include pc{
+        left: 0;
+      }
+
+      h2{
+        margin: 0;
+        font-size: 16px;
+        text-shadow: 0 0 5px rgba(0,0,0,.4);
+        font-weight: bold;
+        @include pc{
+          font-size: 24px;
+        }
+      }
+
+      p{
+        font-size: 24px;
+        text-shadow: 0 0 5px rgba(0,0,0,.4);
+        @include pc{
+          font-size: 35px;
+        }
+      }
+
+      &__icon{
+      display: flex;
+      margin: 20px 0 0;
+
+        ul{
+          display: flex;
+          margin: 0 0 0 24px;
+          line-height: 68px;
+          li{
+            &:last-child{
+              margin: 0 0 0 16px;
+            }
+
+
+            a{
+              display: block;
+              line-height: 68px;
+              &:hover{
+                opacity: .7;
+              }
+              img{
+                vertical-align: middle;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & > figure{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 300px;
+      height: 100%;
+
+      img{
+        width: 100%;
+      }
+    }
+  }
+}

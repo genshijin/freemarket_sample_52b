@@ -1,10 +1,31 @@
-@import "./reset";
-@import "font-awesome";
+
 @import "mixins/mixin";
 @import "mixins/vendor_prefix";
 @import "modules/default";
-@import "modules/header";
-@import "modules/footer";
+@import "modules/header-exhibit";
+@import "modules/footer-exhibit";
 @import "modules/exhibit";
-@import "modules/purchase"
+@import "modules/purchase";
+
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+@import "reset";
+
+@import "mixin/clearfix";
+@import "mixin/media";
+@import "mixin/font-style";
+
+@import "config/btn";
+@import "config/color";
+
+@import "modules/general";
+@import "modules/header";
+@import "modules/slider";
+@import "modules/app-banner";
+@import "modules/footer";
+@import "modules/sell-btn";
+
+@import "modules/item";
+@import "modules/itembox";
 

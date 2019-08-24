@@ -1,13 +1,74 @@
-%footer.main-footer
-  %nav
-    %ul.clearfix
-      %li
-        %a{:href => "#"} プライバシーポリシー
-      %li
-        %a{:href => "#"} メルカリ利用規約
-      %li
-        %a{:href => "#"} 特定商取引に関する表記
-  %a.main-footer__logo{:href => "#"}
-    %img{:alt => "mercari", :height => "65", :src => "//www-mercari-jp.akamaized.net/assets/img/common/common/logo-gray.svg?2508029365", :width => "80"}/
-  %p
-    %small ©︎2019 Mercari
+%footer.footer
+  %nav.footer__nav
+    .footer__nav-wrap
+      %h2 メルカリについて
+      %ul.footer__nav-item
+        %li
+          = link_to '会社概要（運営会社）', '#'
+        %li
+          = link_to '採用情報', '#'
+        %li
+          = link_to 'プレスリリース', '#'
+        %li
+          = link_to '公式ブログ', '#'
+        %li
+          = link_to 'メルカリロゴ利用ガイドライン', '#'
+        %li.footer__social-icon
+          = link_to '#' do
+            %i.fab.fa-twitter
+        %li.footer__social-icon
+          = link_to '#' do
+            %i.fab.fa-facebook-square
+    .footer__nav-wrap
+      %h2 ヘルプ＆ガイド
+      %ul.footer__nav-item
+        %li
+          = link_to 'メルカリガイド', '#'
+        %li
+          = link_to 'らくらくメルカリ便', '#'
+        %li
+          = link_to 'ゆうゆうメルカリ便', '#'
+        %li
+          = link_to '大型メルカリ便', '#'
+        %li
+          = link_to '車体取引ガイド', '#'
+        %li
+          = link_to 'メルカリあんしん・あんぜん宣言！', '#'
+        %li
+          = link_to '偽ブランド品撲滅への取り組み', '#'
+        %li
+          = link_to 'メルカリボックス', '#'
+    .footer__nav-wrap
+      %h2 プライバシーと利用規約
+      .footer__nav-inner-box
+        %ul.footer__nav-item
+          %li
+            = link_to 'プライバシーポリシー', '#'
+          %li
+            = link_to 'メルカリ利用規約', '#'
+          %li
+            = link_to 'あんしんスマホサポート制度に関する利用特約', '#'
+          %li
+            = link_to 'コンプライアンスポリシー', '#'
+        %ul.footer__nav-item
+          %li
+            = link_to '個人データの安全管理に係る基本方針', '#'
+          %li
+            = link_to '特定商取引に関する表記', '#'
+          %li
+            = link_to '資金決済法に基づく表示', '#'
+          %li
+            = link_to '法令順守と犯罪抑止のために', '#'
+    .footer__nav-wrap
+      %h2 国
+      %ul.footer__nav-item
+        %li
+          = link_to '日本', '#'
+        %li
+          = link_to 'United States', '#'
+  .footer__bottom
+    = link_to '#', class: 'footer__logo' do
+      = image_tag 'logo-white.svg', alt: 'mercari'
+    %span.footer__copyright
+      %small © 2019 Mercari
+
