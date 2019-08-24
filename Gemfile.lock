@@ -266,8 +266,8 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
-  font-awesome-rails
   erb2haml
+  font-awesome-rails
   font-awesome-sass (~> 5.4.1)
   haml-rails
   jbuilder (~> 2.5)

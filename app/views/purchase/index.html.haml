@@ -6,7 +6,7 @@
     %title 購入を確定 - スマホでかんたん フリマアプリ
   %body
     .container
-      = render partial: 'shared/header'
+      = render partial: 'shared/header-exhibit'
       %main.main
         %section.main__container.buy-item-container
           %h2.main__head
@@ -14,7 +14,7 @@
           %section.buy-content.buy-item
             .buy-content__inner
               %h3.buy-item__image
-                %img.is-higher-height.lazyloaded{alt: "", src: "https://static.mercdn.net/thumb/photos/m71925728963_1.jpg?1565963010"}/
+                %img.is-higher-height.lazyloaded{alt: "", src: "assets/sell-sample.jpg"}/
               %p.buy-item__name
                 %b シャネル ショップ袋 ショッパー小
               %form.buy-form{action: "###", method: "POST", novalidate: "novalidate"}
@@ -59,4 +59,4 @@
               %a.buy-user-info__fix{href: "#"}
                 %span.change 変更する
                 %i.fa.fa-angle-right
-      = render partial: 'shared/footer'
+      = render partial: 'shared/footer-exhibit'
