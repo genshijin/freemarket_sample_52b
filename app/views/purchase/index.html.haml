@@ -1,8 +1,8 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:charset => "UTF-8"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %meta{charset: "UTF-8"}/
     %title 購入を確定 - スマホでかんたん フリマアプリ
   %body
     .container
@@ -14,10 +14,10 @@
           %section.buy-content.buy-item
             .buy-content__inner
               %h3.buy-item__image
-                %img.is-higher-height.lazyloaded{:alt => "", :src => "https://static.mercdn.net/thumb/photos/m71925728963_1.jpg?1565963010"}/
+                %img.is-higher-height.lazyloaded{alt: "", src: "https://static.mercdn.net/thumb/photos/m71925728963_1.jpg?1565963010"}/
               %p.buy-item__name
                 %b シャネル ショップ袋 ショッパー小
-              %form.buy-form{:action => "###", :method => "POST", :novalidate => "novalidate"}
+              %form.buy-form{action: "###", method: "POST", novalidate: "novalidate"}
                 %p.buy-price__including-postage
                   %b ¥499
                   %span.item-shipping-fee 送料込み
@@ -31,7 +31,7 @@
                       %b 支払い金額
                     .buy-price__total
                       %span ¥499
-                %button.btn-default.btn-red{:type => "submit"}
+                %button.btn-default.btn-red{type: "submit"}
                   %b 購入する
           %section.buy-content.buy-user-info
             .buy-content__inner
@@ -43,7 +43,7 @@
                 %br/
                 テスト太郎
               %p.buy-user-info__text
-              %a.buy-user-info__fix{:href => "#"}
+              %a.buy-user-info__fix{href: "#"}
                 %span.change 変更する
                 %i.fa.fa-angle-right
           %section.buy-content.buy-user-info
@@ -54,9 +54,9 @@
                 %br/
                 01/22
               %figure
-                %img{:alt => "visa", :height => "15", :src => "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?615905397", :width => "49"}/
+                %img{alt: "visa", height: "15", src: "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?615905397", width: "49"}/
               %p
-              %a.buy-user-info__fix{:href => "#"}
+              %a.buy-user-info__fix{href: "#"}
                 %span.change 変更する
                 %i.fa.fa-angle-right
       = render partial: 'shared/footer'
