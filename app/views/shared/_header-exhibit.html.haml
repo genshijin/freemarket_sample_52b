@@ -1,4 +1,4 @@
 %header.main-header
   %h1
-    %a{href: "#"}
-      %img{alt: "mercari", src: "/assets/mercari-logo.svg", class: "header-img"}/
+    = link_to root_path do
+      = image_tag "/assets/mercari-logo.svg", alt: "mercari", class: "header-img"

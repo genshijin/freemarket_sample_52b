@@ -14,7 +14,7 @@
           %section.buy-content.buy-item
             .buy-content__inner
               %h3.buy-item__image
-                %img.is-higher-height.lazyloaded{alt: "", src: "assets/sell-sample.jpg"}/
+                = image_tag "/assets/sell-sample.jpg", alt: "", class: "is-higher-height.lazyloaded"
               %p.buy-item__name
                 %b シャネル ショップ袋 ショッパー小
               %form.buy-form{action: "###", method: "POST", novalidate: "novalidate"}
@@ -54,7 +54,7 @@
                 %br/
                 01/22
               %figure
-                %img{alt: "visa", height: "15", src: "//www-mercari-jp.akamaized.net/assets/img/card/visa.svg?615905397", width: "49"}/
+                = image_tag "/assets/visa.svg", alt: "mercari", class: "header-img", height: "15", width: "49"
               %p
               %a.buy-user-info__fix{href: "#"}
                 %span.change 変更する
