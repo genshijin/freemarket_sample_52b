@@ -1,0 +1,51 @@
+.default-container 
+  .pc-header visible-pc 
+  .bread-crumbs 
+  %main.l-container.clearfix
+    .side_bar
+      =render partial: 'shared/sidebar'
+      .mypage_nav
+
+    .l-content
+      %section.mypage-user-icon
+        %a{ href: 'http://google.co.jp'}
+          %figure
+            =image_tag src="/assets/member_photo_noimage_thumb.png", id: "img", alt: "", height: "60",  width: "60"
+          %h2.bold name
+          .mypage_number
+            %div 
+              評価
+              %span.bold
+                0
+            %div
+              出品数
+              %span.bold
+                0
+      %section.mypage-tab-container-notification-todo
+        %ul.mypage-tabs
+          %li.active
+            %h3
+              %a{ href: 'https://www.mercari.com/jp/mypage/#mypage-tab-notification',"data-taggle" => "tab"}
+                お知らせ
+                %span.mypage-nav-number.hidden-large
+                  5
+          %li.active
+            %h3
+              %a{ href: 'https://www.mercari.com/jp/mypage/#mypage-tab-todo',"data-taggle" => "tab"}
+                やることリスト
+        .tab-content
+          %ul#mypage-tab-notification.mypage-item-list.tab-pane.active
+            %li
+              %a.mypage-item-link{ href: '',"data-open" => "model","data-model" => "banner"}
+                %figure
+                  =image_tag src="/assets/mercari_profile.png",class: " lazyloaded",alt: "","data-src"=>"/assets/mercari_profile.png" 
+                .mypage-item-body
+                  .mypage-item-text
+                    testtest 
+                  %time
+                    %i.fa.fa-clock-o
+                    %span
+                      2時間前
+                %i.fa.fa-chevron-right
+
+
