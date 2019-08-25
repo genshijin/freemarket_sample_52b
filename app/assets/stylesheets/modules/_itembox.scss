@@ -79,6 +79,7 @@
   &__num{
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     margin: 8px 0 0;
   }
 
@@ -90,6 +91,9 @@
   &__like{
     font-size: 16px;
     font-weight: 400;
+    i{
+      color: #ccc;
+    }
   }
 }
 
