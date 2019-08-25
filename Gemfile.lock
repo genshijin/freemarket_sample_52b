@@ -24,6 +24,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_hash (2.2.1)
+      activesupport (>= 5.0.0)
     activejob (5.2.3)
       activesupport (= 5.2.3)
       globalid (>= 0.3.6)
@@ -98,6 +100,8 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.11.1)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     font-awesome-sass (5.4.1)
       sassc (>= 1.11)
     globalid (0.4.2)
@@ -250,6 +254,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_hash
   bootsnap (>= 1.1.0)
   byebug
   capistrano
@@ -261,6 +266,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   erb2haml
+  font-awesome-rails
   font-awesome-sass (~> 5.4.1)
   haml-rails
   jbuilder (~> 2.5)

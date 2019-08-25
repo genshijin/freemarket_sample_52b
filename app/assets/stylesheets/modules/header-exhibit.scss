@@ -1,0 +1,31 @@
+.main-header{
+  text-align: center;
+  h1{
+    display: inline-block;
+    margin: 11px 0 12px;
+  }
+  a{
+    display: inline-block;
+    width: 120px;
+    height: 33px;
+    margin: 0 8px 0 0;
+    line-height: 33px;
+  } 
+  img{
+    width: 120px;
+  }
+}
+
+
+@media screen and(min-width: 768px){
+  .main-header{
+    height: 128px;
+    width: 50%;
+    text-align: right;
+  }
+  .header-img{
+    width: 185px!important;
+    height: 49px;
+    margin: 30px 20px;
+  }
+}

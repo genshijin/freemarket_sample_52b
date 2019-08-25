@@ -1,3 +1,12 @@
+
+@import "mixins/mixin";
+@import "mixins/vendor_prefix";
+@import "modules/default";
+@import "modules/header-exhibit";
+@import "modules/footer-exhibit";
+@import "modules/exhibit";
+@import "modules/purchase";
+
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
@@ -19,3 +28,4 @@
 
 @import "modules/item";
 @import "modules/itembox";
+

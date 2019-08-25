@@ -14,13 +14,17 @@
         = form_with urls: '#', class: 'header__form' do |form|
           = text_field_tag :keywprd, "" , class: 'header__form__input', placeholder: 'なにかお探しですか？'
           = button_tag type: 'submit', class: 'header__form__icon' do
-            %i.fas.fa-search
+            -# %i.fas.fa-search
+            %i.fa.fa-search
       %ul.header__navigation
         %li#category-menu.category-menu
           = link_to '#' do
-            %i.fas.fa-list.navigation-icon
+            -# %i.fas.fa-list.navigation-icon
+            %i.fa.fa-list.navigation-icon
             %span カテゴリーから探す
         %li#brand-menu.category-menu
           = link_to '#' do
-            %i.fas.fa-tag.navigation-icon
+            -# %i.fas.fa-tag.navigation-icon
+            %i.fa.fa-tag.navigation-icon
             %span ブランドから探す
+
