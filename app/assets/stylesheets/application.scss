@@ -1,3 +1,7 @@
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+@import "reset";
 
 @import "mixins/mixin";
 @import "mixins/vendor_prefix";
@@ -6,11 +10,6 @@
 @import "modules/footer-exhibit";
 @import "modules/exhibit";
 @import "modules/purchase";
-
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
-
-@import "reset";
 
 @import "mixin/clearfix";
 @import "mixin/media";
