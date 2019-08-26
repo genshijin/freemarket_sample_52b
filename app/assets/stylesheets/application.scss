@@ -3,17 +3,16 @@
 
 @import "reset";
 
-@import "mixins/mixin";
-@import "mixins/vendor_prefix";
+@import "mixin/clearfix";
+@import "mixin/media";
+@import "mixin/font-style";
+@import "mixin/vendor_prefix";
+
 @import "modules/default";
 @import "modules/header-exhibit";
 @import "modules/footer-exhibit";
 @import "modules/exhibit";
 @import "modules/purchase";
-
-@import "mixin/clearfix";
-@import "mixin/media";
-@import "mixin/font-style";
 
 @import "config/btn";
 @import "config/color";
