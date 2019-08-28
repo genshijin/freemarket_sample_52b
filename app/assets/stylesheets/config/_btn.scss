@@ -1,0 +1,22 @@
+// 赤ボタン
+@mixin btn-red{
+  background: $merucari-red;
+  border: 1px solid $merucari-red;
+  color: #fff;
+}
+
+@mixin btn-blue{
+  background: $merucari-blue;
+  border: 1px solid $merucari-blue;
+  color: #fff;
+}
+
+@mixin btn-base{
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+@mixin hover-anm{
+  transition: all ease-out .3s;
+  text-decoration: none;
+}

@@ -1,0 +1,5 @@
+@mixin title($size, $align: center, $weight: bold){
+  font-size: $size;
+  font-weight: $weight;
+  text-align: $align;
+}

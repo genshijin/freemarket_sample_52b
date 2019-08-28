@@ -1,0 +1,141 @@
+.footer{
+  padding: 0 20px 10px 20px;
+  background-color: #212121;
+  color: #fff;
+
+  h2{
+    font-size: 16px;
+    font-weight: 100;
+  }
+
+  // フッターナビゲーション
+  &__nav{
+    display: flex;
+    flex-wrap: wrap;
+    @include tb{
+      margin: 0 auto;
+      width: 700px;
+    }
+    @include pc{
+      width: 1020px;
+    }
+  }
+
+  &__nav-wrap{
+    margin-top: 18px;
+    padding-left: 10px;
+    width: 50%;
+    @include pc{
+      padding: 0 40px 0 0;
+      width: 23%;
+    }
+
+    &:first-child{
+      padding: 0 10px 0 0;
+      @include pc{
+        width: 20%;
+        padding: 0 20px 0 0;
+      }
+    }
+
+    &:nth-child(3){
+      width: 100%;
+      margin: 30px 0 0;
+      padding: 0;
+      @include clearfix;
+      @include pc{
+        width: 42%;
+        margin-top: 18px;
+        padding: 0 40px 0 0;
+      }
+    }
+
+    &:last-child{
+      margin-top: 35px;
+      padding: 0;
+      @include tb{
+        width: auto;
+      }
+      @include pc{
+        margin-top: 18px;
+      }
+      li{
+        display: inline-block;
+        padding-right: 30px;
+        @include pc{
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__nav-item{
+    li{
+      margin: 14px 0 0;
+      font-size: 12px;
+      line-height: 1.5em;
+      a{
+        display: block;
+        color: #fff;
+        opacity: .7;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__social-icon{
+    display: inline-block;
+    padding-right: 15px;
+    a{
+      font-size: 30px;
+      opacity: 1;
+    }
+  }
+
+  &__nav-inner-box{
+    ul{
+      float: left;
+      width: 50%;
+      padding-left: 10px;
+      &:first-child{
+        padding: 0 10px 0 0;
+      }
+    }
+  }
+
+  // フッター下部
+  &__bottom{
+    display: flex;
+    margin: 50px auto 0px;
+    @include tb{
+      width: 700px;
+    }
+    @include pc{
+      width: 1020px;
+      margin: 30px auto 20px;
+    }
+  }
+
+  &__logo{
+    width: auto;
+    margin: 0 10px 0 0 ;
+    &:hover{
+      opacity: .7;
+    }
+  }
+
+  &__copyright{
+    margin: 8px 0 0;
+    text-align: center;
+    vertical-align: sub;
+    @include pc{
+      width: 745px;
+    }
+
+    small{
+      font-size: 12px;
+    }
+  }
+}
