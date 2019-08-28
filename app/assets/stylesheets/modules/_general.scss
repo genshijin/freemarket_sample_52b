@@ -7,13 +7,8 @@
 }
 
 html, body{
-  height: 100%;
   width: 100%;
   font-size: 14px;
-}
-
-body{
-  background: #f5f5f5;
 }
 
 img{
@@ -37,13 +32,10 @@ main{
 
 // form resey option
 input{
-  border: 0;
-  outline: 0;
-  font-family: inherit;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  @include formreset;
 }
 
 textarea{
   resize: vertical;
+  @include formreset;
 }
