@@ -3,9 +3,8 @@
   .bread-crumbs 
   %main.l-container.clearfix
     .side_bar
-      =render partial: 'shared/sidebar'
+      = render 'shared/sidebar'
       .mypage_nav
-
     .l-content
       %section.mypage-user-icon
         %a{ href: 'http://google.co.jp'}
@@ -47,5 +46,35 @@
                     %span
                       2時間前
                 %i.fa.fa-chevron-right
+            %li.mypage-go-list
+              %a{:href => "#"} 一覧をみる
+      %aside.model{"date-close" => "model", "date-mode" => "banner"}
+
+      %section.mypage-tab-container
+        %h2.mypage-tab-head
+          購入した商品
+        %ul.mypage-tabs
+          %li.active
+            %h3
+              %a{ href: 'https://www.mercari.com/jp/mypage/#mypage-tab-notification',"data-taggle" => "tab"}
+                取引中
+          %li.active
+            %h3
+              %a{ href: 'https://www.mercari.com/jp/mypage/#mypage-tab-todo',"data-taggle" => "tab"}
+                過去の取引
+        .tab-content
+          %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
+            %li.mypage-item-not-found{:bold => ""} 
+              現在取引中の商品はありません
+          %ul#mmypage-tab-transaction-old.mypage-item-list.tab-pane
+            %li.mypage-item-not-found{:bold => ""} 
+              現在取引中の商品はありません
+      = render 'shared/sidebar'
+
+
+
+
+            
+
 
 
