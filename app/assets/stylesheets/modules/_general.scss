@@ -7,7 +7,6 @@
 }
 
 html, body{
-  height: 100%;
   width: 100%;
   font-size: 14px;
 }
@@ -22,11 +21,21 @@ a{
 
 main{
   a{
-    color: $merucari-blue;
+    color: $mercari-blue;
     text-decoration: none;
     &:hover{
       text-decoration: underline;
       opacity: 0.7;
     }
   }
+}
+
+// form resey option
+input{
+  @include formreset;
+}
+
+textarea{
+  resize: vertical;
+  @include formreset;
 }
