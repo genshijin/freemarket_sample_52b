@@ -1,31 +1,35 @@
-
-@import "mixins/mixin";
-@import "mixins/vendor_prefix";
-@import "modules/default";
-@import "modules/header-exhibit";
-@import "modules/footer-exhibit";
-@import "modules/exhibit";
-@import "modules/purchase";
-
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
 @import "reset";
 
-@import "mixin/clearfix";
-@import "mixin/media";
-@import "mixin/font-style";
-
 @import "config/btn";
 @import "config/color";
 
+@import "mixin/mixin";
+@import "mixin/media";
+@import "mixin/font-style";
+@import "mixin/vendor_prefix";
+@import "mixin/background";
+
 @import "modules/general";
+@import "modules/default";
+@import "modules/form";
+
 @import "modules/header";
 @import "modules/slider";
-@import "modules/app-banner";
-@import "modules/footer";
-@import "modules/sell-btn";
 
 @import "modules/item";
 @import "modules/itembox";
 
+@import "modules/app-banner";
+@import "modules/footer";
+@import "modules/sell-btn";
+
+@import "modules/header-exhibit";
+@import "modules/footer-exhibit";
+@import "modules/exhibit";
+@import "modules/purchase";
+
+@import "page/mypage/sidebar-mypage";
+@import "page/mypage/user_profile";

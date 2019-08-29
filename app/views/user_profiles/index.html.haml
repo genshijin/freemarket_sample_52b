@@ -1,0 +1,24 @@
+- @page_title = 'プロフィール'
+= content_for :header do
+  = render 'shared/header'
+= content_for :app_banner do
+  = render 'shared/app-banner'
+= content_for :footer do
+  = render 'shared/footer'
+= content_for :sell_btn do
+  = render 'shared/sell-btn'
+
+.mypage-container
+  .content
+    %section.content__wrap
+      %h2.content__title プロフィール
+      = form_with urls: '#' do |form|
+        .profile-form__icon
+          %figure
+            = image_tag 'member_photo_noimage_thumb.png', size: '60x60'
+          = text_field_tag :nickname, "" , class: 'profile-form__nickname input-default', placeholder: '例)AYA☆セール中'
+        .profile-form__input
+          = text_area_tag :profile, "" , class: 'profile-form__textarea textarea-default', placeholder: '例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪'
+          = button_tag type: 'submit', class: 'btn-default btn-red' do
+            変更する
+  = render 'shared/sidebar-mypage'

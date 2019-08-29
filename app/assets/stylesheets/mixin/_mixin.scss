@@ -1,0 +1,25 @@
+// clearfix
+@mixin clearfix{
+  &:after{
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+// form reset
+@mixin formreset{
+  border: 0;
+  outline: 0;
+  font-family: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// form setting
+@mixin formsetting{
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}

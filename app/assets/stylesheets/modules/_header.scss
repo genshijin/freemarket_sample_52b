@@ -50,8 +50,8 @@
 
     .login-btn{
       background: #fff;
-      border: 1px solid #0099e8;
-      color: #0099e8;
+      border: 1px solid $mercari-blue;
+      color: $mercari-blue;
       @include btn-base;
 
       &:hover{
