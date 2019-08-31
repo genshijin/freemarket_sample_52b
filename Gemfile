@@ -75,3 +75,4 @@ gem 'active_hash'
 gem 'pry-rails'
 gem "haml-rails"
 gem 'erb2haml'
+gem "jquery-rails"
