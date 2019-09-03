@@ -1,75 +1,65 @@
-.default-container 
-  .pc-header visible-pc 
-  .bread-crumbs 
-  %main.l-container.clearfix
-    .side_bar
-      = render 'shared/sidebar'
-      .mypage_nav
-    .l-content
-      %section.mypage-user-icon
-        %a{ href: 'http://google.co.jp'}
-          %figure
-            =image_tag src="/assets/member_photo_noimage_thumb.png", id: "img", alt: "", height: "60",  width: "60"
-          %h2.bold name
-          .mypage_number
-            %div 
-              評価
-              %span.bold
-                0
-            %div
-              出品数
-              %span.bold
-                0
-      %section.mypage-tab-container-notification-todo
-        %ul.mypage-tabs
-          %li.active
-            %h3
-              %a{ href: 'https://www.mercari.com/jp/mypage/#mypage-tab-notification',"data-taggle" => "tab"}
-                お知らせ
-                %span.mypage-nav-number.hidden-large
-                  5
-          %li.active
-            %h3
-              %a{ href: 'https://www.mercari.com/jp/mypage/#mypage-tab-todo',"data-taggle" => "tab"}
-                やることリスト
-        .tab-content
-          %ul#mypage-tab-notification.mypage-item-list.tab-pane.active
-            %li
-              %a.mypage-item-link{ href: '',"data-open" => "model","data-model" => "banner"}
-                %figure
-                  =image_tag src="/assets/mercari_profile.png",class: " lazyloaded",alt: "","data-src"=>"/assets/mercari_profile.png" 
-                .mypage-item-body
-                  .mypage-item-text
-                    testtest 
-                  %time
-                    %i.fa.fa-clock-o
-                    %span
-                      2時間前
-                %i.fa.fa-chevron-right
-            %li.mypage-go-list
-              %a{:href => "#"} 一覧をみる
-      %aside.model{"date-close" => "model", "date-mode" => "banner"}
 
-      %section.mypage-tab-container
-        %h2.mypage-tab-head
-          購入した商品
-        %ul.mypage-tabs
-          %li.active
-            %h3
-              %a{ href: 'https://www.mercari.com/jp/mypage/#mypage-tab-notification',"data-taggle" => "tab"}
-                取引中
-          %li.active
-            %h3
-              %a{ href: 'https://www.mercari.com/jp/mypage/#mypage-tab-todo',"data-taggle" => "tab"}
-                過去の取引
-        .tab-content
-          %ul#mypage-tab-transaction-now.mypage-item-list.tab-pane.active
-            %li.mypage-item-not-found{:bold => ""} 
-              現在取引中の商品はありません
-          %ul#mmypage-tab-transaction-old.mypage-item-list.tab-pane
-            %li.mypage-item-not-found{:bold => ""} 
-              現在取引中の商品はありません
-      = render 'shared/sidebar'
+- @page_title = 'マイページ' 
+= content_for :header do
+  = render 'shared/header'
+= content_for :app_banner do
+  = render 'shared/app-banner'
+= content_for :footer do
+  = render 'shared/footer'
+= content_for :sell_btn do
+  = render 'shared/sell-btn'
+
+%main.container.clearfix
+  .content
+    %section.content__profile
+      = link_to '#', class: 'content__profile-link' do
+        %figure.my-img
+          =image_tag src="/assets/member_photo_noimage_thumb.png", id: "my-img", alt: "", height: "60",  width: "60"
+        %h2.user-name
+          name
+        .content__profile__information
+          .information
+            評価
+            %span.bold
+              0
+          .information
+            出品数
+            %span.bold
+              0
+
+    .tabs
+      %input#notice{checked: "checked", name: "tab_item", type: "radio"}/
+      %label.tabs__item{for: "notice"} お知らせ
+      %input#dolist{name: "tab_item", type: "radio"}/
+      %label.tabs__item{for: "dolist"} やることリスト
+      #notice_content.tab_content
+        = render partial:'shared/tab-content'
+        = render partial:'shared/tab-content'
+      #dolist_content.tab_content
+        = render partial:'shared/tab-content'
+      %li.tab-list
+        = link_to '#', class: 'tab-list-link' do
+          一覧をみる
+
+    .buy-items
+      %h2.buy-items__head
+        購入した商品
+      .tabs
+        %input#trading{checked: "checked", name: "tabs-item", type: "radio"}/
+        %label.tabs__item{for: "trading"} 取引中
+        %input#trade{name: "tabs-item", type: "radio"}/
+        %label.tabs__item{for: "trade"} 過去の取引
+        #trading_content.tab_content
+          .not-item
+            %li.not-item__content
+              取引中のアイテムがありません
+        #trade_content.tab_content
+          .not-item
+            %li.not-item__content
+              過去に取引した商品はありません
+  .side_bar
+    = render 'shared/sidebar'
+    
 
 
 
