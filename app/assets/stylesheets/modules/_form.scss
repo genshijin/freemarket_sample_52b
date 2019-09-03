@@ -1,3 +1,4 @@
+// base setting
 .input-default{
   height: 48px;
   padding: 10px 16px 8px;
@@ -20,4 +21,31 @@
   &:focus{
     border-color: $mercari-blue;
   }
+}
+
+.select-default{
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  @include formsetting;
+
+  &:focus{
+    border-color: $mercari-blue;
+  }
+}
+
+// settings
+.form-question{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: $mercari-blue;
+  color: #fff;
+  line-height: 14;
+  font-size: 12px;
+  text-align: center;
 }

@@ -20,3 +20,18 @@
   transition: all ease-out .3s;
   text-decoration: none;
 }
+
+.btn-default{
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: all ease-out .3s;
+
+  &:hover{
+    text-decoration: none;
+  }
+}
