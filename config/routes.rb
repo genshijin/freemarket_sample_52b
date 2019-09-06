@@ -4,5 +4,9 @@ Rails.application.routes.draw do
   resources :user_profiles, only: [:index]
   resources :exhibit, only: [:index]
   resources :purchase, only: [:index]
-  resources :sign_up, only: [:index]
+  resources :sign_up, only: [:index] do
+    collection do
+      get 'phone_number'
+    end
+  end
 end
