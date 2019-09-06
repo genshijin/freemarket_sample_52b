@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   # マイページ周りの設定
   resource :mypage, controller: :users, only: [:index] do
+    collection do
+      get :logout
+    end
     resources :cards, only: [:index, :new]
     resources :profile ,controller: :user_profiles, only: [:index]
   end
