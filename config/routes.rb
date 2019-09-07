@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :purchase, only: [:index]
 
   # マイページ周りの設定
-  resource :mypage, controller: :users, only: [:index] do
+  resource :mypage, controller: :users do
+    collection do
+      get :index
+      get :logout
+    end
     resources :cards, only: [:index, :new]
     resources :profile ,controller: :user_profiles, only: [:index]
   end
