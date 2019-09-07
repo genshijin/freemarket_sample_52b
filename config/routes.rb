@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :sign_up, only: [:index] do
     collection do
       get 'phone_number'
+      get 'carry_point'
     end
   end
 end
