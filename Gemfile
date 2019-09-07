@@ -77,3 +77,4 @@ gem 'pry-rails'
 gem "haml-rails"
 gem 'erb2haml'
 gem "jquery-rails"
+gem 'sassc', '2.2.0'
