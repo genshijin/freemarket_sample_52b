@@ -1,0 +1,25 @@
+- @page_title = 'マイページ' 
+= content_for :header do
+  = render 'shared/header'
+= content_for :app_banner do
+  = render 'shared/app-banner'
+= content_for :footer do
+  = render 'shared/footer'
+= content_for :sell_btn do
+  = render 'shared/sell-btn'
+
+%main.container.clearfix
+  .content
+    .header
+      %h2
+      本人情報の登録
+   .inner
+     .Description
+        .p
+         お客様情報をご登録ください
+         %br
+         登録されたお名前・生年月日を変更する場合、本人確認書類が必要になります。
+        .p.text
+          本人確認書類のアップロードについて＞
+      .form_group
+        .
