@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       get 'phone_number'
       get 'carry_point'
+      get 'payment'
     end
   end
 end

@@ -1,0 +1,40 @@
+
+
+.mypage-container
+  .content
+    %section.content__wrap
+      %h2.content__title クレジットカード情報入力
+      .content__body.card-registration
+        = form_with urls: '#', class: 'card-form' do |f|
+          .content__inner
+            .card-form__group
+              = label_tag 'card_number', 'カード番号'
+              %span.form-require 必須
+              %br
+              = text_field_tag :card_number, "", type: 'text', class: 'input-default', placeholder: '半角数字のみ', maxlength: "16"
+              = render 'cards/card_list'
+            .card-form__group
+              = label_tag 'card_expire', '有効期限'
+              %span.form-require 必須
+              %br
+              .select-wrap.half
+                = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]], {}, class: 'select-default select-exprie'
+                .icon-arrow-bottom
+                  %i.fa.fa-angle-down
+                %span.expire-text 月
+              .select-wrap.half
+                = f.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]], {}, class: 'select-default select-exprie'
+                .icon-arrow-bottom
+                  %i.fa.fa-angle-down
+                %span.expire-text 年
+            .card-form__group
+              = label_tag 'security_code', 'セキュリティコード'
+              %span.form-require 必須
+              %br
+              = text_field_tag :security_code, "", type: 'text', class: 'input-default', placeholder: 'カード背面4桁もしくは3桁の番号'
+              .signup-seqcode
+                .signup-seqcode__text(data-js='show-tips-toggle')
+                  %span.form-question ?
+                  カード裏面の番号とは？
+                = render 'cards/seqcode_info'
+            = button_tag '追加する', type: 'submit', class: 'btn-default btn-red', id: 'token_submit'
