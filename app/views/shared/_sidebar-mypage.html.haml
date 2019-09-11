@@ -2,7 +2,7 @@
   %nav.mypage-sidebar__nav
     %ul.mypage-sidebar__nav-lists
       %li
-        = link_to '#', class: 'mypage-sidebar__nav-items active' do
+        = link_to mypage_path, class: 'mypage-sidebar__nav-items active' do
           マイページ
           .icon--arrow-right
             %i.fa.fa-angle-right
@@ -86,7 +86,7 @@
     %h3.mypage-sidebar__nav-head 設定
     %ul.mypage-sidebar__nav-lists
       %li
-        = link_to '#', class: 'mypage-sidebar__nav-items' do
+        = link_to mypage_profile_index_path, class: 'mypage-sidebar__nav-items' do
           プロフィール
           .icon--arrow-right
             %i.fa.fa-angle-right
@@ -96,7 +96,7 @@
           .icon--arrow-right
             %i.fa.fa-angle-right
       %li
-        = link_to '#', class: 'mypage-sidebar__nav-items' do
+        = link_to mypage_cards_path, class: 'mypage-sidebar__nav-items' do
           支払い方法
           .icon--arrow-right
             %i.fa.fa-angle-right
@@ -116,7 +116,7 @@
           .icon--arrow-right
             %i.fa.fa-angle-right
       %li
-        = link_to '#', class: 'mypage-sidebar__nav-items' do
+        = link_to logout_mypage_path, class: 'mypage-sidebar__nav-items' do
           ログアウト
           .icon--arrow-right
             %i.fa.fa-angle-right
