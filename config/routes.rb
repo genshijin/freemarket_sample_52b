@@ -13,5 +13,6 @@ Rails.application.routes.draw do
       get :logout
     end
     resources :cards, only: [:index, :new]
+    resources :profile ,controller: :user_profiles, only: [:index]
   end
 end
