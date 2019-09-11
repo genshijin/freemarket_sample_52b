@@ -1,0 +1,167 @@
+- @page_title = '商品詳細'
+.item-box__container
+  = render 'shared/header-logined'
+  %main.main
+    %section.main__container__sell-item-box
+      %h1.sell-item__name
+        シャネル ショップ袋 ショッパー小
+      .sell-item__main-content
+        .sell-item__photo
+          .sell-item__photo__all
+            .sell-item__photo__main
+              = image_tag "sell-sample.jpg", alt: "", class: "" 
+            .sell-item__photo__dots
+              .sell-item__photo__dot.active
+                .sell-item__photo__dot__inner
+                  = image_tag "sell-sample.jpg", alt: "", class: ""
+              - for i in 1..4
+                = render 'items/item-photo'
+              - for i in 1..2
+                = render 'items/item-photo'             
+        .sell-item__price-box.display-none
+          %span.sell-item__price¥499
+          %span.sell-item__tax（税込）
+          %span.sell-item__shipping-fee 送料込み
+        %table.sell-item__detail-table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                = link_to "ほげ太", "#"
+                %div
+                  .sell-item__user-ratings
+                    .icon-good
+                      %i.fa.fa-laugh
+                      %span 258
+                  .sell-item__user-ratings
+                    .icon-normal
+                      %i.fa.fa-meh
+                      %span 2
+                  .sell-item__user-ratings
+                    .icon-bad
+                      %i.fa.fa-frown
+                      %span 0 
+            %tr
+              %th カテゴリー
+              %td
+                = link_to "カバン", "#"
+                .sub-category
+                  = link_to "#" do
+                    %i.fa.fa-angle-right
+                    %span サブカテ1
+                .sub-category
+                  = link_to "#" do
+                    %i.fa.fa-angle-right
+                    %span サブカテ2                 
+            %tr
+              %th ブランド
+              %td
+                = link_to "ブランド名"
+            %tr
+              %th 商品のサイズ
+              %td FREE
+            %tr
+              %th 商品の状態
+              %td 目立った傷や汚れなし
+            %tr
+              %th 配送料の負担
+              %td 送料込み（出品者負担）
+            %tr
+              %th 配送の方法
+              %td らくらくメルカリ便
+            %tr
+              %th 配送元地域
+              %td 
+                = link_to "大阪府"
+            %tr
+              %th 発送日の目安
+              %td 1~2日で発送
+        .sell-item__price-box
+          %span.sell-item__price ¥499
+          %span.sell-item__tax  (税込)
+          %span.sell-item__shipping-fee 送料込み   
+        .item-buy__btn
+          = link_to "購入画面に進む", purchase_index_path 
+      .item-description
+        %p.item-description__inner
+          ほげほげほげほげほげほげほげ
+          ほげほげほげほげほげほげほげ
+          %br
+          ほげほげほげほげほげほげほげ
+          ほげほげほげほげほげほげほげ
+          %br
+          ほげほげほげほげほげほげほげ
+          ほげほげほげほげほげほげほげ!!!
+      .item-button__container
+        .item-button__left
+          %button{type: "button", name: "like!", class:"item-button item-button-like"}
+            %i.far.fa-heart
+            %span いいね！
+            %span.fade-in-down 17
+          .item-button__report.item-button
+            = link_to '#' do
+              %i.far.fa-flag
+              %span 不適切な商品の報告
+        .item-button__right
+          = link_to '#' do
+            %i.fa.fa-lock
+            %span あんしん・あんぜんへの取り組み
+    .item-detail__message
+      .message__container
+        = render 'items/message'
+        .message__space
+        .message__content
+          %form{action: '', method: 'POST', class:'.message__form'}
+            %p
+              相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %textarea{name: 'body', class: '.textarea-default'}
+            %button{type: 'submit', class: 'btn-bray'} 
+              %span コメントする 
+    %ul.nav-item__links
+      %li.nav-item__link-prev
+        = link_to '#' do
+          %i.fa.fa-angle-left 
+          前へ         
+      %li.nav-item__link-next
+        = link_to '#' do
+          次へ 
+          %i.fa.fa-angle-right
+    .item-social-media__box
+      .text-center
+      %ul.sosial-media__box
+        %li
+          = link_to 'https://ja-jp.facebook.com/' do 
+            %i.fab.fa-facebook-square
+        %li
+          = link_to 'https://twitter.com/home?lang=ja' do 
+            %i.fab.fa-twitter-square
+        %li
+          = link_to 'https://line.me/ja/' do 
+            %i.fab.fa-line
+        %li
+          = link_to 'https://www.pinterest.jp/' do 
+            %i.fab.fa-pinterest-square
+  .items__user-profile
+    %section.items-box__container
+      %h2.items-box__head
+        = link_to 'ほげ太さんのその他の出品', '#'
+      .item__content
+        - for i in 1..6
+          = render 'shared/item-box'
+    %section.items-box__container     
+      %h2.items-box__head
+        = link_to '関連ブランドその他の出品', '#'
+      .item__content
+        - for i in 1..6
+          = render 'shared/item-box'
+  %nav.bread-crumbs__pos-bottom
+    %ul
+      %li.itemscope__itemtype
+        = link_to 'メルカリ', root_path
+        %i.fa.fa-angle-right
+      %li.itemscope__itemtype
+        %span.itemprop 居るとこ
+  = render partial: 'shared/footer'      
+  .item-btn__float-area
+    .item-buy__btn
+      = link_to "購入画面に進む", purchase_index_path 
