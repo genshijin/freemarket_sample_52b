@@ -10,16 +10,74 @@
 
 %main.container.clearfix
   .content
-    .header
-      %h2
+    %h2.content__head
       本人情報の登録
-   .inner
-     .Description
-        .p
-         お客様情報をご登録ください
-         %br
-         登録されたお名前・生年月日を変更する場合、本人確認書類が必要になります。
-        .p.text
-          本人確認書類のアップロードについて＞
-      .form_group
-        .
+    .inner
+      = form_with urls: '#', method: "post" ,class: 'inner-form' do |f|
+        .Description
+          %p
+            お客さまの本人情報をご登録ください。
+            %br
+            登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          %p.right-text
+            = link_to '#' do
+              本人確認書類のアップロードについて
+              %i.fa.fa-chevron-right
+        .form_group
+          %label
+            お名前
+          %p
+            メルカリ太郎
+        .form_group
+          %label
+            お名前カナ
+          %p
+            メルカリタロウ
+        .form_group
+          %label.birthday
+            生年月日
+          %p
+            2013/2/1
+        .form_group
+          %label.postal_code
+            郵便番号
+          %span.arbitrary
+            任意
+          %input.input-default{type: "text" , for: "postal_code", placeholder: "例）1234567"}
+        .form_group
+          %label.prefectures
+            都道府県
+          %span.arbitrary
+            任意
+          .select-wrap
+            %i.fas.fa-chevron-down
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
+        .form_group
+          %label.city
+            市区町村
+          %span.arbitrary
+            任意
+          %input.input-default{type: "text" , for: "city", placeholder: "例) 横浜市緑区"}
+        .form_group
+          %label.number
+            番地
+          %span.arbitrary
+            任意
+          %input.input-default{type: "text" , for: "number", placeholder: "例) 青山1−1−1"}
+        .form_group
+          %label.building
+            建物名
+          %span.arbitrary
+            任意
+          %input.input-default{type: "text" , for: "building", placeholder: "例) 柳ビル103"}
+        %button.btn-default{type: "submit"} 登録する
+        .form_group.text
+          %p.right-text
+            = link_to '#' do
+              本人情報の登録について
+              %i.fa.fa-chevron-right
+  = render 'shared/sidebar-mypage'
+        
+
+          
+        
