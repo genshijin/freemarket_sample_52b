@@ -7,7 +7,7 @@
     .header__user-nav
       = link_to '#', class: 'signup-btn' do
         新規会員登録
-      = link_to mypage_profile_index_path, class: 'login-btn' do
+      = link_to mypage_path, class: 'login-btn' do
         ログイン
     .header__search
       = form_with urls: '#', class: 'header__form' do |form|
