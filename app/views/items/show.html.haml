@@ -1,0 +1,13 @@
+- @page_title = 'テスト商品'
+- breadcrumb :items
+
+= content_for :header do
+  = render 'shared/header'
+= content_for :app_banner do
+  = render 'shared/app-banner'
+= content_for :footer do
+  = render 'shared/footer'
+= content_for :sell_btn do
+  = render 'shared/sell-btn'
+
+= render 'shared/breadcrumb-items'
