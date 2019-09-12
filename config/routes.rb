@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :purchase, only: [:index]
 
   # マイページ周りの設定
-	resource :mypage, controller: :users, onry: [:edit] do
+  resource :mypage, controller: :users, onry: [:edit] do
     collection do
       get :index
       get :logout
