@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   root 'items#index'
   resources :items, only: [:index, :show]
-  resources :user_profiles, only: [:index]
   resources :exhibit, only: [:index]
   resources :purchase, only: [:index]
 
