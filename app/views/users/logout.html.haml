@@ -15,6 +15,6 @@
     %section.content__wrap
       .content__body
         .content__inner
-          = link_to '#', class: 'btn-default btn-red' do
+          = link_to destroy_user_session_path, class: 'btn-default btn-red' ,method: :delete do
             ログアウト
   = render 'shared/sidebar-mypage'

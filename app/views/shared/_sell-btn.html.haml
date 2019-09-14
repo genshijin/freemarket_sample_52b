@@ -1,4 +1,8 @@
-= link_to exhibit_index_path, class: 'sell-btn' do
-  %p 出品
-  -# %i.fas.fa-camera
-  %i.fa.fa-camera
+- if user_signed_in?
+  = link_to exhibit_index_path, class: 'sell-btn' do
+    %p 出品
+    %i.fa.fa-camera
+- else
+  = link_to  new_user_session_path, class: 'sell-btn' do
+    %p 出品
+    %i.fa.fa-camera

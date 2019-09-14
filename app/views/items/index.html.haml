@@ -1,5 +1,8 @@
 = content_for :header do
-  = render 'shared/header'
+  - if user_signed_in?
+    = render 'shared/header-logined'
+  - else
+    = render 'shared/header'
 = content_for :app_banner do
   = render 'shared/app-banner'
 = content_for :footer do
