@@ -1,26 +1,26 @@
 %body
-  .container
-    %header.signup-header
-      %h1
-        %a{href: "/"}
-          = image_tag "mercari-logo.svg", alt: "mercari"
-      %nav.signup-header__progress-bar
-        %ol.clearfix
-          %li.through
-            会員情報
-            .signup-header__progress-status
-          %li.through
-            電話番号認証
-            .signup-header__progress-status
-          %li.through
-            お届け先住所入力
-            .signup-header__progress-status
-          %li.through
-            支払い方法
-            .signup-header__progress-status
-          %li.active
-            完了
-            .signup-header__progress-status
+  %header.signup-header
+    %h1
+      %a{href: "/"}
+        = image_tag "mercari-logo.svg", alt: "mercari"
+    %nav.signup-header__progress-bar
+      %ol.clearfix
+        %li.through
+          会員情報
+          .signup-header__progress-status
+        %li.through
+          電話番号認証
+          .signup-header__progress-status
+        %li.through
+          お届け先住所入力
+          .signup-header__progress-status
+        %li.through
+          支払い方法
+          .signup-header__progress-status
+        %li.active
+          完了
+          .signup-header__progress-status
+  .main__container
     %main.main
       %section.main__container
         %h2.main__head.registration 会員登録完了
@@ -32,5 +32,5 @@
               %br
               会員登録が完了しました。
             %button.btn-default.btn-red{type: "submit"} メルカリをはじめる
-    %main.sub
-    = render partial: 'shared/footer-exhibit'
+  %main.sub
+  = render partial: 'shared/footer-exhibit'
