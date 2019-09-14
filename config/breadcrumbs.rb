@@ -28,9 +28,9 @@ crumb :logout do
   parent :mypage
 end
 
-# パンくずリスト 商品ページ非表示テスト
+# 商品ページ
 crumb :items do
-  link "テスト商品", items_path
+  link "テスト商品", item_path(1)
   parent :root
 end
 
