@@ -10,53 +10,53 @@
 = content_for :sell_btn do
   = render 'shared/sell-btn'
 
-%main.container.clearfix
+.mypage-container
   .content
-    %section.content__profile
-      = link_to '#', class: 'content__profile-link' do
-        %figure.my-img
-          =image_tag src="member_photo_noimage_thumb.png", id: "my-img", alt: "", height: "60",  width: "60"
-        %h2.user-name
-          name
-        .content__profile__information
-          .information
-            評価
-            %span.bold
-              0
-          .information
-            出品数
-            %span.bold
-              0
+    %section.content__wrap
+      .content__profile
+        = link_to '#', class: 'content__profile-link' do
+          %figure.my-img
+            =image_tag src="member_photo_noimage_thumb.png", id: "my-img", alt: "", height: "60",  width: "60"
+          %h2.user-name
+            name
+          .content__profile__information
+            .information
+              評価
+              %span.bold
+                0
+            .information
+              出品数
+              %span.bold
+                0
 
-    .tabs
-      %input#notice{checked: "checked", name: "tab_item", type: "radio"}/
-      %label.tabs__item{for: "notice"} お知らせ
-      %input#dolist{name: "tab_item", type: "radio"}/
-      %label.tabs__item{for: "dolist"} やることリスト
-      #notice_content.tab_content
-        = render partial:'shared/tab-content'
-        = render partial:'shared/tab-content'
-      #dolist_content.tab_content
-        = render partial:'shared/tab-content'
-      %li.tab-list
-        = link_to '#', class: 'tab-list-link' do
-          一覧をみる
-
-    .buy-items
-      %h2.buy-items__head
-        購入した商品
       .tabs
-        %input#trading{checked: "checked", name: "tabs-item", type: "radio"}/
-        %label.tabs__item{for: "trading"} 取引中
-        %input#trade{name: "tabs-item", type: "radio"}/
-        %label.tabs__item{for: "trade"} 過去の取引
-        #trading_content.tab_content
-          .not-item
-            %li.not-item__content
-              取引中のアイテムがありません
-        #trade_content.tab_content
-          .not-item
-            %li.not-item__content
-              過去に取引した商品はありません
-  .side_bar
-    = render 'shared/sidebar-mypage'
+        %input#notice{checked: "checked", name: "tab_item", type: "radio"}/
+        %label.tabs__item{for: "notice"} お知らせ
+        %input#dolist{name: "tab_item", type: "radio"}/
+        %label.tabs__item{for: "dolist"} やることリスト
+        #notice_content.tab_content
+          = render partial:'shared/tab-content'
+          = render partial:'shared/tab-content'
+        #dolist_content.tab_content
+          = render partial:'shared/tab-content'
+        %li.tab-list
+          = link_to '#', class: 'tab-list-link' do
+            一覧をみる
+    %section.content__wrap
+      .buy-items
+        %h2.buy-items__head
+          購入した商品
+        .tabs
+          %input#trading{checked: "checked", name: "tabs-item", type: "radio"}/
+          %label.tabs__item{for: "trading"} 取引中
+          %input#trade{name: "tabs-item", type: "radio"}/
+          %label.tabs__item{for: "trade"} 過去の取引
+          #trading_content.tab_content
+            .not-item
+              %li.not-item__content
+                取引中のアイテムがありません
+          #trade_content.tab_content
+            .not-item
+              %li.not-item__content
+                過去に取引した商品はありません
+  = render 'shared/sidebar-mypage'

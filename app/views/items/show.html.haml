@@ -164,16 +164,4 @@
       .item__content
         - for i in 1..6
           = render 'shared/item-box'
-  %nav.bread-crumbs__pos-bottom
-    %ul
-      %li.itemscope__itemtype
-        = link_to 'メルカリ', root_path
-        %i.fa.fa-angle-right
-      %li.itemscope__itemtype
-        %span.itemprop 居るとこ
-  = render partial:'shared/app-banner'
-  = render partial: 'shared/footer'
-  .item-btn__float-area
-    .item-buy__btn
-      = link_to "購入画面に進む", purchase_index_path
 = render 'shared/breadcrumb-items'

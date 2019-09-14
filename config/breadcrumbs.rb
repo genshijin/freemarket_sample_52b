@@ -30,7 +30,7 @@ end
 
 # 商品ページ
 crumb :items do
-  link "テスト商品", item_path(1)
+  link "商品詳細", item_path(1)
   parent :root
 end
 
