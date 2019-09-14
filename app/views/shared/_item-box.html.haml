@@ -1,5 +1,6 @@
 .itembox
-  = link_to purchase_index_path do
+  -# todo: 仮置き サーバーサイド実装後に正式なパスを設定
+  = link_to item_path(1) do
     %figure.itembox__photo
       = image_tag '', alt: '#'
     .itembox__body
@@ -7,6 +8,5 @@
       .itembox__num
         %p.itembox__price 1,500
         %p.itembox__like
-          -# %i.far.fa-heart
           %i.far.fa-heart
           3

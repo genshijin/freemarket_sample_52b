@@ -1,0 +1,19 @@
+.message__content
+  %ul.message__items
+    %li.markup-balloon
+      .message__user
+        = link_to '' do
+          %figure
+            %div
+              = image_tag 'member_photo_noimage_thumb.png', alt:'', width: '40'
+            %figcaption たま
+      .message__body
+        .message__body-text
+          hello!
+        .messge__icons
+          %time.message__icon-left
+            %i.far.fa-clock
+            %span 6日前
+          .message__icon-right
+            %i.far.fa-flag
+        %i.icon-balloon

@@ -1,0 +1,564 @@
+.main__container__sell-item-box{
+  background: #fff;
+  margin: 40px auto 0;
+  padding: 24px 16px 55px 16px;
+}
+
+@media screen and (min-width: 768px){
+  .main__container__sell-item-box{
+    width: 700px;
+  }
+}
+
+.sell-item{
+  &__name{
+  font-size: 24px;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 1.4;
+  font-weight: bold;
+  }
+  &__main-content{
+    margin: 16px 0 0;
+  }
+  &__photo{
+    position: relative;
+    min-width: 280px;
+    max-width: 360px;
+    min-height: 280px;
+    margin: 0 auto;
+    background: #fafafa;
+    &__all{
+      position: relative;
+      letter-spacing: -4em;
+    }
+    &__main{
+      width: 360px;
+      min-height: 300px;
+      img{
+        width: 100%;
+        height:100%;
+      }
+    }
+    &__dots{
+      line-height: 0;
+      letter-spacing: -4em;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    &__dot{
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      letter-spacing: 0;
+      width: 20%;
+      max-height: 90px;
+      opacity: 0.4;
+      cursor: pointer;
+      text-align: left;
+    
+      &__inner{
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        padding: 0 0 100%;
+        img{
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          transform: translate(-50%, 0);
+        }
+      }
+    }
+    &__dot.active{
+      opacity: 1;
+      cursor: default;
+    }
+  }
+  &__price-box{
+    margin: 24px 0 0;
+    text-align: center;
+  }
+  &__price{
+    margin: 0 8px 0 0;
+    font-size: 32px;
+    font-weight: 600;
+  }
+  &__tax{
+    font-size: 10px;
+    
+  }
+  &__shipping-fee{
+    display: inline-block;
+    font-size: 16px;
+  }
+  &__detail-table{
+    width: 100%;
+    max-width: 360px;
+    margin: 8px auto 0;
+    border-collapse: collapse;
+    border: 1px solid #f5f5f5;
+    th, td{
+      border-collapse: collapse;
+      border: 1px solid #f5f5f5;
+    }
+    th{
+      width: 39%;
+      text-align: left;
+      font-weight: 400;
+      background: #fafafa;
+    }
+    td{
+      width: 61%;
+      background: #fff;
+    }
+    a:first-child{
+      margin: 0;
+    }
+  }
+  &__user-ratings:first-child{
+    margin: 0;
+  }
+  &__user-ratings{
+    display: inline-block;
+    margin: 8px 0 0 16px;
+    .icon-good i{
+      color: #ef5185;
+      font-size: 16px;
+      vertical-align: middle;
+    }
+    .icon-good span{
+      vertical-align: middle;
+    }
+    .icon-normal i{
+      color: #fba933;
+      font-size: 16px;
+      vertical-align: middle;
+    }
+    .icon-normal span{
+      vertical-align: middle;
+    }
+    .icon-bad i{
+      color: #6ab5d8;
+      font-size: 16px;
+      vertical-align: middle;
+    }
+    .icon-bad span{
+      vertical-align: middle;
+    }
+  }
+}
+
+@media screen and (max-width: 767px){
+  .sell-item__detail-table{
+    th, td{
+      padding: 16px 8px;
+    }
+  }
+  .item-buy__btn{
+    font-size: 14px;
+    line-height: 56px;
+  }
+}
+
+
+@media screen and (min-width: 768px){
+  .sell-item__photo{
+    float: left;
+    &__main{
+      min-width: 300px;
+      max-width: 300px;
+      img{
+        width: 100%;
+        height:100%;
+      }
+    }
+  }
+  .display-none{
+    display: none;
+  }
+  .sell-item__detail-table{
+    max-width: 300px;
+    height: 420px;
+    margin: 0 auto;
+  th, td{
+    padding: 8px;
+  }
+  }
+  .sell-item{
+    &__price-box{
+      padding-top: 30px;
+    }
+    &__price {
+      margin: 0 16px 0 0;
+      font-size: 50px;
+    }
+  }
+  .item-buy__btn{
+    font-size: 24px;
+    line-height: 60px;
+  }
+}
+
+.item-buy__btn{
+  display: block;
+  margin-top: 16px;
+  background: #ea352d;
+  text-align: center;
+  font-weight: 600;
+  transition: all;
+  a{
+    color: #fff;
+  }
+}
+
+.item-description{
+  padding: 24px 0 0;
+  line-height: 1.5;
+  &__inner{
+    white-space: pre-wrap;
+  }
+}
+
+.item-button{
+  color: #333;
+  border: 1px solid #f5f5f5;
+  background: #f5f5f5;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 40px;
+  transition: all;
+  &__container{
+    margin: 16px 0 0;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  &__report{
+    margin: 0 0 0 8px;
+    background: #f5f5f5;
+    display: inline-block;
+    i{
+      color: #333;
+      font-size: 12px;
+    }
+    span{
+      color: #333;
+      font-size: 12px;
+    }
+  }
+  &__right{
+    margin: 16px 0 0;
+    span{
+      display: inline-block;
+      margin: 1px 0 0 3px;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.item-button-like{
+  font-size: 12px;
+}
+
+.item-detail__message{
+  margin: 8px auto;
+}
+
+.message__content{
+  padding: 24px 7.5%;
+  background: #fff;
+}
+
+.message__items{
+  margin: 0;
+}
+
+.message__items li:first-child{
+  margin: 1.5em 0 0;
+}
+
+.message__items li{
+  margin: 60px 0 0;
+}
+
+.markup-balloon figure > div{
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.message__user{
+  position: relative;
+  top: -20px;
+  display: inline-block;
+  color: #333;
+  img{
+    width: 100%;
+  }
+  figcaption{
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 56px;
+    max-width: 100%;
+    min-width: 214px;
+    height: 1.2em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    color: black;
+  }
+}
+
+.message__user:hover{
+  opacity: 0.8;
+}
+
+.message__user figcaption:hover{
+  opacity: 0.8;
+}
+
+.message__body{
+  position: relative;
+  width: calc(100% - 56px);
+  padding: 16px;
+  background: #eef0f4;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+  float: right;
+}
+.message__body:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+
+.messge__icons{
+  margin: 8px 0 0;
+  time{
+    display: block;
+    color: #aaa;
+  }
+  .message__icon-left{
+    float: left;
+    i{
+      vertical-align: middle;
+    }
+    span{
+      vertical-align: middle;
+    }
+  }
+  div{
+    cursor: pointer;
+    display: inline-block;
+    color: #aaa;
+    text-decoration: none;
+  }
+  .message__icon-right{
+    float: right;
+  }
+  @include clearfix;
+}
+
+.message__space{
+  padding: 24px;
+  background: #fff;
+}
+
+.message__content >form > p{
+  padding: 8px;
+  font-size: 14px;
+  background: #fff6de;
+}
+
+.message__content >form > textarea{
+ display: block;
+ width: 100%;
+ max-width: 100%;
+ min-height: 104px;
+ padding: 10px;
+ border: 1px solid #ccc;
+ background: #fff;
+ font-size: 16px;
+ line-height: 1.5; 
+ margin: 8px 0 0;
+}
+
+.message__content >form > button{
+  width: 100%;
+  margin: 8px 0 0;
+  text-align: center;
+  background: #aaa;
+  border: 1px solid #aaa;
+  display: block;
+  line-height: 48px;
+  cursor: pointer;
+}
+
+.message__content >form > button > span{
+  color: #fff;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.nav-item{
+  &__links{
+  margin: 24px 4% 0;
+  background: #f5f5f5;
+  li{
+    position: relative;
+    width: 43%;
+    word-wrap: break-word;
+  }
+  }
+  &__link-prev{
+    float: left;
+    padding: 0 0 0 14px;
+  }
+  &__link-next{
+    float: right;
+    padding: 0 14px 0 0;
+    text-align: right;
+    @include clearfix;
+  }
+} 
+
+@media screen and (min-width: 768px){
+  .nav-item__links{
+    margin: 24px auto 0;
+    width: 700px;
+  }
+  .message__container{
+    width: 700px;
+    margin: auto;
+  }
+}
+
+.item-social-media__box{
+  margin :60px 0 0;
+  background: #fff;
+  padding: 16px 0 8px;
+}
+
+@media screen and (min-width: 768px){
+  .item-social-media__box{
+    width: 700px;
+    margin: 60px auto 0;
+    padding: 32px 0 24px;
+  }
+}
+
+.text-center{
+  text-align: center;
+}
+
+.sosial-media__box{
+  margin: 16px 0 0;
+  text-align: center;
+  li{
+    display: inline-block;
+    margin: 0 8px 8px 0;
+    vertical-align: middle;
+    text-align: center;
+    .fab.fa-facebook-square{
+      font-size: 44px;
+      color: #385185;
+    }
+    .fab.fa-twitter-square{
+      font-size: 44px;
+      color: #5d9dc9;
+    }
+    .fab.fa-line{
+      font-size: 44px;
+      color: #00c137;
+    }
+    .fab.fa-pinterest-square{
+      font-size: 44px;
+      color: #aa262a;
+    }
+  }
+}
+
+.items__user-profile{
+  .items-box__head{
+    font-size: 18px;
+    margin: 24px 4% 8px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .items__user-profile{
+  width: 700px;
+  margin: 0 auto;
+  .items-box__head{
+    font-size: 22px;
+    margin: 24px 0 8px;
+  }
+  }
+}
+
+.items-box > .itembox{
+  display: inline-block;
+  width: calc(33.3333% - 2.666666px);
+}
+
+.bread-crumbs__pos-bottom{
+  background: #f5f5f5;
+  box-shadow: none;
+  position: relative;
+  border-top: 1px solid #eee;
+  ul{
+    padding: 16px;
+    font-size: 0;
+    white-space: nowrap;
+    overflow: auto;
+  }
+  li{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+}
+
+@media screen and (min-width: 768px){
+  .bread-crumbs__pos-bottom ul{
+    overflow: visible;
+    width: 700px;
+    margin: 0 auto;
+    padding: 16px 0;
+    white-space: normal;
+  }
+}
+
+.item-btn__float-area{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 6px 16px;
+  width: 100%;
+  background-color: #fff;
+  z-index: 3;
+}
+
+.item-btn__float-area > .item-buy__btn{
+  margin-top: 0;
+}
+
+@media screen and (min-width: 768px){
+  .item-btn__float-area{
+    display: none;
+  }
+}
