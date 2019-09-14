@@ -94,8 +94,8 @@
 
 .btn-sns-facebook {
   margin: 16px 0 0;
-  background: #385185;
-  color: #fff;
+  background: #385185 !important;
+  color: #fff ;
   i {
     font-size: 30px;
   }
@@ -107,7 +107,7 @@
 
 .btn-sns-google {
   margin: 16px 0 0;
-  background: #fff url("google.svg") no-repeat 3px top;
+  background: #fff url("google.svg") no-repeat 3px top ;
   border: #979797 solid 1px;
   color: #333;
 }
