@@ -28,15 +28,14 @@ p{
 
 .form_group{
   margin: 40px 0 0;
+  .personal-data{
+    font-weight: 600;
+    display: inline-block;
+    line-height: 100%
+  }
   select{
     width: 100%;
   }
-}
-
-label{
-  font-weight: 600;
-  display: inline-block;
-  line-height: 100%
 }
 
 .arbitrary{
