@@ -79,3 +79,4 @@ gem 'erb2haml'
 gem "jquery-rails"
 gem 'sassc'
 gem 'gretel'
+gem 'devise'
