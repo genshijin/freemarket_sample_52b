@@ -10,5 +10,11 @@ class SignUpController < ApplicationController
 
   def payment
   end
+
+  def finish_page
+  end
+
+  def sign_in
+  end
   
 end

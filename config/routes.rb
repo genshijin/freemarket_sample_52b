@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       get 'phone_number'
       get 'carry_point'
       get 'payment'
+      get 'finish_page'
+      get 'sign_in'
     end
   end
 end

@@ -41,6 +41,11 @@
     font-size: 14px;
     font-weight: 700;
   }
+  &__finish-text {
+    font-size: 17px;
+    text-align: center;
+    
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -160,11 +165,17 @@
 }
 
 .form-arbitrary {
-  background: #ccc;
+  background: rgb(155, 151, 151);
   margin: 0 0 0 8px;
   padding: 2px 4px;
   border-radius: 2px;
   color: #fff;
   font-size: 12px;
   vertical-align: top;
+}
+
+.sub{
+  background-color:rgba(0, 0, 0, 0);
+  width: 100%;
+  height: 100px;
 }
