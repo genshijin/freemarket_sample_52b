@@ -1,0 +1,40 @@
+%header.header
+  .header__container
+    .header__logo
+      %h1
+        = link_to root_path do
+          = image_tag 'logo.svg', size: '134x36', alt: 'mercari'
+    .header__user-nav-logined-460
+      = link_to '#', class: '' do
+        %i.far.fa-bell
+      = link_to '#', class: '' do
+        %i.fa.fa-check
+      = link_to mypage_path, class: '' do
+        = image_tag 'member_photo_noimage_thumb.png', alt:'', width: '32'
+    .header__search
+      = form_with urls: '#', class: 'header__form' do |form|
+        = text_field_tag :keyword, "" , class: 'header__form__input', placeholder: 'なにかお探しですか？'
+        = button_tag type: 'submit', class: 'header__form__icon' do
+          %i.fa.fa-search
+    %ul.header__navigation-logined
+      %li#category-menu.category-menu
+        = link_to '#' do
+          %i.fa.fa-list.navigation-icon
+          %span カテゴリーから探す
+      %li#brand-menu.category-menu
+        = link_to '#' do
+          %i.fa.fa-tag.navigation-icon
+          %span ブランドから探す
+    .header__user-nav-logined-768
+      = link_to '#', class: '' do
+        %i.far.fa-heart
+        %span いいね！一覧
+      = link_to '#', class: '' do
+        %i.far.fa-bell
+        %span お知らせ
+      = link_to '#', class: '' do
+        %i.fa.fa-check
+        %span やることリスト
+      = link_to mypage_path, class: '' do
+        = image_tag 'member_photo_noimage_thumb.png', alt:'', width: '32'
+        %span マイページ

@@ -1,5 +1,6 @@
 - @page_title = '購入を確定'
-.container
+
+.purchase-container
   = render partial: 'shared/header-exhibit'
   %main.main
     %section.main__container.buy-item-container
@@ -8,7 +9,7 @@
       %section.buy-content.buy-item
         .buy-content__inner
           %h3.buy-item__image
-            = image_tag "/assets/sell-sample.jpg", alt: "", class: "is-higher-height.lazyloaded"
+            = image_tag "sell-sample.jpg", alt: "", class: "is-higher-height.lazyloaded"
           %p.buy-item__name
             %b シャネル ショップ袋 ショッパー小
           %form.buy-form{action: "###", method: "POST", novalidate: "novalidate"}
@@ -48,7 +49,7 @@
             %br/
             01/22
           %figure
-            = image_tag "/assets/visa.svg", alt: "mercari", class: "header-img", height: "15", width: "49"
+            = image_tag "visa.svg", alt: "mercari", class: "", height: "15", width: "49"
           %p
           %a.buy-user-info__fix{href: "#"}
             %span.change 変更する

@@ -1,0 +1,151 @@
+*{
+  margin : 0;
+  padding : 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.container{
+  display: flex;
+  width: 1020px;
+  margin: 40px auto 0;
+  overflow: auto;
+  padding: 0 0 40px;
+}
+
+.content{
+  &__profile{
+    position: relative;
+    background-image: image-url("user-bg.jpg");
+    background-repeat:no-repeat;
+    height: 200px;
+    background-size: cover;
+    padding: 20px;
+    text-align: center;
+    .content__profile-link{
+      text-decoration	:none;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translate(0, -50%);
+      color: #333;
+      .my-img{
+        overflow: hidden;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+        border-radius: 50%;
+      }
+      .user-name{
+        font-size: 14px;
+        margin:8px 0 0;
+      }
+    }
+    &__information{
+      justify-content: center;
+      display: flex;
+      margin:8px 0 0;
+      .information{
+        text-decoration	:none;
+        .bold{
+          margin: 0 0 0 8px;
+          font-size: 16px;
+        }
+      }
+      div+div{
+        margin: 0 0 0 16px;
+      }
+    }
+  }
+}
+
+
+.tabs{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  background-color: #fff;
+  margin: 0 auto;
+  &__item{
+    cursor : pointer;
+    width: 50%;
+    background-color: #eee;
+    line-height: 74px;
+    font-size: 16px;
+    color: #565656;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border-top: 2px solid #eee;
+    input[name="tab_item"] {
+      display: hidden;
+    }
+  }
+}
+.tab_content {
+  display: none;
+  clear: both;
+  overflow: hidden;
+}
+#notice:checked ~ #notice_content,
+#dolist:checked ~ #dolist_content{
+  display: block;
+}
+#trading:checked ~ #trading_content,
+#trade:checked ~ #trade_content{
+  display: block;
+}
+.tabs input:checked + .tabs__item {
+  border-top: 2px solid #ea352d;
+  background-color:#fff
+}
+
+
+.tab-list{
+  width: 700px;
+  padding:16px;
+  font-size:13px;
+  list-style: none;
+  .tab-list-link{
+    text-decoration:none;
+    display:block;
+    margin:0 auto;
+    background: #eee;
+    color: #333;
+    line-height: 56px;
+    text-align: center;
+  }
+}
+
+
+.buy-items{
+  margin: 40px 0 0;
+  background: #fff;
+  &__head{
+    font-weight: bold;
+    padding: 0 16px;
+    background: #fafafa;
+    font-size: 16px;
+    line-height: 72px;
+  }
+}
+.not-item{
+  display: block;
+  width: 700px;
+  &__content{
+    list-style: none;
+    padding: 160px 0 60px;
+    background-image:image-url("logo-gray-icon.svg");
+    background-position: center 40px;
+    background-size: 78px 85px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    font-weight:bold; 
+    text-align: center;
+    color: #ccc;
+  }
+}

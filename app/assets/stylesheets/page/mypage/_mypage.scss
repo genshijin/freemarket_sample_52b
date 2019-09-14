@@ -1,0 +1,60 @@
+.mypage-container{
+  margin: 24px auto 0;
+  padding: 0 0 40px;
+
+  @include tb{
+    width: 700px;
+  }
+
+  @include pc{
+    margin: 40px auto 0;
+    width: 1020px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.content{
+  @include pc{
+    order: 2;
+  }
+
+  &__wrap{
+    background: #fff;
+
+    @include tb{
+      width: 700px;
+    }
+  }
+
+  &__title{
+    padding: 12px 4%;
+    text-align: center;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 18px;
+    font-weight: bold;
+
+    @include tb{
+      font-size: 24px;
+      padding: 8px 24px;
+    }
+  }
+
+  &__body{
+    border-top: 1px solid #f5f5f5;
+    padding: 40px;
+    @include tb{
+      padding: 64px;
+    }
+  }
+
+  &__inner{
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  &__subtitle{
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
