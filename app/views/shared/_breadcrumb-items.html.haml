@@ -1,0 +1,10 @@
+- breadcrumbs do |links|
+  - if links.any?
+    %nav.breadcrumb.bread-bottom
+      %ul
+        - links.each do |link|
+          = content_tag :li do
+            - if link.current?
+              = content_tag :span, link.text
+            - else
+              = link_to link.text, link.url

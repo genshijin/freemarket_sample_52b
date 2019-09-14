@@ -8,16 +8,14 @@ ul {
 }
 
 .container{
+  display: flex;
   width: 1020px;
   margin: 40px auto 0;
   overflow: auto;
   padding: 0 0 40px;
 }
 
-
 .content{
-  float:right;
-  width:700px;
   &__profile{
     position: relative;
     background-image: image-url("user-bg.jpg");
@@ -151,6 +149,3 @@ ul {
     color: #ccc;
   }
 }
-  
-
-

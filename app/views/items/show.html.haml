@@ -1,6 +1,16 @@
 - @page_title = '商品詳細'
-.item-box__container
+- breadcrumb :items
+
+= content_for :header do
   = render 'shared/header-logined'
+= content_for :app_banner do
+  = render 'shared/app-banner'
+= content_for :footer do
+  = render 'shared/footer'
+= content_for :sell_btn do
+  = render 'shared/sell-btn'
+
+.item-box__container
   %main.main
     %section.main__container__sell-item-box
       %h1.sell-item__name
@@ -9,7 +19,7 @@
         .sell-item__photo
           .sell-item__photo__all
             .sell-item__photo__main
-              = image_tag "sell-sample.jpg", alt: "", class: "" 
+              = image_tag "sell-sample.jpg", alt: "", class: ""
             .sell-item__photo__dots
               .sell-item__photo__dot.active
                 .sell-item__photo__dot__inner
@@ -17,7 +27,7 @@
               - for i in 1..4
                 = render 'items/item-photo'
               - for i in 1..2
-                = render 'items/item-photo'             
+                = render 'items/item-photo'
         .sell-item__price-box.display-none
           %span.sell-item__price¥499
           %span.sell-item__tax（税込）
@@ -40,7 +50,7 @@
                   .sell-item__user-ratings
                     .icon-bad
                       %i.fa.fa-frown
-                      %span 0 
+                      %span 0
             %tr
               %th カテゴリー
               %td
@@ -52,7 +62,7 @@
                 .sub-category
                   = link_to "#" do
                     %i.fa.fa-angle-right
-                    %span サブカテ2                 
+                    %span サブカテ2
             %tr
               %th ブランド
               %td
@@ -71,7 +81,7 @@
               %td らくらくメルカリ便
             %tr
               %th 配送元地域
-              %td 
+              %td
                 = link_to "大阪府"
             %tr
               %th 発送日の目安
@@ -79,9 +89,9 @@
         .sell-item__price-box
           %span.sell-item__price ¥499
           %span.sell-item__tax  (税込)
-          %span.sell-item__shipping-fee 送料込み   
+          %span.sell-item__shipping-fee 送料込み
         .item-buy__btn
-          = link_to "購入画面に進む", purchase_index_path 
+          = link_to "購入画面に進む", purchase_index_path
       .item-description
         %p.item-description__inner
           ほげほげほげほげほげほげほげ
@@ -115,31 +125,31 @@
             %p
               相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             %textarea{name: 'body', class: '.textarea-default'}
-            %button{type: 'submit', class: 'btn-bray'} 
-              %span コメントする 
+            %button{type: 'submit', class: 'btn-bray'}
+              %span コメントする
     %ul.nav-item__links
       %li.nav-item__link-prev
         = link_to '#' do
-          %i.fa.fa-angle-left 
-          前へ         
+          %i.fa.fa-angle-left
+          前へ
       %li.nav-item__link-next
         = link_to '#' do
-          次へ 
+          次へ
           %i.fa.fa-angle-right
     .item-social-media__box
       .text-center
       %ul.sosial-media__box
         %li
-          = link_to 'https://ja-jp.facebook.com/' do 
+          = link_to 'https://ja-jp.facebook.com/' do
             %i.fab.fa-facebook-square
         %li
-          = link_to 'https://twitter.com/home?lang=ja' do 
+          = link_to 'https://twitter.com/home?lang=ja' do
             %i.fab.fa-twitter-square
         %li
-          = link_to 'https://line.me/ja/' do 
+          = link_to 'https://line.me/ja/' do
             %i.fab.fa-line
         %li
-          = link_to 'https://www.pinterest.jp/' do 
+          = link_to 'https://www.pinterest.jp/' do
             %i.fab.fa-pinterest-square
   .items__user-profile
     %section.items-box__container
@@ -148,21 +158,10 @@
       .item__content
         - for i in 1..6
           = render 'shared/item-box'
-    %section.items-box__container     
+    %section.items-box__container
       %h2.items-box__head
         = link_to '関連ブランドその他の出品', '#'
       .item__content
         - for i in 1..6
           = render 'shared/item-box'
-  %nav.bread-crumbs__pos-bottom
-    %ul
-      %li.itemscope__itemtype
-        = link_to 'メルカリ', root_path
-        %i.fa.fa-angle-right
-      %li.itemscope__itemtype
-        %span.itemprop 居るとこ
-  = render partial:'shared/app-banner'
-  = render partial: 'shared/footer'      
-  .item-btn__float-area
-    .item-buy__btn
-      = link_to "購入画面に進む", purchase_index_path 
+= render 'shared/breadcrumb-items'
