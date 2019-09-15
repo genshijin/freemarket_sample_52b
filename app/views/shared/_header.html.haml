@@ -7,18 +7,18 @@
     .header__user-nav
       - if user_signed_in?
         .logined-menu
-        = link_to '#', class: 'logined-menu__nav' do
-          %i.far.fa-heart
-          %span いいね！一覧
-        = link_to '#', class: 'logined-menu__nav' do
-          %i.far.fa-bell
-          %span お知らせ
-        = link_to '#', class: 'logined-menu__nav' do
-          %i.fa.fa-check
-          %span やることリスト
-        = link_to mypage_path, class: 'logined-menu__nav' do
-          = image_tag 'member_photo_noimage_thumb.png', alt:'', width: '32'
-          %span マイページ
+          = link_to '#', class: 'logined-menu__nav' do
+            %i.far.fa-heart
+            %span いいね！一覧
+          = link_to '#', class: 'logined-menu__nav' do
+            %i.far.fa-bell
+            %span お知らせ
+          = link_to '#', class: 'logined-menu__nav' do
+            %i.fa.fa-check
+            %span やることリスト
+          = link_to mypage_path, class: 'logined-menu__nav' do
+            = image_tag 'member_photo_noimage_thumb.png', alt:'', width: '32'
+            %span マイページ
       - else
         = link_to new_user_registration_path, class: 'signup-btn' do
           新規会員登録
