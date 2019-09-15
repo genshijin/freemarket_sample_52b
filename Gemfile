@@ -80,3 +80,4 @@ gem "jquery-rails"
 gem 'sassc'
 gem 'gretel'
 gem 'devise'
+gem 'rspec-rails'
