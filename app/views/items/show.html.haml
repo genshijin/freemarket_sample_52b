@@ -2,13 +2,11 @@
 - breadcrumb :items
 
 = content_for :header do
-  = render 'shared/header-logined'
+  = render 'shared/header'
 = content_for :app_banner do
   = render 'shared/app-banner'
 = content_for :footer do
   = render 'shared/footer'
-= content_for :sell_btn do
-  = render 'shared/sell-btn'
 
 .item-box__container
   %main.main
@@ -91,7 +89,10 @@
           %span.sell-item__tax  (税込)
           %span.sell-item__shipping-fee 送料込み
         .item-buy__btn
-          = link_to "購入画面に進む", purchase_index_path
+          - if user_signed_in?
+            = link_to "購入画面に進む", purchase_index_path
+          - else
+            = link_to "購入画面に進む", new_user_session_path
       .item-description
         %p.item-description__inner
           ほげほげほげほげほげほげほげ
