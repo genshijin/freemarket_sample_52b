@@ -61,7 +61,50 @@
     }
 
     .logined-menu{
-      
+      display: flex;
+      &__nav{
+        padding: 0 10px;
+        color: #333;
+
+        &:hover{
+          color: $mercari-blue;
+
+          & > i{
+            color: $mercari-blue;
+          }
+        }
+
+        &:first-child{
+          display: none;
+          padding-left: 0;
+
+          @include pc{
+            display: inline-block;
+          }
+        }
+
+        i{
+          color: #ccc;
+          font-size: 20px;
+          vertical-align: middle;
+
+          @include tb{
+            font-size: 16px;
+          }
+        }
+        span{
+          display: none;
+          vertical-align: middle;
+          margin-left: 6px;
+
+          @include tb{
+            display: inline;
+          }
+        }
+        & > img{
+          border-radius: 50%;
+        }
+      }
     }
   }
 
@@ -124,7 +167,7 @@
 
     @include tb{
       width: auto;
-      padding: 15px 0 8px;
+      padding: 8px 0;
     }
 
     .category-menu{
@@ -138,6 +181,10 @@
         height: auto;
         padding: 0 11px;
         line-height: 1.5;
+
+        &:first-child{
+          padding: 0;
+        }
       }
 
       a{

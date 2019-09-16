@@ -5,26 +5,25 @@
         = link_to root_path do
           = image_tag 'logo.svg', size: '134x36', alt: 'mercari'
     .header__user-nav
-      -# - if user_signed_in?
-        
-      -# - else
-      -#   = link_to '#', class: 'signup-btn' do
-      -#     新規会員登録
-      -#   = link_to mypage_path, class: 'login-btn' do
-      -#     ログイン
-      .logined-menu
-        = link_to '#', class: '' do
-          %i.far.fa-heart
-          %span いいね！一覧
-        = link_to '#', class: '' do
-          %i.far.fa-bell
-          %span お知らせ
-        = link_to '#', class: '' do
-          %i.fa.fa-check
-          %span やることリスト
-        = link_to mypage_path, class: '' do
-          = image_tag 'member_photo_noimage_thumb.png', alt:'', width: '32'
-          %span マイページ
+      - if user_signed_in?
+        .logined-menu
+          = link_to '#', class: 'logined-menu__nav' do
+            %i.far.fa-heart
+            %span いいね！一覧
+          = link_to '#', class: 'logined-menu__nav' do
+            %i.far.fa-bell
+            %span お知らせ
+          = link_to '#', class: 'logined-menu__nav' do
+            %i.fa.fa-check
+            %span やることリスト
+          = link_to mypage_path, class: 'logined-menu__nav' do
+            = image_tag 'member_photo_noimage_thumb.png', alt:'', width: '32'
+            %span マイページ
+      - else
+        = link_to new_user_registration_path, class: 'signup-btn' do
+          新規会員登録
+        = link_to new_user_session_path, class: 'login-btn' do
+          ログイン
     .header__search
       = form_with urls: '#', class: 'header__form' do |form|
         = text_field_tag :keyword, "" , class: 'header__form__input', placeholder: 'なにかお探しですか？'
