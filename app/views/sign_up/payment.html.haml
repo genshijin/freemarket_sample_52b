@@ -1,7 +1,7 @@
 %body  
   %header.signup-header
     %h1
-      %a{href: "/"}
+      = link_to "/" do
         = image_tag "mercari-logo.svg", alt: "mercari"
     %nav.signup-header__progress-bar
       %ol.clearfix
@@ -25,7 +25,7 @@
   .main__container
     .content
       %section.content__wrap
-        %h2.content__title 支払い方法
+        %h2.main__head.registration 会員登録完了
         .content__body.card-registration
           = form_with urls: '#', class: 'card-form' do |f|
             .content__inner

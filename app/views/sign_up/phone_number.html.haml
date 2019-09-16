@@ -1,7 +1,7 @@
 %body
   %header.signup-header
     %h1
-      %a{href: "/"}
+      = link_to "/" do
         = image_tag "mercari-logo.svg", alt: "mercari"
     %nav.signup-header__progress-bar
       %ol.clearfix
@@ -34,7 +34,7 @@
           %button.btn-default.btn-red{type: "submit"} SMSを送信する
           %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
           .form-group.text-right
-            %a{href: "/", target: "_blank"}
+            = link_to "/" do
               電話番号の確認が必要な理由
               %i.fas.fa-chevron-right
         %input{name: "__csrf_value", type: "hidden", value: "56772dd13df4b51da3b7077caa43b4d3be1c195b6d35ab9cd1d5a65b707bcccf02856a901143ede1a2a2b5f72eecb93b062699a959f2e083c0ebfc1786f7e49c8"}/
