@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 2019_09_14_064954) do
-=======
 ActiveRecord::Schema.define(version: 2019_09_16_101918) do
->>>>>>> Stashed changes
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -23,11 +19,18 @@ ActiveRecord::Schema.define(version: 2019_09_16_101918) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< Updated upstream
-=======
+
   create_table "birthds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "day_id"
     t.string "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+
+  create_table "birthms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "month_id"
+    t.string "month"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,14 +42,6 @@ ActiveRecord::Schema.define(version: 2019_09_16_101918) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "birthms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "month_id"
-    t.string "month"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
->>>>>>> Stashed changes
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

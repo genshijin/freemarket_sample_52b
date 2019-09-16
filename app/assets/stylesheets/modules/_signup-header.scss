@@ -1,0 +1,157 @@
+.signup-header{
+  text-align: center;
+  &__progress-bar{
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+  }
+  &__progress-bar {
+    font-size: 0;
+    text-align: center;
+  }
+  &__progress-bar ol {
+    margin: 0;
+  }
+  &__progress-bar li {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    min-width: 40px;
+    margin: 0 5% 0 0;
+    font-size: 12px;
+    color: #888;
+    
+  }
+  &__progress-bar li:first-child .signup-header__progress-status:before {
+    display: none;
+  }
+  &__progress-bar li:last-child {
+    margin: 0;
+  }
+  
+  &__progress-bar li:last-child .signup-header__progress-status:after {
+    display: none;
+  }
+  
+  &__progress-bar li.active {
+    font-weight: 600;
+    color: #ea352d;
+  }
+  
+  &__progress-bar li.active .signup-header__progress-status {
+    background: #ea352d;
+  }
+  
+  &__progress-bar li.active .signup-header__progress-status:before {
+    background: #ea352d;
+  }
+  
+  &__progress-bar li.through .signup-header__progress-status {
+    background: #ea352d;
+  }
+  
+  &__progress-bar li.through .signup-header__progress-status:before, .signup-header__progress-bar li.through .signup-header__progress-status:after {
+    background: #ea352d;
+  }
+  &__progress-bar li.active {
+    font-weight: 600;
+    color: #ea352d;
+  }
+  &__progress-status{
+    width: 12px;
+    height: 12px;
+    margin: 8px auto 0;
+    background: #ccc;
+    border-radius: 50%;
+  }
+  &__progress-status:before {
+    right: 50%
+  }
+
+  &__progress-status:after {
+    left: 50%
+  }
+
+  
+}
+
+@media screen and (min-width: 768px) {
+  .signup-header {
+      height: 128px;
+  }
+}
+
+.signup-header h1 {
+  display: inline-block;
+  margin: 11px 0 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .signup-header h1 {
+      margin: 40px 0 0;
+  }
+}
+
+.signup-header a {
+  display: inline-block;
+  width: 120px;
+  height: 33px;
+  margin: 0 8px 0 0;
+  line-height: 33px;
+}
+
+@media screen and (min-width: 768px) {
+  .signup-header a {
+      width: 185px;
+      height: 49px;
+      line-height: 49px;
+  }
+}
+
+.signup-header img {
+  width: 120px;
+  height: 33px;
+}
+
+@media screen and (min-width: 768px) {
+  .signup-header img {
+      width: 185px;
+      height: 49px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .signup-header__progress-bar{
+      padding: 40px 0 0 44px;
+      border: 0
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .signup-header__progress-bar {
+      display: inline-block;
+      vertical-align: top
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .signup-header__progress-bar li {
+      min-width: 60px
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .signup-header__progress-bar li {
+      margin: 0 40px 0 0
+  }
+}
+
+.signup-header__progress-status:before, .signup-header__progress-status:after {
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #ccc;
+}
