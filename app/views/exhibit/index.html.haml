@@ -49,7 +49,7 @@
                       %b カテゴリー
                       %span.form-require 必須
                     %div
-                      .select-wrap
+                      .select-wrap-exhibit
                         .icon-arrow-bottom
                           %i.fa.fa-angle-down{"aria-hidden": "true"}
                         %select.select-default
@@ -71,7 +71,7 @@
                     %label
                       %b 商品の状態
                       %span.form-require 必須
-                    .select-wrap
+                    .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                       %select.select-default
@@ -91,7 +91,7 @@
                     %label
                       %b 配送料の負担
                       %span.form-require 必須
-                    .select-wrap
+                    .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                       %select.select-default
@@ -102,7 +102,7 @@
                     %label
                       %b 発送元の地域
                       %span.form-require 必須
-                    .select-wrap
+                    .select-wrap-exhibit
                       = form_for '' do |f|
                         = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---", class: '.select-default'
                       .icon-arrow-bottom
@@ -111,7 +111,7 @@
                     %label
                       %b 発送までの日数
                       %span.form-require 必須
-                    .select-wrap
+                    .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                       %select.select-default
