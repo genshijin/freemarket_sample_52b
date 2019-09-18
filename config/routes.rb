@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'payment'
       get 'finish_page'
       get 'sign_in'
+      get 'signup_sns'
     end
   end
 
