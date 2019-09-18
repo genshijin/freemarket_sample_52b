@@ -15,12 +15,19 @@
   }
   li:first-child{
     margin: 0;
+    white-space: nowrap;
   }
   a{
     font-size: 12px;
     display: block;
     color: #333;
-    margin-bottom: 10px;
+  }
+  ul{
+    font-size:0;
+  }
+  
+  p{
+    margin: 8px 0 0;
   }
   
   @media screen and (min-width: 480px){
@@ -32,7 +39,16 @@
   @media screen and (min-width: 768px){
     nav>ul>li{
       display: inline-block;
-      width: 10%;
+      margin: 0 0 0 16px;
+      white-space: nowrap;
     }
+  }
+}
+
+@media screen and (min-width: 768px){
+  .main-footer {
+    width: 456px;
+    height: 220px;
+    margin: 0 auto;
   }
 }
