@@ -17,4 +17,6 @@ class SignUpController < ApplicationController
   def sign_in
   end
   
+  def signup_sns
+  end
 end
