@@ -23,6 +23,11 @@ crumb :cardcreate do
   parent :card
 end
 
+crumb :identification do
+  link "本人情報の登録", edit_mypage_path
+  parent :mypage
+end
+
 crumb :logout do
   link "ログアウト", logout_mypage_path
   parent :mypage
