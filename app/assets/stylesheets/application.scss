@@ -22,24 +22,24 @@
 
 @import "modules/slider";
 
-@import "modules/item";
-@import "modules/itembox";
-@import "modules/item-show";
-
 @import "modules/app-banner";
 @import "modules/footer";
 @import "modules/sell-btn";
 
 @import "modules/header-exhibit";
 @import "modules/footer-exhibit";
-@import "modules/exhibit";
-@import "modules/purchase";
+
+@import "page/item/item";
+@import "page/item/itembox";
+@import "page/item/item-show";
 
 @import "page/mypage/sidebar-mypage";
 
-@import "modules/signup-header";
-@import "modules/signup-main";
-@import "modules/signup-signin";
+@import "page/users/signup-header";
+@import "page/users/signup-main";
+@import "page/users/signup-signin";
+@import "page/exhibit/exhibit";
+@import "page/purchase/purchase";
 @import "page/mypage/users";
 @import "page/mypage/tab-content";
 @import "page/mypage/mypage";
