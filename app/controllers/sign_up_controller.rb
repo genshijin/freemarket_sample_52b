@@ -2,21 +2,21 @@ class SignUpController < ApplicationController
   def index
   end
 
+  def infomation
+  end
+
   def phone_number
   end
 
-  def carry_point
+  def carry
   end
 
   def payment
   end
 
-  def finish_page
+  def finish
   end
 
-  def sign_in
-  end
-  
-  def signup_sns
+  def login
   end
 end

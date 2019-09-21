@@ -19,7 +19,6 @@
     margin: 0 5% 0 0;
     font-size: 12px;
     color: #888;
-    
   }
   &__progress-bar li:first-child .signup-header__progress-status:before {
     display: none;
@@ -70,8 +69,6 @@
   &__progress-status:after {
     left: 50%
   }
-
-  
 }
 
 @media screen and (min-width: 768px) {
@@ -122,7 +119,7 @@
 @media screen and (min-width: 768px) {
   .signup-header__progress-bar{
       padding: 40px 0 0 44px;
-      border: 0
+      border: 0;
   }
 }
 

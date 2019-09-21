@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   resources :items, only: [:show]
   resources :exhibit, only: [:index]
   resources :purchase, only: [:index]
-  resources :sign_up, only: [:index] do
+  resource :registration, controller: :sign_up, only: [:index] do
     collection do
-      get 'phone_number'
-      get 'carry_point'
-      get 'payment'
-      get 'finish_page'
-      get 'sign_in'
-      get 'signup_sns'
+      get :index
+      get :infomation
+      get :phone_number
+      get :carry
+      get :payment
+      get :finish
     end
   end
 
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :index
       get :logout
     end
+    get 'login' , to: 'sign_up#login'
     resources :cards, only: [:index, :new]
     resources :profile ,controller: :user_profiles, only: [:index]
   end
