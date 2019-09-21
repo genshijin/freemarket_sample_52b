@@ -4,9 +4,9 @@
     %figure.itembox__photo
       = image_tag '', alt: '#'
     .itembox__body
-      %h3.itembox__name アイテムネームアイテムネームアイテムネームアイテムネーム
+      %h3.itembox__name @item.name
       .itembox__num
-        %p.itembox__price 1,500
+        %p.itembox__price @item.price
         %p.itembox__like
           %i.far.fa-heart
           3
