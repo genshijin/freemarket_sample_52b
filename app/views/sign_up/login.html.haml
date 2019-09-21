@@ -1,0 +1,27 @@
+- @page_title = 'ログイン'
+
+= content_for :header do
+  = render 'shared/header-exhibit'
+= content_for :footer do
+  = render 'shared/footer-exhibit'
+
+%main.main
+  .login
+    .login__no-account
+      %p アカウントをお持ちでない方はこちら
+      = link_to "新規会員登録", registration_path
+    .login__form-inner
+      %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+        %i.fab.fa-facebook-square
+        Facebookでログイン
+      %button#google-login.btn-default.btn-sns.btn-sns-google
+        Googleでログイン
+    %form{action: "#", method: "POST", novalidate: "novalidate"}
+      .login__form-inner
+        .form-group
+          %input.login__input-text.input-default{name: "email", placeholder: "メールアドレス", type: "email", value: ""}/
+        .form-group
+          %input.login__input-text.input-default{name: "password", placeholder: "パスワード", type: "password"}/
+        = link_to "ログイン", mypage_path, class: "login__submit btn-default btn-red"
+        -# %button.login__submit.btn-default.btn-red{type: "submit"} ログイン
+        %a{href: "#"} パスワードをお忘れの方
