@@ -75,6 +75,9 @@
 .signup-content {
   max-width: 343px;
   margin: 0 auto;
+  a{
+    text-align: center;
+  }
 }
 
 .signup-content p {
@@ -181,8 +184,5 @@
 }
 
 .icon_mail{
-  position: relative;
-  top:3px;
-  right:228px;
-  font-size: 21px
+  font-size: 21px;
 }
