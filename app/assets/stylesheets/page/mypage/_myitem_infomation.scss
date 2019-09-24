@@ -1,0 +1,51 @@
+
+.item_tab{
+  flex-wrap: wrap;
+  margin-top: 50px;
+  background-color: #fff;
+  margin: 0 auto;
+  .item_tab__lists{
+    display: flex;
+    background-color: #eee;
+    width: 700px;
+    li{
+      width: calc(100% / 3);
+      border-top: 2px solid #eee;
+      font-weight: bold;
+      text-align: center;
+      font-size: 16px;
+      line-height: 72px;
+      cursor: pointer;
+    }
+    .active{
+      border-top: 2px solid red;
+      background-color: #fff;
+      pointer-events: none;
+    }
+    a{
+      text-decoration: none;
+      display: block;
+      color:#565656;
+    }
+  }
+}
+
+.pagemove{
+  display: flex;
+  justify-content: space-between;
+  margin-top:40px;
+  &__btn{
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #ccc;
+    line-height: 42px;
+    list-style: none;
+    text-align: center;
+    a{
+      display: block;
+      color:#565656;
+    }
+  }
+}

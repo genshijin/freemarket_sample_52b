@@ -1,0 +1,39 @@
+- @page_title = '売却済リスト'
+- breadcrumb :mypage
+
+= content_for :header do
+  = render 'shared/header'
+= content_for :app_banner do
+  = render 'shared/app-banner'
+= content_for :footer do
+  = render 'shared/footer'
+= content_for :sell_btn do
+  = render 'shared/sell-btn'
+
+.mypage-container
+  .content
+    %section.content__wrap
+      %h2.buy-items__head
+        出品した商品
+      .item_tab
+        %ul.item_tab__lists
+          %li
+            = link_to exhibition_mypage_path do
+              出品中
+          %li
+            = link_to trading_mypage_path do
+              取引中
+          %li.active
+            = link_to completed_mypage_path do
+              売却済み   
+        .not-item
+          %li.not-item__content
+            売却済みの商品がありません
+    .pagemove
+      %li.pagemove__btn
+        =link_to "#" do
+          %i.fa.fa-chevron-left
+      %li.pagemove__btn
+        =link_to "#" do
+          %i.fa.fa-chevron-right
+  = render 'shared/sidebar-mypage'
