@@ -1,0 +1,108 @@
+- @page_title = 'マイページ'
+- breadcrumb :mypage
+
+= content_for :header do
+  = render 'shared/header'
+= content_for :app_banner do
+  = render 'shared/app-banner'
+= content_for :footer do
+  = render 'shared/footer'
+
+.item-box__container
+  %main.main
+    .main__container__edit-item-box
+      %section.main__container__sell-item-box
+        %h1.sell-item__name
+          ルフイのぬいぐるみ
+        .sell-item__main-content
+          .sell-item__photo
+            .sell-item__photo__all
+              .sell-item__photo__main
+                = image_tag "ruffy.jpeg", alt: "", class: ""
+              .sell-item__photo__dots
+                .sell-item__photo__dot.active
+                  .sell-item__photo__dot__inner
+                    = image_tag "ruffy.jpeg", alt: "", class: ""
+                - for i in 1..4
+                  = render 'items/item-photo'
+                - for i in 1..2
+                  = render 'items/item-photo'
+          .sell-item__price-box.display-none
+            %span.sell-item__price¥499
+            %span.sell-item__tax（税込）
+            %span.sell-item__shipping-fee 送料込み
+          %table.sell-item__detail-table
+            %tbody
+              %tr
+                %th 出品者
+                %td
+                  = link_to "ほげ太", "#"
+                  %div
+                    .sell-item__user-ratings
+                      .icon-good
+                        %i.fa.fa-laugh
+                        %span 258
+                    .sell-item__user-ratings
+                      .icon-normal
+                        %i.fa.fa-meh
+                        %span 2
+                    .sell-item__user-ratings
+                      .icon-bad
+                        %i.fa.fa-frown
+                        %span 0
+              %tr
+                %th カテゴリー
+                %td
+                  = link_to "おもちゃ・ホビー・グッズ", "#"
+                  .sub-category
+                    = link_to "#" do
+                      %i.fa.fa-angle-right
+                      %span サブカテ1
+                  .sub-category
+                    = link_to "#" do
+                      %i.fa.fa-angle-right
+                      %span サブカテ2
+              %tr
+                %th ブランド
+                %td
+              %tr
+                %th 商品の状態
+                %td 目立った傷や汚れなし
+              %tr
+                %th 配送料の負担
+                %td 送料込み（出品者負担）
+              %tr
+                %th 配送の方法
+                %td らくらくメルカリ便
+              %tr
+                %th 配送元地域
+                %td
+                  = link_to "大阪府"
+              %tr
+                %th 発送日の目安
+                %td 1~2日で発送
+          .sell-item__price-box
+            %span.sell-item__price ¥499
+            %span.sell-item__tax  (税込)
+            %span.sell-item__shipping-fee 送料込み
+        .item-description
+          %p.item-description__inner{style: "font-size: 18px"}
+            フーシャ村出身
+            ゴムのようにのびる
+      .item-change__box
+        %button.btn-default.btn-red{type: "submit"} 商品の編集
+        %p 
+          or
+        %button.btn-default.btn-gray{type: "submit"} 出品を一旦停止する
+        %button.btn-default.btn-gray{type: "submit"} この商品を削除する
+      .item-detail__message
+        .message__container
+          = render 'items/message'
+          .message__space
+          .message__content
+            %form{action: '', method: 'POST', class:'.message__form'}
+              %p
+                相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              %textarea{name: 'body', class: '.textarea-default'}
+              %button{type: 'submit', class: 'btn-bray'}
+                %span コメントする
