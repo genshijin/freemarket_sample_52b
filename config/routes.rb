@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items, only: [:show,:edit]
-  resources :exhibit, only: [:index]
+  resources :exhibit, only: [:index,:show]
   resources :purchase, only: [:index]
   resource :registration, controller: :sign_up, only: [:index] do
     collection do
