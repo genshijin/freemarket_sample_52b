@@ -7,4 +7,13 @@ class UsersController < ApplicationController
 
   def logout
   end
+
+  def exhibition
+  end
+
+  def trading
+  end
+
+  def completed
+  end
 end
