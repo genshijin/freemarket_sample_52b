@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :items, only: [:show]
   resources :exhibit, only: [:index]
   resources :purchase, only: [:index]
-  resource :registration, controller: :sign_up, only: [:index] do
+  resource :sign_up, only: [:index] do
     collection do
       get :index
       get :infomation
