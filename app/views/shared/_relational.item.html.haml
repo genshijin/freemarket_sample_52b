@@ -1,0 +1,12 @@
+.itembox
+  %figure.itembox__photo
+    = image_tag "sell-sample.jpg", alt: '#'
+  .itembox__body
+    %h3.itembox__name
+      = @item.name
+    .itembox__num
+      %p.itembox__price 
+        = @item.price
+      %p.itembox__like
+        %i.far.fa-heart
+        3
