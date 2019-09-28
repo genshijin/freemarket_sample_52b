@@ -4,4 +4,12 @@ class ItemsController < ApplicationController
 
   def show
   end
+
+  def new
+    @item = Item.new
+    @item.images.build
+  end
+
+  def create
+  end
 end

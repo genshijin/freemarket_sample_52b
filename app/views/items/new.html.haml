@@ -9,7 +9,7 @@
           .sell-container__inner
             %h2.main__head
               %b 商品の情報を入力
-            %form.sell-form
+            = form_for @item,html: {class: "sell-form"} do |f|
               .sell-upload-box
                 %h3.sell-upload-box__head
                   %b 出品画像
