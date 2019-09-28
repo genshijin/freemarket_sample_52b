@@ -17,7 +17,8 @@ class ItemsController < ApplicationController
     # @seller_name = @item.users
     
   end
-  
-  
+
+  def edit
+  end
 
 end
