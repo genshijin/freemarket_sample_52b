@@ -1,29 +1,9 @@
 - @page_title = '支払い方法'
 
+= content_for :header do
+  = render 'signup/signup-header'
 = content_for :footer do
   = render 'shared/footer-exhibit'
-
-%header.signup-header
-  %h1
-    = link_to root_path do
-      = image_tag "mercari-logo.svg", alt: "mercari"
-  %nav.signup-header__progress-bar
-    %ol.clearfix
-      %li.through
-        会員情報
-        .signup-header__progress-status
-      %li.through
-        電話番号認証
-        .signup-header__progress-status
-      %li.through
-        お届け先住所入力
-        .signup-header__progress-status
-      %li.active
-        支払い方法
-        .signup-header__progress-status
-      %li
-        完了
-        .signup-header__progress-status
 
 .main__container
   .content
@@ -62,5 +42,5 @@
                   %span.form-question ?
                   カード裏面の番号とは？
                 = render 'cards/seqcode_info'
-            = link_to "次へ進む", finish_registration_path, class: "btn-default btn-red"
+            = link_to "次へ進む", done_signup_index_path, class: "btn-default btn-red"
             -# = button_tag '追加する', type: 'submit', class: 'btn-default btn-red', id: 'token_submit'

@@ -20,7 +20,7 @@
             = image_tag 'member_photo_noimage_thumb.png', alt:'', width: '32'
             %span マイページ
       - else
-        = link_to new_user_registration_path, class: 'signup-btn' do
+        = link_to signup_index_path, class: 'signup-btn' do
           新規会員登録
         = link_to new_user_session_path, class: 'login-btn' do
           ログイン

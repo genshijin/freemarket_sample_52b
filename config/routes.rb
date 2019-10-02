@@ -6,14 +6,16 @@ Rails.application.routes.draw do
   resources :items, only: [:show]
   resources :exhibit, only: [:index]
   resources :purchase, only: [:index]
-  resource :sign_up, only: [:index] do
+
+  #新規登録周りの設定
+  resources :signup, only: [:index] do
     collection do
-      get :index
-      get :infomation
-      get :phone_number
-      get :carry
-      get :payment
-      get :finish
+      get :step1
+      get :step2
+      get :step3
+      get :step4
+      get :done
+      get :login
     end
   end
 
