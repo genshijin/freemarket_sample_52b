@@ -33,3 +33,20 @@ Item.create!(
                 }
               ]
             )
+
+User.create!(
+              [
+                {
+                email:"ruffy@a"
+                nickname:"rufy"
+                first_name:"る"
+                first_name
+
+
+                }
+              ]
+
+
+
+
+            )

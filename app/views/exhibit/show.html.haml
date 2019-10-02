@@ -13,24 +13,28 @@
     .main__container__edit-item-box
       %section.main__container__sell-item-box
         %h1.sell-item__name
-          ルフイのぬいぐるみ
+          = @item.name
         .sell-item__main-content
           .sell-item__photo
             .sell-item__photo__all
               .sell-item__photo__main
-                = image_tag "ruffy.jpeg", alt: "", class: ""
+                - top_image =@item.images.first
+                = image_tag "#{top_image.image}", alt: "", class: ""
               .sell-item__photo__dots
-                .sell-item__photo__dot.active
-                  .sell-item__photo__dot__inner
-                    = image_tag "ruffy.jpeg", alt: "", class: ""
-                - for i in 1..4
-                  = render 'items/item-photo'
-                - for i in 1..2
-                  = render 'items/item-photo'
-          .sell-item__price-box.display-none
-            %span.sell-item__price¥499
-            %span.sell-item__tax（税込）
-            %span.sell-item__shipping-fee 送料込み
+                -# .sell-item__photo__dot.active
+                  -# .sell-item__photo__dot__inner
+                    -# = image_tag "#{@top_image.image}", alt: "", class: ""
+                    -# = image_tag "ruffy.jpeg", alt: "", class: ""
+                - @item.images.each_with_index do |image, i|
+                  = render partial:'items/item-photo', locals: {image: image}
+                  -# - for i in 1..4
+                    -# = render partial:'items/item-photo', locals: {image: image}
+                  -# - for i in 1..2
+                  -#   = render partial:'items/item-photo', locals: {image: image}
+          -# .sell-item__price-box.display-none
+          -#   %span.sell-item__price¥499
+          -#   %span.sell-item__tax（税込）
+          -#   %span.sell-item__shipping-fee 送料込み
           %table.sell-item__detail-table
             %tbody
               %tr
@@ -82,16 +86,16 @@
                 %th 発送日の目安
                 %td 1~2日で発送
           .sell-item__price-box
-            %span.sell-item__price ¥499
+            %span.sell-item__price 
+              ¥#{@item.price}
             %span.sell-item__tax  (税込)
             %span.sell-item__shipping-fee 送料込み
         .item-description
           %p.item-description__inner{style: "font-size: 18px"}
-            フーシャ村出身
-            ゴムのようにのびる
+            =@item.comment
       .item-change__box
         %button.btn-default.btn-red{type: "submit"} 
-          = link_to "商品の編集","/items/1/edit"
+          = link_to "商品の編集","/items/#{@item.id}/edit"
         %p 
           or
         %button.btn-default.btn-gray{type: "submit"} 
@@ -109,3 +113,19 @@
               %textarea{name: 'body', class: '.textarea-default'}
               %button{type: 'submit', class: 'btn-bray'}
                 %span コメントする
+          %aside.model.animate
+            .model-inner
+              .model-body
+                .model-head.bold
+                  確認
+                  %p
+                    削除すると２度と復活できません。
+                    %br
+                    削除する代わりに停止することもできます
+                    %br
+                    %br
+                    本当に削除しますか?
+                .clearfix
+                  .model-btn.model-btn-cancel キャンセル
+                  %button{type: 'submit', class: 'modal-btn modal-btn-submit'}
+                

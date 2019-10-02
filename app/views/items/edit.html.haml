@@ -9,23 +9,23 @@
           .sell-container__inner
             %h2.main__head
               %b 商品の情報を入力
-            %form.sell-form
+            -# %form.sell-form
+            -# = form_for @item, html, {class: sell-form} do |f|
+              
+            = form_with model: @item, method: :patch, local: true do |f|
+              -# = form_with urls: '#', method: "patch" ,class: 'sell-form' do |f|
               .sell-upload-box
                 %h3.sell-upload-box__head
                   %b 出品画像
                   %span.form-require 必須
                 %p 最大10枚までアップロードできます
                 .sell-dropbox-container.clearfix.edit_page
-                  .sellitem_contener
-                    .sellitem_contener_image
-                      = image_tag "ruffy.jpeg", alt: "", class: "edit_image"
-                    .sell-image-upload
-                      = link_to "編集", "#", class: "sell-image-upload-btn"
-                      = link_to "削除", "#", class: "sell-image-upload-btn"
-                  .sell-upload-items-container
-                    .sell-upload-items__have-item
-                      %ul
-                  %label
+                  - @item.images.each do |image|
+                    = render partial: 'shared/item_image',locals: {image: image}
+                  -# .sell-upload-items-container
+                  -#   .sell-upload-items__have-item
+                  -#     %ul
+                  %label.file_upload_box
                     %input.sell-upload-drop-file{style: "display: none;", type: "file"}/
                     .sell-upload-drop-box.have-item-0.edit_page
                       %pre.visible-pc
@@ -40,13 +40,12 @@
                     %b 商品名
                     %span.form-require 必須
                   %div
-                    %input.input-default{placeholder: "商品名（必須 40文字まで）", value: "ルフィのぬいぐるみ"}/
+                    %input.input-default{placeholder: "商品名（必須 40文字まで）", value: "#{@item.name}"}/
                 .form-group
                   %label
                     %b 商品の説明
                     %span.form-require 必須
-                  %textarea.textarea-default{maxlength: "1000", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", row: "5"}
-                    フーシャ村出身
+                  = f.text_area :comment, maxlength: "1000", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", row: "5", class: "textarea-default"
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 商品の詳細
@@ -153,20 +152,25 @@
                         .clearfix__right.sell-price-input
                           ¥
                           %div
-                            %input.input-price{placeholder: "例）300", value: "5656"}/
+                            %input.input-price{placeholder: "例）300", value: "#{@item.price}"}
                     %li.clearfix
                       .clearfix__left
                         販売手数料(10%)
-                        .clearfix__right -
+                        .clearfix__right 
+                          - fee=@item.price*0.1
+                          #{fee.floor}
                     %li.clearfix.bold
                       .clearfix__left
                         %b 販売利益
                         .clearfix__right
-                          %b -
+                          %b
+                            - profit=@item.price - fee.floor
+                            #{profit}
               .model{role: "dialog", tabindex: "-1"}
                 .model-inner
               .sell-content.sell-btn-box
-                %button.btn-default.btn-red{type: "submit"} 変更する
+                = f.submit '変更する', class: 'btn-default btn-red'
+                -# %input.btn-default.btn-red{type: "submit",value: "変更する"}
                 .btn-default.btn-gray
                   = link_to "キャンセル", "/exhibit/1", class: ""
             .overlay

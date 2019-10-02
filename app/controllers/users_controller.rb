@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def exhibition
+    @items=Item.all
   end
 
   def trading
