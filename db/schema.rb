@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 2019_09_17_122839) do
     t.string "first_name_kana", null: false
     t.string "last_name", null: false
     t.string "last_name_kana", null: false
-    t.integer "postal_code", null: false
+    t.string "postal_code", null: false
     t.string "address", null: false
     t.string "building_name"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2019_09_17_122839) do
     t.integer "birth_year", null: false
     t.integer "birth_month", null: false
     t.integer "birth_day", null: false
-    t.integer "phone_number", null: false
+    t.string "phone_number", null: false
     t.text "profile"
     t.string "saling_items"
     t.string "buyed_items"

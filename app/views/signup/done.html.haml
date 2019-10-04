@@ -6,15 +6,16 @@
   = render 'shared/footer-exhibit'
 
 .main__container
-  %main.main
-    %section.main__container
+  .content
+    %section.content__wrap
       %h2.main__head.registration 会員登録完了
-      %form.main__inne.registration__form{action: "###", method: "POST", novalidate: "novalidate"}
-        %input{name: "__csrf_value", type: "hidden", value: "69dda91a2c8f829f1ebaa5883f8ff8a1688252c4966ec79da67b198bf1173d5b8751c5d78eae43841faebfef523a5c0494b70c3bc4c9d635778f478ae56cdd4f3"}/
-        .signup-content
-          %p.main__finish-text
-            &nbsp;ありがとうございます。
-            %br
-            会員登録が完了しました。
-          = link_to "次へ進む", mypage_path, class: "btn-default btn-red"
-          -# %button.btn-default.btn-red{type: "submit"} メルカリをはじめる
+      .content__body
+        %form.main__inne.registration__form{action: "###", method: "POST", novalidate: "novalidate"}
+          %input{name: "__csrf_value", type: "hidden", value: "69dda91a2c8f829f1ebaa5883f8ff8a1688252c4966ec79da67b198bf1173d5b8751c5d78eae43841faebfef523a5c0494b70c3bc4c9d635778f478ae56cdd4f3"}/
+          .signup-content
+            %p.main__finish-text
+              &nbsp;ありがとうございます。
+              %br
+              会員登録が完了しました。
+            = link_to "次へ進む", mypage_path, class: "btn-default btn-red"
+            -# %button.btn-default.btn-red{type: "submit"} メルカリをはじめる

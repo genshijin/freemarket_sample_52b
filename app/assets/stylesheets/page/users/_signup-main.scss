@@ -1,157 +1,156 @@
 .main{
-  &__head.registration, .l-chapter-head.registration {
-  padding: 16px;
-  font-weight: 700;
+  &__head.registration,
+  .l-chapter-head.registration {
+    padding: 16px;
+    font-weight: 700;
+
+    @include tb{
+      font-size: 22px;
+      padding: 32px;
+    }
   }
-  
-  &__inne {
+
+  &__inner {
     border-top: 2px solid #f5f5f5;
     padding: 40px;
+
+    @include tb{
+      padding: 64px;
+    }
+
+    &.registration-form {
+      padding: 40px 40px 64px;
+
+      @include pc{
+        padding: 40px 40px 64px;
+      }
+  
+      .signup-content {
+        max-width: 343px;
+      }
+  
+      .form-group:not(:first-of-type),
+      .btn-red {
+        margin: 24px 0 0;
+
+        @include pc{
+          margin-top: 32px;
+        }
+      }
+    }
+
+    .btn-red {
+      margin: 40px 0 0;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+
+    .btn-gray {
+      margin: 16px 0 0;
+    }
+
+    p {
+      margin: 8px 0 0;
+      line-height: 1.5;
+    }
   }
 
-  &__inne.registration-form {
-    padding: 40px 40px 64px;
-  }
-
-  &__inne.registration-form .signup-content {
-    max-width: 343px;
-  }
-
-  &__inne.registration-form .form-group:not(:first-of-type),
-  &__inne.registration-form .btn-red {
-    margin: 24px 0 0;
-  }
-
-  &__inne .btn-red {
-    margin: 40px 0 0;
-  }
-
-  &__inne .btn-red:first-child {
-    margin: 0;
-  }
-
-  &__inne .btn-gray {
-    margin: 16px 0 0;
-  }
-
-  &__inne p {
-    margin: 8px 0 0;
-    line-height: 1.5;
-  }
   &__sub-head {
     font-size: 14px;
     font-weight: 700;
+
+    @include tb{
+      font-size: 16px;
+      font-weight: 700;
+    }
   }
   &__finish-text {
     font-size: 17px;
     text-align: center;
-    
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .main__head.registration, .l-chapter-head.registration {
-      font-size: 22px;
-      padding: 32px;
-  }
-}
-
-@media screen and (min-width: 1068px) {
-  .main__inner.registration-form {
-      padding: 40px 40px 64px;
-  }
-
-  .main_inner.registration-form .form-group:not(:first-of-type),
-  .main__inner.registration-form .btn-red {
-      margin-top: 32px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .main__inner {
-      padding: 64px;
   }
 }
 
 .signup-content {
   max-width: 343px;
   margin: 0 auto;
+
   a{
     text-align: center;
   }
-}
 
-.signup-content p {
-  margin: 8px 0 0;
-  line-height: 1.5;
-}
+  p{
+    margin: 8px 0 0;
+    line-height: 1.5;
 
-.signup-content p.signup-text {
-  margin: 8px 0 0;
-  padding: 0;
-}
+    &:first-child{
+      margin: 0;
+      padding: 0;
+    }
 
-.signup-content p:first-child {
-  margin: 0;
-  padding: 0;
-}
-
-@media screen and (min-width: 768px) {
-  .main__sub-head {
-    font-size: 16px;
-    font-weight: 700;
+    &.signup-text{
+      margin: 8px 0 16px;
+      padding: 0;
+    }
   }
 }
 
-.birthday-select-wrap .select-wrap {
-  display: inline-block;
-  width: calc(30% - 17px);
-}
+.birthday-select-wrap{
+  .select-wrap{
+    display: inline-block;
+    width: calc(30% - 17px);
 
-.birthday-select-wrap .select-wrap:first-of-type {
-  width: calc(34% - 17px);
-}
-
-@media screen and (min-width: 768px) {
-  .birthday-select-wrap .select-wrap {
+    @include tb{
       width: 76px;
+    }
+
+    &:first-of-type {
+      width: calc(34% - 17px);
+
+      @include tb{
+        width: 76px;
+      }
+    }
+
+    & + span{
+      margin: 0 2px;
+    }
+
+    .select-default{
+      padding: 0 10px;
+    }
+
+    .icon-arrow-bottom{
+      right: 12px;
+    }
+  }
+}
+
+.form-group{
+  .select-wrap{
+    margin: 8px 0 0;
   }
 
-  .birthday-select-wrap .select-wrap:first-of-type {
-      width: 76px;
+  &.text-right {
+    margin-top: 24px;
   }
-}
-
-.birthday-select-wrap .select-wrap + span {
-  margin: 0 2px;
-}
-
-.birthday-select-wrap .select-wrap .select-default {
-  padding: 0 10px;
-}
-
-.birthday-select-wrap .select-wrap .icon-arrow-bottom {
-  right: 12px;
-}
-
-.form-group .select-wrap {
-  margin: 8px 0 0;
 }
 
 .select-wrap {
   position: relative;
   background: #fff;
-}
 
-.select-wrap .icon-arrow-bottom {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  z-index: 2;
-  font-weight: 400;
-  color: #888;
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
+  .icon-arrow-bottom {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    z-index: 2;
+    font-weight: 400;
+    color: #888;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
 }
 
 .signup-info-text{
@@ -161,11 +160,11 @@
 }
 
 .text-center {
-  text-align: center
+  text-align: center;
 }
 
 .text-right {
-  text-align: right
+  text-align: right;
 }
 
 .form-arbitrary {

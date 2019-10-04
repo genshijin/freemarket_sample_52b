@@ -8,14 +8,13 @@ Rails.application.routes.draw do
   resources :purchase, only: [:index]
 
   #新規登録周りの設定
-  resources :signup, only: [:index] do
+  resources :signup, only: [:index, :create] do
     collection do
       get :step1
-      get :step2
-      get :step3
+      post :step2
+      post :step3
       get :step4
       get :done
-      get :login
     end
   end
 
@@ -25,7 +24,6 @@ Rails.application.routes.draw do
       get :index
       get :logout
     end
-    get 'login' , to: 'sign_up#login'
     resources :cards, only: [:index, :new]
     resources :profile ,controller: :user_profiles, only: [:index]
   end

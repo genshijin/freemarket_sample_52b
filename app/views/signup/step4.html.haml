@@ -10,7 +10,7 @@
     %section.content__wrap
       %h2.main__head.registration 支払い方法
       .content__body.card-registration
-        = form_with urls: '#', class: 'card-form' do |f|
+        = form_for @user, url: signup_index_path, mehtod: :post, class: 'card-form' do |f|
           .content__inner
             .card-form__group
               = label_tag 'card_number', 'カード番号'
