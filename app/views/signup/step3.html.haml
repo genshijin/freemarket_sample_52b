@@ -21,6 +21,7 @@
                 = a.text_field :last_name, class: 'input-default', placeholder: '例) 彩'
                 = render partial: 'address-error-messages', locals: {user: @user, column: "first_name"}
                 = render partial: 'address-error-messages', locals: {user: @user, column: "last_name"}
+                
               .form-group
                 = a.label :name_kana, "フリガナ"
                 %span.form-require 必須
