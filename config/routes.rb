@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
 
-  resources :items, only: [:show,:edit] do
+  resources :items, only: [:show,:new,:create,:edit,:create] do
     resources :purchase, only: [:index]
   end
+  
   resources :exhibit, only: [:index,:show]
 
   #新規登録周りの設定
