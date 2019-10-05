@@ -7,15 +7,15 @@ Rails.application.routes.draw do
     resources :purchase, only: [:index]
   end
   resources :exhibit, only: [:index,:show]
-  
-  resource :registration, controller: :sign_up, only: [:index] do
+
+  #新規登録周りの設定
+  resources :signup, only: [:index, :create] do
     collection do
-      get :index
-      get :infomation
-      get :phone_number
-      get :carry
-      get :payment
-      get :finish
+      get :step1
+      get :step2
+      get :step3
+      # get :step4
+      get :done
     end
   end
 
@@ -28,7 +28,6 @@ Rails.application.routes.draw do
       get :trading
       get :completed
     end
-    get 'login' , to: 'sign_up#login'
     resources :cards, only: [:index, :new]
     resources :profile ,controller: :user_profiles, only: [:index]
   end

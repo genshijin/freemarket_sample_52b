@@ -9,13 +9,15 @@
   .login
     .login__no-account
       %p アカウントをお持ちでない方はこちら
-      = link_to "新規会員登録", registration_path
+      = link_to "新規会員登録", signup_index_path
+
     .login__form-inner
       %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
         %i.fab.fa-facebook-square
         Facebookでログイン
       %button#google-login.btn-default.btn-sns.btn-sns-google
         Googleでログイン
+
     %form{action: "#", method: "POST", novalidate: "novalidate"}
       .login__form-inner
         .form-group
