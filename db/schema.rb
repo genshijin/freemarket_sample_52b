@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_122839) do
+ActiveRecord::Schema.define(version: 2019_09_21_074054) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -91,14 +91,11 @@ ActiveRecord::Schema.define(version: 2019_09_17_122839) do
     t.integer "postage_burden", null: false
     t.string "shipping_date", null: false
     t.string "shipping_origin_area", null: false
+    t.integer "buyer_id"
+    t.integer "seller_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id", null: false
-    t.bigint "seller_id", null: false
-    t.bigint "buyer_id"
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -119,9 +116,6 @@ ActiveRecord::Schema.define(version: 2019_09_17_122839) do
     t.integer "birth_day", null: false
     t.string "phone_number", null: false
     t.text "profile"
-    t.string "saling_items"
-    t.string "buyed_items"
-    t.string "sold_items"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -130,7 +124,4 @@ ActiveRecord::Schema.define(version: 2019_09_17_122839) do
   add_foreign_key "category_options", "categories"
   add_foreign_key "creditcards", "users"
   add_foreign_key "images", "items"
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "seller_id"
 end

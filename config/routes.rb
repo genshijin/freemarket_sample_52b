@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
 
-  resources :items, only: [:show]
-  resources :exhibit, only: [:index]
+  resources :items, only: [:show,:edit]
+  resources :exhibit, only: [:index,:show]
   resources :purchase, only: [:index]
 
   #新規登録周りの設定
@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     collection do
       get :index
       get :logout
+      get :exhibition
+      get :trading
+      get :completed
     end
     resources :cards, only: [:index, :new]
     resources :profile ,controller: :user_profiles, only: [:index]
