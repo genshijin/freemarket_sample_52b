@@ -1,0 +1,29 @@
+- @page_title = '電話番号の確認'
+
+= content_for :header do
+  = render 'signup/signup-header'
+= content_for :footer do
+  = render 'shared/footer-exhibit'
+
+.main__container
+  .content#step2
+    %section.content__wrap
+      %h2.main__head.registration 電話番号の確認
+      .content__body
+        -# = form_for @user, url: signup_index_path, method: :post, class: 'main__inne registration-form' do |f|
+        = form_for @user, url: step3_signup_index_path, method: :get, class: "main__inne registration-form" do |f|
+          .signup-content
+            .form-group
+              = f.label :phone_number, "携帯電話の番号"
+              = f.text_field :phone_number, class: 'input-default', placeholder: "携帯電話の番号を入力(000-0000-0000)"
+              = render partial: 'error-messages', locals: {user: @user, column: "phone_number"}
+              %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+
+            .form-group
+              = f.submit 'SMSを送信する', class: 'btn-default btn-red'
+              %p ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+
+            .form-group.text-right
+              = link_to "#" do
+                電話番号の確認が必要な理由
+                %i.fas.fa-chevron-right
