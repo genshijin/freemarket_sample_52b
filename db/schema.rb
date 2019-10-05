@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 2019_09_28_062155) do
     t.text "comment", null: false
     t.integer "price", null: false
     t.string "state", null: false
-    t.integer "postage_burden", null: false
     t.string "shipping_date", null: false
     t.string "shipping_origin_area", null: false
     t.integer "buyer_id"
@@ -96,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_09_28_062155) do
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "postage_burden"
   end
 
   create_table "sellbs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
