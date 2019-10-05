@@ -20,15 +20,6 @@
               = image_tag "#{@images.first.image}", alt: "", id: "translate-img"
             - @images.each do |image|
               = render partial:'items/item-photo', locals:{ image: image}
-            -# - for i in 1..10
-            -# .sell-item__photo__dots
-            -#   .sell-item__photo__dot.active
-            -#     .sell-item__photo__dot__inner
-            -#       = image_tag "sell-sample.jpg", alt: "", class: ""
-            -#   - for i in 1..4
-            -#     = render 'items/item-photo' 
-            -#   - for i in 1..2
-            -#     = render 'items/item-photo'
         .sell-item__price-box.display-none
           %span.sell-item__en ¥
           %span.sell-item__price
@@ -40,7 +31,8 @@
             %tr
               %th 出品者
               %td
-                = link_to "ほげ太", "#"
+                = link_to mypage_path do
+                  = @seller.first.nickname
                 %div
                   .sell-item__user-ratings
                     .icon-good

@@ -7,8 +7,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @images = @item.images
-    # @seller_name = @item.users
-    
+    @seller = User.where('id = ?', @item.seller_id)
   end
 
   def edit
