@@ -1,0 +1,6 @@
+- if user.address.errors.any?
+  - unless user.address.valid?
+    - if errors = user.address.errors.full_messages_for(column.to_sym)
+      %ul.has-error-text
+        - errors.each do |error|
+          %li= error
