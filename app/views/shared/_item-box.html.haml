@@ -1,9 +1,7 @@
 .itembox
-  = link_to item_path(item.id) do
+  = link_to item_path(item.id),data: {"turbolinks": false} do
     %figure.itembox__photo
       = image_tag "#{item.images.first.image}"
-      -# - item.images.each do |image|
-      -#   = image_tag image.image
     .itembox__body
       %h3.itembox__name
         = item.name

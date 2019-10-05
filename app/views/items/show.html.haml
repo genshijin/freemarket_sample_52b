@@ -17,19 +17,20 @@
         .sell-item__photo
           .sell-item__photo__all
             .sell-item__photo__main
-              -# - @images.each do |image|
-              -#   = image_tag image.image, alt: "", class: ""
-            .sell-item__photo__dots
-              - @images.each do |image|
-              .sell-item__photo__dot.active
-                .sell-item__photo__dot__inner
-                  = image_tag "sell-sample.jpg", alt: "", class: ""
-              - for i in 1..4
-                = render 'items/item-photo' 
-              - for i in 1..2
-                = render 'items/item-photo'
+              = image_tag "#{@images.first.image}", alt: "", id: "translate-img"
+            - @images.each do |image|
+              = render partial:'items/item-photo', locals:{ image: image}
+            -# - for i in 1..10
+            -# .sell-item__photo__dots
+            -#   .sell-item__photo__dot.active
+            -#     .sell-item__photo__dot__inner
+            -#       = image_tag "sell-sample.jpg", alt: "", class: ""
+            -#   - for i in 1..4
+            -#     = render 'items/item-photo' 
+            -#   - for i in 1..2
+            -#     = render 'items/item-photo'
         .sell-item__price-box.display-none
-          %span ¥
+          %span.sell-item__en ¥
           %span.sell-item__price
             = @item.price
           %span.sell-item__tax（税込）
@@ -90,12 +91,12 @@
               %td 
                 = @item.shipping_date
         .sell-item__price-box
-          %span ¥
+          %span.sell-item__en ¥
           %span.sell-item__price
             = @item.price
           %span.sell-item__tax  (税込)
           %span.sell-item__shipping-fee 送料込み
-        = link_to purchase_index_path, class: "item-buy__btn" do
+        = link_to item_purchase_index_path(@item.id), class: "item-buy__btn" do
           購入画面に進む
       .item-description
         %p.item-description__inner

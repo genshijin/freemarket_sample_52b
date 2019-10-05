@@ -1,14 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @items= Item.order("id DESC")
-    # @items.each do |item|
-    #   @images = item.images
-      # @item = item
-      # @item_id = item.id
-      # @image = Image.find_by(item_id: @item_id)
-    # end
-   
+    @items= Item.order("id DESC")   
   end
 
   def show
