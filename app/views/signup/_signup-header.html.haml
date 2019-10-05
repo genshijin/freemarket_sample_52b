@@ -3,45 +3,27 @@
     = link_to root_path do
       = image_tag "mercari-logo.svg", alt: "mercari"
   %ol.progress-bar
-    %li{class: controller.action_name == 'step1' ? "active" : "through" }
+    %li.step1
       .progress-bar__text
         会員情報
       .progress-bar__marker
 
-    -if controller.action_name == 'step1' || controller.action_name == 'step2'
-      %li{class: controller.action_name == 'step2' ? "active" : nil }
-        .progress-bar__text
-          電話番号認証
-        .progress-bar__marker
-    - else
-      %li.through
-        .progress-bar__text
-          電話番号認証
-        .progress-bar__marker
+    %li.step2
+      .progress-bar__text
+        電話番号認証
+      .progress-bar__marker
 
-    -if controller.action_name == 'step1' || controller.action_name == 'step2' || controller.action_name == 'step3'
-      %li{class: controller.action_name == 'step3' ? "active" : nil }
-        .progress-bar__text
-          お届け先住所入力
-        .progress-bar__marker
-    - else
-      %li.through
-        .progress-bar__text
-          お届け先住所入力
-        .progress-bar__marker
+    %li.step3
+      .progress-bar__text
+        お届け先住所入力
+      .progress-bar__marker
 
-    -if controller.action_name == 'step1' || controller.action_name == 'step2' || controller.action_name == 'step3' || controller.action_name == 'step4'
-      %li{class: controller.action_name == 'step4' ? "active" : nil }
-        .progress-bar__text
-          支払い方法
-        .progress-bar__marker
-    - else
-      %li.through
-        .progress-bar__text
-          支払い方法
-        .progress-bar__marker
+    %li.step4
+      .progress-bar__text
+        支払い方法
+      .progress-bar__marker
 
-    %li{class: controller.action_name == 'done' ? "active" : nil }
+    %li.done
       .progress-bar__text
         完了
       .progress-bar__marker

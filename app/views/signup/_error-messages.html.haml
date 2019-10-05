@@ -1,0 +1,12 @@
+- if user.errors.any?
+  - unless user.valid?
+    - if errors = user.errors.full_messages_for(column.to_sym)
+      %ul.has-error-text
+        - errors.each do |error|
+          %li= error
+  - if user.address.errors.any?
+    - unless user.valid?
+      - if errors = user.address.errors.full_messages_for(column.to_sym)
+        %ul.has-error-text
+          - errors.each do |error|
+            %li= error

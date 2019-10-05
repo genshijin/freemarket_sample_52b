@@ -6,31 +6,35 @@
   = render 'shared/footer-exhibit'
 
 .main__container
-  .content
+  .content#step1
     %section.content__wrap
       %h2.main__head.registration 会員情報入力
       .content__body
-        = form_for @user, url: step2_signup_index_path, class: "main__inne registration-form" do |f|
+        = form_for @user, url: step2_signup_index_path, method: :get, class: "main__inne registration-form" do |f|
           .signup-content
             .form-group
               = f.label :nickname, "ニックネーム"
               %span.form-require 必須
               = f.text_field :nickname, class: 'input-default', placeholder: "例）メルカリ太郎"
+              = render partial: 'error-messages', locals: {user: @user, column: "nickname"}
 
             .form-group
               = f.label :email, "メールアドレス"
               %span.form-require 必須
               = f.email_field :email, class: 'input-default', placeholder: "PC・携帯どちらでも可"
+              = render partial: 'error-messages', locals: {user: @user, column: "email"}
 
             .form-group
               = f.label :password, "パスワード"
               %span.form-require 必須
               = f.password_field :password, class: 'input-default', placeholder: "7文字以上"
+              = render partial: 'error-messages', locals: {user: @user, column: "password"}
 
             .form-group
               = f.label :password_confirmation, "パスワード(確認)"
               %span.form-require 必須
               = f.password_field :password_confirmation, class: 'input-default', placeholder: "7文字以上"
+              = render partial: 'error-messages', locals: {user: @user, column: "password_confirmation"}
 
             .form-group
               %h3.text-left.main__sub-head 本人確認
@@ -43,6 +47,8 @@
                 %span.form-require 必須
                 = f.text_field :first_name, class: 'input-default harf', placeholder: "例）山田"
                 = f.text_field :last_name, class: 'input-default harf', placeholder: "例）彩"
+                = render partial: 'error-messages', locals: {user: @user, column: "first_name"}
+                = render partial: 'error-messages', locals: {user: @user, column: "last_name"}
 
             .form-group
               %div
@@ -50,6 +56,8 @@
                 %span.form-require 必須
               = f.text_field :first_name_kana, class: 'input-default harf', placeholder: "例）ヤマダ"
               = f.text_field :last_name_kana, class: 'input-default harf', placeholder: "例）アヤ"
+              = render partial: 'error-messages', locals: {user: @user, column: "first_name_kana"}
+              = render partial: 'error-messages', locals: {user: @user, column: "last_name_kana"}
 
             .form-group
               = f.label :birthday, "生年月日"
@@ -59,18 +67,21 @@
                 .select-wrap
                   .icon-arrow-bottom
                     %i.fa.fa-angle-down
-                  = f.collection_select :birth_year, Year.all, :id, :year
+                  = f.collection_select :birth_year, Year.all, :id, :year, prompt: "--"
                 %span 年
                 .select-wrap.select-wrap__month
                   .icon-arrow-bottom
                     %i.fa.fa-angle-down
-                  = f.collection_select :birth_month, Month.all, :id, :month
+                  = f.collection_select :birth_month, Month.all, :id, :month, prompt: "--"
                 %span 月
                 .select-wrap.select-wrap__day
                   .icon-arrow-bottom
                     %i.fa.fa-angle-down
-                  = f.collection_select :birth_day, Day.all, :id, :day
+                  = f.collection_select :birth_day, Day.all, :id, :day, prompt: "--"
                 %span 日
+                = render partial: 'error-messages', locals: {user: @user, column: "birth_year"}
+                = render partial: 'error-messages', locals: {user: @user, column: "birth_month"}
+                = render partial: 'error-messages', locals: {user: @user, column: "birth_day"}
               .clearfix
 
             %p.signup-info-text
