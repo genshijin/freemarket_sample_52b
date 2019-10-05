@@ -1,154 +1,118 @@
 .signup-header{
-  text-align: center;
-  &__progress-bar{
-    padding: 16px 0;
-    border-top: 1px solid #eee;
-  }
-  &__progress-bar {
-    font-size: 0;
-    text-align: center;
-  }
-  &__progress-bar ol {
-    margin: 0;
-  }
-  &__progress-bar li {
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    min-width: 40px;
-    margin: 0 5% 0 0;
-    font-size: 12px;
-    color: #888;
-  }
-  &__progress-bar li:first-child .signup-header__progress-status:before {
-    display: none;
-  }
-  &__progress-bar li:last-child {
-    margin: 0;
-  }
-  
-  &__progress-bar li:last-child .signup-header__progress-status:after {
-    display: none;
-  }
-  
-  &__progress-bar li.active {
-    font-weight: 600;
-    color: #ea352d;
-  }
-  
-  &__progress-bar li.active .signup-header__progress-status {
-    background: #ea352d;
-  }
-  
-  &__progress-bar li.active .signup-header__progress-status:before {
-    background: #ea352d;
-  }
-  
-  &__progress-bar li.through .signup-header__progress-status {
-    background: #ea352d;
-  }
-  
-  &__progress-bar li.through .signup-header__progress-status:before, .signup-header__progress-bar li.through .signup-header__progress-status:after {
-    background: #ea352d;
-  }
-  &__progress-bar li.active {
-    font-weight: 600;
-    color: #ea352d;
-  }
-  &__progress-status{
-    width: 12px;
-    height: 12px;
-    margin: 8px auto 0;
-    background: #ccc;
-    border-radius: 50%;
-  }
-  &__progress-status:before {
-    right: 50%
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+  min-width: 80%;
+
+  @include tb{
+    flex-direction: row;
+    padding: 40px 0;
+    margin-bottom: 0;
+    min-width: 700px;
   }
 
-  &__progress-status:after {
-    left: 50%
+  & h1{
+    margin: 10px 0;
+    @include tb{
+      margin: 0 20px 0 0;
+    }
   }
-}
 
-@media screen and (min-width: 768px) {
-  .signup-header {
-      height: 128px;
-  }
-}
+  & a{
+    width: 120px;
+    height: 33px;
+    line-height: 33px;
 
-.signup-header h1 {
-  display: inline-block;
-  margin: 11px 0 12px;
-}
-
-@media screen and (min-width: 768px) {
-  .signup-header h1 {
-      margin: 40px 0 0;
-  }
-}
-
-.signup-header a {
-  display: inline-block;
-  width: 120px;
-  height: 33px;
-  margin: 0 8px 0 0;
-  line-height: 33px;
-}
-
-@media screen and (min-width: 768px) {
-  .signup-header a {
+    @include tb{
       width: 185px;
       height: 49px;
-      line-height: 49px;
+    }
   }
-}
 
-.signup-header img {
-  width: 120px;
-  height: 33px;
-}
+  & img{
+    width: 120px;
+    height: 33px;
 
-@media screen and (min-width: 768px) {
-  .signup-header img {
+    @include tb{
       width: 185px;
       height: 49px;
+    }
   }
 }
 
-@media screen and (min-width: 768px) {
-  .signup-header__progress-bar{
-      padding: 40px 0 0 44px;
-      border: 0;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .signup-header__progress-bar {
-      display: inline-block;
-      vertical-align: top
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .signup-header__progress-bar li {
-      min-width: 60px
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .signup-header__progress-bar li {
-      margin: 0 40px 0 0
-  }
-}
-
-.signup-header__progress-status:before, .signup-header__progress-status:after {
-  position: absolute;
-  bottom: 5px;
-  z-index: -1;
-  display: block;
-  content: '';
+// 進捗バー関連
+.progress-bar{
   width: 100%;
-  height: 2px;
-  background: #ccc;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  text-align: center;
+
+  & li{
+    flex: 1 1 0%;
+    margin: 0;
+    padding: 0;
+    min-width: 24px;
+    color: #888;
+
+    &.active{
+      font-weight: 600;
+      color: $mercari-red;
+
+      .progress-bar__marker::before{
+        background: $mercari-red;
+      }
+    }
+
+    &.through{
+      .progress-bar__marker::before,
+      .progress-bar__marker::after{
+        background: $mercari-red;
+      }
+    }
+  }
+
+  &__text{
+    margin-bottom: 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  &__marker{
+    display: block;
+    position: relative;
+
+    &:before{
+      content: '';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 20;
+      width: 10px;
+      height: 8px;
+      padding-bottom: 2px;
+      border-radius: 50%;
+      background-color: #ccc;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &::after{
+      content: '';
+      display: block;
+      position: absolute;
+      top: calc(50% - 2px);
+      right: -50%;
+      width: 100%;
+      height: 4px;
+      background-color: #ccc;
+    }
+
+    .progress-bar li:last-child &::after{
+      display: none;
+    }
+  }
 }
