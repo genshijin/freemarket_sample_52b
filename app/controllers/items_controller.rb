@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   end
   def new
     @item = Item.new
+    @price = params[:keyword]
     respond_to do |format|
       format.html
       format.json
