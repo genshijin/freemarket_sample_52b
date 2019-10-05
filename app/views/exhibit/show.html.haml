@@ -57,7 +57,7 @@
               %tr
                 %th カテゴリー
                 %td
-                  = link_to "おもちゃ・ホビー・グッズ", "#"
+                  = link_to Categoryt.all[@item.category_id].name
                   .sub-category
                     = link_to "#" do
                       %i.fa.fa-angle-right
@@ -71,20 +71,23 @@
                 %td
               %tr
                 %th 商品の状態
-                %td 目立った傷や汚れなし
+                %td 
+                  =Statet.all[@item.postage_burden].name
               %tr
                 %th 配送料の負担
-                %td 送料込み（出品者負担）
+                %td 
+                  =Burdent.all[@item.postage_burden].name
               %tr
                 %th 配送の方法
-                %td らくらくメルカリ便
+                %td 
               %tr
                 %th 配送元地域
                 %td
-                  = link_to "大阪府"
+                  = link_to Prefecture.all[@item.postage_burden].name
               %tr
                 %th 発送日の目安
-                %td 1~2日で発送
+                %td 
+                  =Dateh.all[@item.postage_burden].name
           .sell-item__price-box
             %span.sell-item__price 
               ¥#{@item.price}

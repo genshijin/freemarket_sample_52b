@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 2019_09_28_062155) do
     t.string "first_name_kana", null: false
     t.string "last_name", null: false
     t.string "last_name_kana", null: false
-    t.string "postal_code", null: false
+    t.integer "postal_code", null: false
     t.string "address", null: false
     t.string "building_name"
-    t.string "phone_number"
+    t.integer "phone_number"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -90,14 +90,11 @@ ActiveRecord::Schema.define(version: 2019_09_28_062155) do
     t.string "state", null: false
     t.string "shipping_date", null: false
     t.string "shipping_origin_area", null: false
+    t.integer "buyer_id"
+    t.integer "seller_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id", null: false
-    t.bigint "seller_id", null: false
-    t.bigint "buyer_id"
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["seller_id"], name: "index_items_on_seller_id"
     t.integer "postage_burden"
   end
 
@@ -145,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_09_28_062155) do
     t.integer "birth_year", null: false
     t.integer "birth_month", null: false
     t.integer "birth_day", null: false
-    t.string "phone_number", null: false
+    t.integer "phone_number", null: false
     t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -155,7 +152,4 @@ ActiveRecord::Schema.define(version: 2019_09_28_062155) do
   add_foreign_key "category_options", "categories"
   add_foreign_key "creditcards", "users"
   add_foreign_key "images", "items"
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "seller_id"
 end

@@ -7,4 +7,5 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images
 
   belongs_to_active_hash :burdent
+  belongs_to_active_hash :category
 end
