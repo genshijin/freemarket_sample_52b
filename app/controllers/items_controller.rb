@@ -1,9 +1,15 @@
 class ItemsController < ApplicationController
+
   def index
+    @items= Item.order("id DESC")   
   end
 
   def show
+    @item = Item.find(params[:id])
+    @images = @item.image
+    @seller = User.where('id = ?', @item.seller_id)
   end
+
   def new
     @item = Item.new
     @price = params[:keyword]
@@ -21,6 +27,7 @@ class ItemsController < ApplicationController
 
   def edit
   end
+
 
   private
 
