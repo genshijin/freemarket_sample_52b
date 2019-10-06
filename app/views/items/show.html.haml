@@ -49,7 +49,7 @@
             %tr
               %th カテゴリー
               %td
-                = link_to "カバン", "#"
+                = link_to Categoryt.all[@item.category_id].name, "#"
                 .sub-category
                   = link_to "#" do
                     %i.fa.fa-angle-right
@@ -70,10 +70,12 @@
               %td 目立った傷や汚れなし
             %tr
               %th 配送料の負担
-              %td 送料込み（出品者負担）
+              %td 
+                = Burdent.all[@item.postage_burden].name
             %tr
               %th 配送の方法
-              %td らくらくメルカリ便
+              %td 
+                らくらくメルカリ便
             %tr
               %th 配送元地域
               %td
@@ -81,7 +83,7 @@
             %tr
               %th 発送日の目安
               %td 
-                = @item.shipping_date
+                -# = Dateh.all[@item.shipping_date].name
         .sell-item__price-box
           %span.sell-item__en ¥
           %span.sell-item__price
