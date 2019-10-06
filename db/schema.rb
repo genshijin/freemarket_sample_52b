@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_074344) do
+
+ActiveRecord::Schema.define(version: 2019_10_05_095356) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -87,19 +88,17 @@ ActiveRecord::Schema.define(version: 2019_10_05_074344) do
     t.string "name", null: false
     t.text "comment", null: false
     t.integer "price", null: false
-    t.string "state", null: false
-    t.integer "postage_burden", null: false
-    t.string "shipping_date", null: false
-    t.string "shipping_origin_area", null: false
+    t.integer "buyer_id"
+    t.integer "seller_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "category_id", null: false
-    t.bigint "seller_id", null: false
-    t.bigint "buyer_id"
+    t.integer "state_id", null: false
+    t.integer "shipping_date_id", null: false
+    t.integer "shipping_origin_area_id", null: false
+    t.integer "postage_burden_id", null: false
+    t.integer "shipping_way_id"
     t.string "image"
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "sellbs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -163,7 +162,4 @@ ActiveRecord::Schema.define(version: 2019_10_05_074344) do
   add_foreign_key "category_options", "categories"
   add_foreign_key "creditcards", "users"
   add_foreign_key "images", "items"
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "users", column: "buyer_id"
-  add_foreign_key "items", "users", column: "seller_id"
 end
