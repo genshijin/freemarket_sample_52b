@@ -20,8 +20,7 @@
                     .sell-upload-items__have-item
                       %ul
                   %label
-                    = f.file_field :images,style: "display: none;",class:'sell-upload-drop-file' do |i|
-                      = i.file_field :image
+                    = f.file_field :image,style: "display: none;",class:'sell-upload-drop-file'
                     .sell-upload-drop-box.have-item-0
                       %pre.visible-pc
                         ドラッグアンドドロップ
@@ -53,7 +52,7 @@
                       .select-wrap-exhibit
                         .icon-arrow-bottom
                           %i.fa.fa-angle-down{"aria-hidden": "true"}
-                        = f.collection_select :category_id, Categoryt.all, :id, :name, prompt: "--",class: 'select-default'
+                        = f.collection_select :category_id, Categoryt.all, :id, :name,class: 'select-default'
                   .form-group
                     %label
                       %b 商品の状態
@@ -61,7 +60,7 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :state, Statet.all, :id, :name, prompt: "--",class: 'select-default'
+                      = f.collection_select :state_id, Statet.all, :id, :name, prompt: "--",class: 'select-default'
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 配送について
@@ -74,13 +73,13 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :postage_burden, Burdent.all, :id, :name, prompt: "--",class: 'select-default'
+                      = f.collection_select :postage_burden_id, Burdent.all, :id, :name, prompt: "--",class: 'select-default'
                   .form-group
                     %label
                       %b 発送元の地域
                       %span.form-require 必須
                     .select-wrap-exhibit
-                      = f.collection_select :shipping_origin_area, Prefecture.all, :id, :name, prompt: "--", class: '.select-default'
+                      = f.collection_select :shipping_origin_area_id, Prefecture.all, :id, :name, prompt: "--", class: '.select-default'
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                   .form-group
@@ -90,7 +89,7 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :shipping_date, Dateh.all, :id, :name, prompt: "--", class: '.select-default'
+                      = f.collection_select :shipping_date_id, Dateh.all, :id, :name, prompt: "--", class: '.select-default'
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 販売価格(300〜9,999,999)
@@ -109,12 +108,11 @@
                     %li.clearfix
                       .clearfix__left
                         販売手数料(10%)
-                        .clearfix__right -
+                        .clearfix__right.01
                     %li.clearfix.bold
                       .clearfix__left
                         %b 販売利益
-                        .clearfix__right
-                          %b -
+                        .clearfix__right.09
               .model{role: "dialog", tabindex: "-1"}
                 .model-inner
               .sell-content.sell-btn-box

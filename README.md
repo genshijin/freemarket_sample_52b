@@ -18,7 +18,7 @@ Things you may want to cover:
 | birth_year      | integer    | null: false               |
 | birth_month     | integer    | null: false               |
 | birth_day       | integer    | null: false               |
-| phone_number    | integer    | null: false, unique: true |
+| phone_number    | string     | null: false, unique: true |
 | profile         | text       |                           |
 | saling_items    | references |                           |
 | buyed_items     | references |                           |
@@ -51,12 +51,12 @@ Things you may want to cover:
 | first_name_kana | string     | null: false                    |
 | last_name       | string     | null: false                    |
 | last_name_kana  | string     | null: false                    |
-| postal_code     | integer    | null: false                    |
+| postal_code     | string    | null: false                    |
 | prefectures     | string     | null: false                    |
 | cities          | string     | null: false                    |
 | address         | string     | null: false                    |
 | building_name   | string     |
-| phone_number    | integer    |
+| phone_number    | string     |
 ### Association
 - belongs_to :user
 
@@ -70,10 +70,12 @@ Things you may want to cover:
 | name          | string     | null: false                    |
 | comment       | text       | null: false                    |
 | price         | integer    | null: false                    |
-| state         | string     | null: false                    |
-| postage_burden| integer    | null: false                    |
-| shipping_date | string     | null: false                    |
-| shipping_origin_area  | string | null: false                |
+| state_id         | integer     | null: false                |
+| postage_burden_id| integer    | null: false                    |
+| shipping_date_id | integer    | null: false                    |
+| shipping_origin_area_id  | integer | null: false                |
+| shipping_way_id| integer |
+
 
 ### Association
 - belongs_to :saler, class_name: "User"

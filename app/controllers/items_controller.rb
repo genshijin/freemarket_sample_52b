@@ -11,7 +11,11 @@ class ItemsController < ApplicationController
   end
   def new
     @item = Item.new
-    @item.images.build
+    @price = params[:keyword]
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
@@ -27,7 +31,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name,:comment,:price,:state,:postage_burden,:shipping_date,:shipping_origin_area,:category_id,images_attributes: [:image]).merge(seller_id: 1)
+    params.require(:item).permit(:name,:comment,:price,:state_id,:postage_burden_id,:shipping_date_id,:shipping_origin_area_id,:category_id,:image).merge(seller_id: current_user.id)
   end
 
 end
