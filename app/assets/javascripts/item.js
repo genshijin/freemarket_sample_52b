@@ -8,7 +8,6 @@ $(function(){
     $(this).addClass('active');
     var imgSrc = event.target.src;
     $('#translate-img').attr('src', imgSrc);
-    console.log(imgSrc);
 
     return false;
 
