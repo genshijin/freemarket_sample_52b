@@ -2,7 +2,6 @@
   %h3.item__title
     = link_to '新着アイテム', '#'
   .item__content
-    - @items.each do |item|
-      = render partial: 'shared/item-box', locals: { item: item } 
+    = render partial: 'shared/item-box', collection: @items, as: "item"
   .view-all
     = link_to 'すべての商品を見る', '#'
