@@ -18,7 +18,6 @@
           .sell-item__photo__all
             .sell-item__photo__main
               = image_tag "#{@item.image}", alt: "", id: "translate-img"
-            -# - @images.each do |image|
             = render partial:'items/item-photo', locals:{ image: @images}
         .sell-item__price-box.display-none
           %span.sell-item__en ¥
