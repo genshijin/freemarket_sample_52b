@@ -164,7 +164,7 @@
                         .clearfix__right.sell-price-input
                           ¥
                           %div
-                            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: ""
+                            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: "#{@item.price}"
                             -# %input.input-price{placeholder: "例）300", value: "#{@item.price}"}
                     %li.clearfix
                       .clearfix__left
