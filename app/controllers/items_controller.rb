@@ -25,19 +25,14 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.update(items_params)
-    redirect_back(fallback_location:  exhibit_path)
+    @item.update(item_params)
+    redirect_to controller: :exhibit, action: :show
   end
-
-  # private
-  # def items_params
-  #   params.permit(:name, :comment,:price,:state,:postage_burden,:shipping_date,:shipping_origin_area)
-  # end
 
   private
 
   def item_params
-    params.require(:item).permit(:name,:comment,:price,:state_id,:postage_burden_id,:shipping_date_id,:prefecture_id,:category_id,:image).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name,:comment,:price,:postage_burden,:shipping_date,:prefecture,:category,:shipping_way,:image,).merge(seller_id: current_user.id)
   end
 
 end
