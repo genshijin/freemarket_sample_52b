@@ -21,6 +21,7 @@
                 = a.text_field :last_name, class: 'input-default', placeholder: '例) 彩'
                 = render partial: 'address-error-messages', locals: {user: @user, column: "first_name"}
                 = render partial: 'address-error-messages', locals: {user: @user, column: "last_name"}
+                
               .form-group
                 = a.label :name_kana, "フリガナ"
                 %span.form-require 必須
@@ -60,7 +61,7 @@
               .form-group
                 = a.label :phone_number, "電話番号"
                 %span.form-arbitrary 任意
-                = a.text_field :phone_number, class: 'input-default', placeholder: "例) 09012345678"
+                = a.text_field :phone_number, class: 'input-default', placeholder: "例) 090-1234-5678"
 
             .form-group
               = f.submit '次へ進む', class: 'btn-default btn-red'

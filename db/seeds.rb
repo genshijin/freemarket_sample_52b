@@ -13,40 +13,40 @@ Item.create!(
                 {name: 'ルフィのぬいぐるみ',
                 comment: 'フーシャ村出身', 
                 price: 5656, 
-                state: 'ゴムのようにのびる',
-                postage_burden: 2, 
-                shipping_date: '3日',
-                shipping_origin_area: '東京',
+                state_id: 1,
+                postage_burden_id: 2, 
+                shipping_date_id: 1,
+                prefecture_id: 5,
                 category_id: 1,
                 seller_id: 2,
                 },
                 {
                 name: 'ナミのぬいぐるみ',
-                comment: '', 
-                price: 5656, 
-                state: 'ココヤシ村出身',
-                postage_burden: 2, 
-                shipping_date: '3日',
-                shipping_origin_area: '富山',
+                comment: 'ココヤシ村出身', 
+                price: 7373, 
+                state_id: 1,
+                postage_burden_id: 2, 
+                shipping_date_id: 1,
+                prefecture_id: 5,
                 category_id: 1,
                 seller_id: 2,
                 }
               ]
             )
 
-User.create!(
-              [
-                {
-                email:"ruffy@a"
-                nickname:"rufy"
-                first_name:"る"
-                first_name
-
-
-                }
-              ]
-
-
-
-
-            )
+Category.create!([{name: '--'},
+                  {name: 'レディース'},
+                  {name: 'メンズ'},
+                  {name: 'ベビー・キッズ'},
+                  {name: 'インテリア・住まい・小物'},
+                  {name: '本・音楽・ゲーム'},
+                  {name: 'おもちゃ・ホビー・グッズ'},
+                  {name: 'コスメ・香水・美容'},
+                  {name: '家電・スマホ・カメラ'},
+                  {name: 'スポーツ・レジャー'},
+                  {name: 'ハンドメイド'},
+                  {name: 'チケット'},
+                  {name: '自動車・オートバイ'},
+                  {name: 'その他'}
+                 ]
+                )

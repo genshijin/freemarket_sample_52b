@@ -17,7 +17,7 @@ ja:
         birth_month: 月
         birth_day: 日
         phone_number: 電話番号
-      user/address:
+      address:
         first_name: 姓
         last_name: 名
         first_name_kana: 姓(カナ)
