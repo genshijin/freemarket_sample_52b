@@ -25,8 +25,8 @@ $(function(){
         real_price(Number(price));
       }
     })
-    .fail(function() {
-      alert('失敗しました');
-    })
+    // .fail(function() {
+    //   alert('失敗しました');
+    // })
   })
 });
