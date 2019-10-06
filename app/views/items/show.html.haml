@@ -17,9 +17,9 @@
         .sell-item__photo
           .sell-item__photo__all
             .sell-item__photo__main
-              = image_tag "#{@images.first.image}", alt: "", id: "translate-img"
-            - @images.each do |image|
-              = render partial:'items/item-photo', locals:{ image: image}
+              = image_tag "#{@item.image}", alt: "", id: "translate-img"
+            -# - @images.each do |image|
+            = render partial:'items/item-photo', locals:{ image: @images}
         .sell-item__price-box.display-none
           %span.sell-item__en ¥
           %span.sell-item__price
@@ -49,7 +49,7 @@
             %tr
               %th カテゴリー
               %td
-                -# = link_to Categoryt.all[@item.category_id].name, "#"
+                = link_to "#{@item.category.name}", "#"
                 .sub-category
                   = link_to "#" do
                     %i.fa.fa-angle-right
@@ -71,19 +71,19 @@
             %tr
               %th 配送料の負担
               %td 
-                -# = Burdent.all[@item.postage_burden].name
+                = @item.postage_burden.name
             %tr
               %th 配送の方法
               %td 
-                らくらくメルカリ便
+                = @item.shipping_way.name
             %tr
               %th 配送元地域
               %td
-                = link_to "#{@item.shipping_origin_area}"
+                = link_to "#{@item.prefecture.name}"
             %tr
               %th 発送日の目安
               %td 
-                -# = Dateh.all[@item.shipping_date].name
+                = @item.shipping_date.name
         .sell-item__price-box
           %span.sell-item__en ¥
           %span.sell-item__price

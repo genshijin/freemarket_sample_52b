@@ -6,9 +6,10 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @images = @item.images
+    @images = @item.image
     @seller = User.where('id = ?', @item.seller_id)
   end
+
   def new
     @item = Item.new
     @price = params[:keyword]
