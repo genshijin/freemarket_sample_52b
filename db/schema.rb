@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_095356) do
+ActiveRecord::Schema.define(version: 2019_10_06_071451) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 2019_10_05_095356) do
     t.string "first_name_kana", null: false
     t.string "last_name", null: false
     t.string "last_name_kana", null: false
-    t.integer "postal_code", null: false
+    t.string "postal_code", null: false
     t.string "address", null: false
     t.string "building_name"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -87,17 +87,17 @@ ActiveRecord::Schema.define(version: 2019_10_05_095356) do
     t.string "name", null: false
     t.text "comment", null: false
     t.integer "price", null: false
+    t.integer "buyer_id"
+    t.integer "seller_id", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "buyer_id"
-    t.integer "seller_id"
-    t.integer "category_id"
     t.string "image"
     t.integer "state_id", null: false
     t.integer "shipping_date_id", null: false
-    t.integer "shipping_origin_area_id", null: false
     t.integer "postage_burden_id", null: false
     t.integer "shipping_way_id"
+    t.integer "prefecture_id", null: false
   end
 
   create_table "sellbs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -144,17 +144,10 @@ ActiveRecord::Schema.define(version: 2019_10_05_095356) do
     t.integer "birth_year", null: false
     t.integer "birth_month", null: false
     t.integer "birth_day", null: false
-    t.integer "phone_number", null: false
+    t.string "phone_number", null: false
     t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "ways", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "way_id"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "addresses", "users"
