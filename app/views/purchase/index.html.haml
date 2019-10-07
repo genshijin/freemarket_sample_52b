@@ -9,12 +9,13 @@
       %section.buy-content.buy-item
         .buy-content__inner
           %h3.buy-item__image
-            = image_tag "sell-sample.jpg", alt: "", class: "is-higher-height.lazyloaded"
-          %p.buy-item__name
-            %b シャネル ショップ袋 ショッパー小
+            = image_tag "#{@item.image}", alt: "", class: "is-higher-height.lazyloaded"
+          %p.buy-item__name.bold
+            = @item.name
           %form.buy-form{action: "###", method: "POST", novalidate: "novalidate"}
-            %p.buy-price__including-postage
-              %b ¥499
+            .bold ¥
+            %p.buy-price__including-postage.bold
+              = @item.price
               %span.item-shipping-fee 送料込み
             %ul.buy-accordion.not-have
               %li.accordion-parent
@@ -22,10 +23,13 @@
                   ポイントはありません
             %ul.buy-price
               %li.buy-price__row.buy-you-pay
-                .buy-price__total
+                .buy-price__total.bold
                   %b 支払い金額
+                .buy-price__total.bold
+                  %b ¥
                 .buy-price__total
-                  %span ¥499
+                  %span
+                    = @item.price
             %button.btn-default.btn-red{type: "submit"}
               %b 購入する
       %section.buy-content.buy-user-info
