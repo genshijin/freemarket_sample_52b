@@ -76,6 +76,14 @@
                       = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name, prompt: "--",class: 'select-default'
                   .form-group
                     %label
+                      %b 発送の方法
+                      %span.form-require 必須
+                    .select-wrap-exhibit
+                      .icon-arrow-bottom
+                        %i.fa.fa-angle-down{"aria-hidden": "true"}
+                      = f.collection_select :shipping_way_id, ShippingWay.all, :id, :name, prompt: "--",class: 'select-default'
+                  .form-group
+                    %label
                       %b 発送元の地域
                       %span.form-require 必須
                     .select-wrap-exhibit
