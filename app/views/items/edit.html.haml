@@ -64,7 +64,7 @@
                       .select-wrap-exhibit
                         .icon-arrow-bottom
                           %i.fa.fa-angle-down{"aria-hidden": "true"}
-                        = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default'
+                        = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default', prompt: "--"
                         -# %select.select-default
                         -#   %option{value: ""} ---
                         -#   %option{value: "1"} レディース
@@ -87,7 +87,7 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :state, State.all, :id, :name, prompt: "--",class: 'select-default'
+                      = f.collection_select :state_id, State.all, :id, :name, prompt: "--",class: 'select-default'
                       -# %select.select-default
                       -#   %option{value: ""} ---
                       -#   %option{value: "1"} 新品、未使用
@@ -108,7 +108,7 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :postage_burden, PostageBurden.all, :id, :name, prompt: "--",class: 'select-default'
+                      = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name, prompt: "--",class: 'select-default'
                       -# %select.select-default
                       -#   %option{value: ""} ---
                       -#   %option{value: "2"} 送料込み（出品者負担）
@@ -120,7 +120,7 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :shipping_way, ShippingDate.all, :id, :name, prompt: "--",class: 'select-default'
+                      = f.collection_select :shipping_way_id, ShippingWay.all, :id, :name, prompt: "--",class: 'select-default'
                       -# %select.select-default
                       -#   %option{value: ""} ---
                       -#   %option{value: "1"} 未定
@@ -132,7 +132,7 @@
                       %b 発送元の地域
                       %span.form-require 必須
                     .select-wrap-exhibit
-                      = f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "#{@item.prefecture.name}", class: '.select-default'
+                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt:"--", class: '.select-default'
                       -# = form_for '' do |f|
                       -#   = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---", class: '.select-default'
                       .icon-arrow-bottom
@@ -144,7 +144,7 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :shipping_date, ShippingDate.all, :id, :name, prompt: "--", class: '.select-default'
+                      = f.collection_select :shipping_date_id, ShippingDate.all, :id, :name, prompt: "--", class: '.select-default'
                       -# %select.select-default
                       -#   %option{value: ""} ---
                       -#   %option{value: "1"} 1〜2日で発送
@@ -178,7 +178,7 @@
                         .clearfix__right
                           %b
                             - profit=@item.price - fee.floor
-                            #{profit}
+                            ¥#{profit.to_s(:delimited)}
               .model{role: "dialog", tabindex: "-1"}
                 .model-inner
               .sell-content.sell-btn-box

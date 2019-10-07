@@ -96,7 +96,7 @@
                   -# =Dateh.all[@item.postage_burden].name
           .sell-item__price-box
             %span.sell-item__price 
-              ¥#{@item.price}
+              ¥#{@item.price.to_s(:delimited)}
             %span.sell-item__tax  (税込)
             %span.sell-item__shipping-fee 送料込み
         .item-description
