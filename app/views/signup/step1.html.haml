@@ -16,25 +16,25 @@
               = f.label :nickname, "ニックネーム"
               %span.form-require 必須
               = f.text_field :nickname, class: 'input-default', placeholder: "例）メルカリ太郎"
-              = render partial: 'error-messages', locals: {user: @user, column: "nickname"}
+              = render partial: 'error-messages', locals: {user: @user, column: "nickname"} if @user.errors.any?
 
             .form-group
               = f.label :email, "メールアドレス"
               %span.form-require 必須
               = f.email_field :email, class: 'input-default', placeholder: "PC・携帯どちらでも可"
-              = render partial: 'error-messages', locals: {user: @user, column: "email"}
+              = render partial: 'error-messages', locals: {user: @user, column: "email"} if @user.errors.any?
 
             .form-group
               = f.label :password, "パスワード"
               %span.form-require 必須
               = f.password_field :password, class: 'input-default', placeholder: "7文字以上"
-              = render partial: 'error-messages', locals: {user: @user, column: "password"}
+              = render partial: 'error-messages', locals: {user: @user, column: "password"} if @user.errors.any?
 
             .form-group
               = f.label :password_confirmation, "パスワード(確認)"
               %span.form-require 必須
               = f.password_field :password_confirmation, class: 'input-default', placeholder: "7文字以上"
-              = render partial: 'error-messages', locals: {user: @user, column: "password_confirmation"}
+              = render partial: 'error-messages', locals: {user: @user, column: "password_confirmation"} if @user.errors.any?
 
             .form-group
               %h3.text-left.main__sub-head 本人確認
@@ -47,8 +47,8 @@
                 %span.form-require 必須
                 = f.text_field :first_name, class: 'input-default harf', placeholder: "例）山田"
                 = f.text_field :last_name, class: 'input-default harf', placeholder: "例）彩"
-                = render partial: 'error-messages', locals: {user: @user, column: "first_name"}
-                = render partial: 'error-messages', locals: {user: @user, column: "last_name"}
+                = render partial: 'error-messages', locals: {user: @user, column: "first_name"} if @user.errors.any?
+                = render partial: 'error-messages', locals: {user: @user, column: "last_name"} if @user.errors.any?
 
             .form-group
               %div
@@ -56,8 +56,8 @@
                 %span.form-require 必須
               = f.text_field :first_name_kana, class: 'input-default harf', placeholder: "例）ヤマダ"
               = f.text_field :last_name_kana, class: 'input-default harf', placeholder: "例）アヤ"
-              = render partial: 'error-messages', locals: {user: @user, column: "first_name_kana"}
-              = render partial: 'error-messages', locals: {user: @user, column: "last_name_kana"}
+              = render partial: 'error-messages', locals: {user: @user, column: "first_name_kana"} if @user.errors.any?
+              = render partial: 'error-messages', locals: {user: @user, column: "last_name_kana"} if @user.errors.any?
 
             .form-group
               = f.label :birthday, "生年月日"
@@ -79,9 +79,9 @@
                     %i.fa.fa-angle-down
                   = f.collection_select :birth_day, Day.all, :id, :day, prompt: "--"
                 %span 日
-                = render partial: 'error-messages', locals: {user: @user, column: "birth_year"}
-                = render partial: 'error-messages', locals: {user: @user, column: "birth_month"}
-                = render partial: 'error-messages', locals: {user: @user, column: "birth_day"}
+                = render partial: 'error-messages', locals: {user: @user, column: "birth_year"} if @user.errors.any?
+                = render partial: 'error-messages', locals: {user: @user, column: "birth_month"} if @user.errors.any?
+                = render partial: 'error-messages', locals: {user: @user, column: "birth_day"} if @user.errors.any?
               .clearfix
 
             %p.signup-info-text

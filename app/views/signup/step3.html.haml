@@ -19,22 +19,22 @@
                 %span.form-require 必須
                 = a.text_field :first_name, class: 'input-default', placeholder: '例) 山田'
                 = a.text_field :last_name, class: 'input-default', placeholder: '例) 彩'
-                = render partial: 'address-error-messages', locals: {user: @user, column: "first_name"}
-                = render partial: 'address-error-messages', locals: {user: @user, column: "last_name"}
-                
+                = render partial: 'address-error-messages', locals: {user: @user, column: "first_name"} if @user.address.errors.any?
+                = render partial: 'address-error-messages', locals: {user: @user, column: "last_name"} if @user.address.errors.any?
+
               .form-group
                 = a.label :name_kana, "フリガナ"
                 %span.form-require 必須
                 = a.text_field :first_name_kana, class: 'input-default', placeholder: '例) ヤマダ'
                 = a.text_field :last_name_kana, class: 'input-default', placeholder: '例)アヤ'
-                = render partial: 'address-error-messages', locals: {user: @user, column: "first_name_kana"}
-                = render partial: 'address-error-messages', locals: {user: @user, column: "last_name_kana"}
+                = render partial: 'address-error-messages', locals: {user: @user, column: "first_name_kana"} if @user.address.errors.any?
+                = render partial: 'address-error-messages', locals: {user: @user, column: "last_name_kana"} if @user.address.errors.any?
 
               .form-group
                 = a.label :postal_code, "郵便番号"
                 %span.form-require 必須
                 = a.text_field :postal_code, class: 'input-default', placeholder: '例) 123-4567'
-                = render partial: 'address-error-messages', locals: {user: @user, column: "postal_code"}
+                = render partial: 'address-error-messages', locals: {user: @user, column: "postal_code"} if @user.address.errors.any?
 
               .form-group
                 = a.label :prefecture_id, "都道府県"
@@ -43,17 +43,17 @@
                   .icon-arrow-bottom
                     %i.fa.fa-angle-down
                   = a.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
-                  = render partial: 'address-error-messages', locals: {user: @user, column: "prefecture_id"}
+                  = render partial: 'address-error-messages', locals: {user: @user, column: "prefecture_id"} if @user.address.errors.any?
               .form-group
                 = a.label :city, "市区町村"
                 %span.form-require 必須
                 = a.text_field :city, class: 'input-default', placeholder: "例) 横浜市緑区"
-                = render partial: 'address-error-messages', locals: {user: @user, column: "city"}
+                = render partial: 'address-error-messages', locals: {user: @user, column: "city"} if @user.address.errors.any?
               .form-group
                 = a.label :address, "番地"
                 %span.form-require 必須
                 = a.text_field :address, class: 'input-default', placeholder: "例) 青山1−1−1"
-                = render partial: 'address-error-messages', locals: {user: @user, column: "address"}
+                = render partial: 'address-error-messages', locals: {user: @user, column: "address"} if @user.address.errors.any?
               .form-group
                 = a.label :building_name, "建物名"
                 %span.form-arbitrary 任意
