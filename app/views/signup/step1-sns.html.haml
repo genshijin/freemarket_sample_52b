@@ -1,0 +1,96 @@
+- @page_title = '会員情報入力'
+
+= content_for :header do
+  = render 'signup/signup-header'
+= content_for :footer do
+  = render 'shared/footer-exhibit'
+
+.main__container
+  .content#step1
+    %section.content__wrap
+      %h2.main__head.registration 会員情報入力
+      .content__body
+        = form_for @user, url: step2_signup_index_path, method: :get, class: "main__inne registration-form" do |f|
+          .signup-content
+            .form-group
+              = f.label :nickname, "ニックネーム"
+              %span.form-require 必須
+              = f.text_field :nickname, class: 'input-default', placeholder: "例）メルカリ太郎"
+              = render partial: 'error-messages', locals: {user: @user, column: "nickname"} if @user.errors.any?
+
+            .form-group
+              = f.label :email, "メールアドレス"
+              %span.form-require 必須
+              = f.email_field :email, class: 'input-default', placeholder: "PC・携帯どちらでも可"
+              = render partial: 'error-messages', locals: {user: @user, column: "email"} if @user.errors.any?
+
+            .form-group
+              %h3.text-left.main__sub-head 本人確認
+              %p.signup-text
+                安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+
+            .form-group
+              %div
+                = f.label :name, "お名前(全角)"
+                %span.form-require 必須
+                = f.text_field :first_name, class: 'input-default harf', placeholder: "例）山田"
+                = f.text_field :last_name, class: 'input-default harf', placeholder: "例）彩"
+                = render partial: 'error-messages', locals: {user: @user, column: "first_name"} if @user.errors.any?
+                = render partial: 'error-messages', locals: {user: @user, column: "last_name"} if @user.errors.any?
+
+            .form-group
+              %div
+                = f.label :name_kana, "お名前カナ(全角)"
+                %span.form-require 必須
+              = f.text_field :first_name_kana, class: 'input-default harf', placeholder: "例）ヤマダ"
+              = f.text_field :last_name_kana, class: 'input-default harf', placeholder: "例）アヤ"
+              = render partial: 'error-messages', locals: {user: @user, column: "first_name_kana"} if @user.errors.any?
+              = render partial: 'error-messages', locals: {user: @user, column: "last_name_kana"} if @user.errors.any?
+
+            .form-group
+              = f.label :birthday, "生年月日"
+              %span.form-require 必須
+              %br/
+              .birthday-select-wrap
+                .select-wrap
+                  .icon-arrow-bottom
+                    %i.fa.fa-angle-down
+                  = f.collection_select :birth_year, Year.all, :id, :year, prompt: "--"
+                %span 年
+                .select-wrap.select-wrap__month
+                  .icon-arrow-bottom
+                    %i.fa.fa-angle-down
+                  = f.collection_select :birth_month, Month.all, :id, :month, prompt: "--"
+                %span 月
+                .select-wrap.select-wrap__day
+                  .icon-arrow-bottom
+                    %i.fa.fa-angle-down
+                  = f.collection_select :birth_day, Day.all, :id, :day, prompt: "--"
+                %span 日
+                = render partial: 'error-messages', locals: {user: @user, column: "birth_year"} if @user.errors.any?
+                = render partial: 'error-messages', locals: {user: @user, column: "birth_month"} if @user.errors.any?
+                = render partial: 'error-messages', locals: {user: @user, column: "birth_day"} if @user.errors.any?
+              .clearfix
+
+            %p.signup-info-text
+              ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+
+            .signup-content
+              -# .form-group
+              -#   .g-recaptcha.signup-recaptcha{"data-sitekey": "6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc"}
+              -#     %div
+              -#       %iframe{frameborder: "0", height: "78", name: "a-lzvz7q9czc66", role: "presentation", sandbox: "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox", scrolling: "no", src: "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=v1565591531251&size=normal&cb=ngxg7dvrm84j", width: "304"}
+              -#     %textarea#g-recaptcha-response.g-recaptcha-response{name: "g-recaptcha-response", style: "width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"}
+
+            .form-group
+              %p.signup-text.text-center
+                「次へ進む」のボタンを押すことにより、
+                = link_to '利用規約',"#"
+                に同意したものとみなします
+              = f.submit '次へ進む', class: 'btn-default btn-red'
+
+            .form-group.text-right
+              %p
+                = link_to "#" do
+                  本人情報の登録について
+                  %i.fas.fa-chevron-right
