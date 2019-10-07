@@ -18,29 +18,15 @@
           .sell-item__photo
             .sell-item__photo__all
               .sell-item__photo__main
-                -# - top_image =@item.images.first
-                -# = image_tag "#{top_image.image}", alt: "", class: ""
-              .sell-item__photo__dots
-                -# .sell-item__photo__dot.active
-                  -# .sell-item__photo__dot__inner
-                    -# = image_tag "#{@top_image.image}", alt: "", class: ""
-                    -# = image_tag "ruffy.jpeg", alt: "", class: ""
-                - @item.images.each_with_index do |image, i|
-                  = render partial:'items/item-photo', locals: {image: image}
-                  -# - for i in 1..4
-                    -# = render partial:'items/item-photo', locals: {image: image}
-                  -# - for i in 1..2
-                  -#   = render partial:'items/item-photo', locals: {image: image}
-          -# .sell-item__price-box.display-none
-          -#   %span.sell-item__price¥499
-          -#   %span.sell-item__tax（税込）
-          -#   %span.sell-item__shipping-fee 送料込み
+                = image_tag @item.image_url, alt: "", id: "translate-img"
+              = render partial:'items/item-photo', locals:{ image: @images}
           %table.sell-item__detail-table
             %tbody
               %tr
                 %th 出品者
                 %td
-                  = link_to "ほげ太", "#"
+                  = link_to mypage_path do
+                    = @seller.first.nickname
                   %div
                     .sell-item__user-ratings
                       .icon-good
@@ -58,7 +44,6 @@
                 %th カテゴリー
                 %td
                   = link_to @item.category.name
-                  -# = link_to Categoryt.all[@item.category_id].name
                   .sub-category
                     = link_to "#" do
                       %i.fa.fa-angle-right
@@ -74,12 +59,10 @@
                 %th 商品の状態
                 %td 
                   =@item.state.name
-                  -# =Statet.all[@item.postage_burden].name
               %tr
                 %th 配送料の負担
                 %td 
                   = @item.postage_burden.name
-                  -# =Burdent.all[@item.postage_burden].name
               %tr
                 %th 配送の方法
                 %td 
@@ -88,12 +71,10 @@
                 %th 配送元地域
                 %td
                   = @item.prefecture.name
-                  -# = link_to Prefecture.all[@item.postage_burden].name
               %tr
                 %th 発送日の目安
                 %td 
                   = @item.shipping_date.name
-                  -# =Dateh.all[@item.postage_burden].name
           .sell-item__price-box
             %span.sell-item__price 
               ¥#{@item.price.to_s(:delimited)}
