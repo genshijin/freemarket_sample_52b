@@ -1,12 +1,13 @@
 .itembox
-  -# todo: 仮置き サーバーサイド実装後に正式なパスを設定
-  = link_to item_path(1) do
+  = link_to item_path(item.id),data: {"turbolinks": false} do
     %figure.itembox__photo
-      = image_tag '', alt: '#'
+      = image_tag "#{item.image}"
     .itembox__body
-      %h3.itembox__name アイテムネームアイテムネームアイテムネームアイテムネーム
+      %h3.itembox__name
+        = item.name
       .itembox__num
-        %p.itembox__price 1,500
+        %p.itembox__price 
+          = "¥#{item.price}"
         %p.itembox__like
           %i.far.fa-heart
           3

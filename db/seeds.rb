@@ -50,3 +50,4 @@ Category.create!([{name: '--'},
                   {name: 'その他'}
                  ]
                 )
+

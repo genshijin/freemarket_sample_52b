@@ -20,6 +20,15 @@
   }
 }
 
+.bold{
+  font-weight: bold;
+  display: inline;
+}
+
+.buy-price__en {
+  display: inline;
+}
+
 .buy-form {
   width: 100%;
 }
@@ -33,10 +42,6 @@
       font-size: 18px;
   }
 } 
-
-.buy-price__total span {
-  font-size: 28px;
-}
 
 .buy-item .btn-red {
   margin: 8px 0 0;

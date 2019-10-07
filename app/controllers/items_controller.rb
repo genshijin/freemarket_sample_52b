@@ -1,16 +1,22 @@
 class ItemsController < ApplicationController
+
   def index
+    @items= Item.order("id DESC")   
   end
 
   def show
     @item = Item.find(params[:id])
+    @images = @item.image
+    @seller = User.where('id = ?', @item.seller_id)
   end
+
   def new
     @item = Item.new
     @price = params[:keyword]
-    # respond_to do |format|
-    #   format.html
-    #   format.json
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
@@ -29,10 +35,11 @@ class ItemsController < ApplicationController
     redirect_to controller: :exhibit, action: :show
   end
 
+
   private
 
   def item_params
-    params.require(:item).permit(:name,:comment,:price,:postage_burden,:shipping_date,:prefecture,:category,:shipping_way,:image,).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name,:comment,:price,:state_id,:postage_burden_id,:shipping_date_id,:prefecture_id,:category_id,:shipping_way_id,:image).merge(seller_id: current_user.id)
   end
 
 end
