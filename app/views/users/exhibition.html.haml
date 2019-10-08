@@ -25,8 +25,7 @@
           %li
             = link_to completed_mypage_path do
               売却済み    
-        - @items.each do |item| 
-          =render partial:'shared/tab-content-item', locals: {item: item}
+        = render partial: 'shared/tab-content-item', collection: @items, as: "item"
     .pagemove
       %li.pagemove__btn
         =link_to "#" do
