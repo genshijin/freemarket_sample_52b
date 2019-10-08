@@ -20,13 +20,13 @@ class User < ApplicationRecord
 
   # step1
   validates :nickname, presence: true
-  validates :email, presence: true, uniqueness: true, format: { with: reg_email }
-  validates :password, presence: true, format: { with: reg_alphanumeric_7characters, message: 'は英数字で設定してください' }, length: { minimum: 7, maximum: 128 }
+  validates :email, uniqueness: true, format: { with: reg_email }
+  validates :password, format: { with: reg_alphanumeric_7characters, message: '英数字で設定してください' }, length: { minimum: 7, maximum: 128 }
   validates :password_confirmation, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :first_name_kana, presence: true, format: { with: reg_only_kana, message: 'は全角で入力ください' }
-  validates :last_name_kana, presence: true, format: { with: reg_only_kana, message: 'は全角で入力ください' }
+  validates :first_name_kana, presence: true, format: { with: reg_only_kana, message: 'は全角カタカナで入力ください' }
+  validates :last_name_kana, presence: true, format: { with: reg_only_kana, message: 'は全角カタカナで入力ください' }
   validates :birth_year, presence: { message: 'を選択してください'}
   validates :birth_month, presence: { message: 'を選択してください'}
   validates :birth_day, presence: { message: 'を選択してください'}
@@ -40,7 +40,7 @@ class User < ApplicationRecord
     snscredential = SnsCredential.where(uid: uid, provider: provider).first
 
     if snscredential.present? #SNS認証済みの分岐
-      user = User.where(id: snscredential.user_id).first
+      user = User.find(id: snscredential.user_id).first
       unless user.present?
         user = User.new(
           nickname: auth.info.name,
