@@ -85,7 +85,7 @@
             =@item.comment
       .item-change__box
         %button.btn-default.btn-red{type: "submit"} 
-          = link_to "商品の編集","/items/#{@item.id}/edit"
+          = link_to "商品の編集", edit_item_path(@item)
         %p 
           or
         %button.btn-default.btn-gray{type: "submit"} 
