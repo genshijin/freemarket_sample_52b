@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def exhibition
+    @items=Item.where(seller:current_user[:id])
   end
 
   def trading

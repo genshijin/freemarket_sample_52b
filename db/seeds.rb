@@ -8,31 +8,31 @@
 
 # coding: utf-8
 
-# Item.create!(
-#               [
-#                 {name: 'ルフィのぬいぐるみ',
-#                 comment: 'フーシャ村出身', 
-#                 price: 5656, 
-#                 state: 'ゴムのようにのびる',
-#                 postage_burden: 2, 
-#                 shipping_date: '3日',
-#                 shipping_origin_area: '東京',
-#                 category_id: 1,
-#                 seller_id: 2,
-#                 },
-#                 {
-#                 name: 'ナミのぬいぐるみ',
-#                 comment: '', 
-#                 price: 5656, 
-#                 state: 'ココヤシ村出身',
-#                 postage_burden: 2, 
-#                 shipping_date: '3日',
-#                 shipping_origin_area: '富山',
-#                 category_id: 1,
-#                 seller_id: 2,
-#                 }
-#               ]
-#             )
+Item.create!(
+              [
+                {name: 'ルフィのぬいぐるみ',
+                comment: 'フーシャ村出身', 
+                price: 5656, 
+                state_id: 1,
+                postage_burden_id: 2, 
+                shipping_date_id: 1,
+                prefecture_id: 5,
+                category_id: 1,
+                seller_id: 2,
+                },
+                {
+                name: 'ナミのぬいぐるみ',
+                comment: 'ココヤシ村出身', 
+                price: 7373, 
+                state_id: 1,
+                postage_burden_id: 2, 
+                shipping_date_id: 1,
+                prefecture_id: 5,
+                category_id: 1,
+                seller_id: 2,
+                }
+              ]
+            )
 
 Category.create!([{name: '--'},
                   {name: 'レディース'},
@@ -50,3 +50,4 @@ Category.create!([{name: '--'},
                   {name: 'その他'}
                  ]
                 )
+

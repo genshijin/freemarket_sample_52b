@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
 
+  before_action :set_item, only: [:show, :update, :edit]
+
   def index
     @items= Item.order("id DESC")   
   end
 
   def show
-    @item = Item.find(params[:id])
     @images = @item.image
     @seller = User.where('id = ?', @item.seller_id)
   end
@@ -28,6 +29,11 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def update
+    @item.update(item_params)
+    redirect_to controller: :exhibit, action: :show
+  end
+
 
   private
 
@@ -35,4 +41,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name,:comment,:price,:state_id,:postage_burden_id,:shipping_date_id,:prefecture_id,:category_id,:shipping_way_id,:image).merge(seller_id: current_user.id)
   end
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
