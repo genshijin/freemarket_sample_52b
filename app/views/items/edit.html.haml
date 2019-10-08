@@ -134,6 +134,6 @@
               .sell-content.sell-btn-box
                 = f.submit '変更する', class: 'btn-default btn-red'
                 .btn-default.btn-gray
-                  = link_to "キャンセル", "/exhibit/1", class: ""
+                  = link_to "キャンセル", exhibit_path(@item), class: ""
             .overlay
   = render partial: 'shared/footer-exhibit'
