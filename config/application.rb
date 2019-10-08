@@ -22,6 +22,12 @@ module FreemarketSample52b
       g.test_framework false
     end
 
-    config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag }
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      if instance.kind_of?(ActionView::Helpers::Tags::Label)
+        html_tag.html_safe
+      else
+        Nokogiri::HTML.fragment(html_tag).search('input', 'textarea', 'select').add_class('has-error').to_html.html_safe
+      end
+    end
   end
 end

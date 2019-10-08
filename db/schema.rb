@@ -87,24 +87,6 @@ ActiveRecord::Schema.define(version: 2019_10_06_071451) do
     t.string "name", null: false
     t.text "comment", null: false
     t.integer "price", null: false
-    t.string "state", null: false
-    t.integer "postage_burden", null: false
-    t.string "shipping_date", null: false
-    t.string "shipping_origin_area", null: false
-    t.integer "buyer_id"
-    t.integer "seller_id", null: false
-    t.integer "category_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
     t.integer "buyer_id"
     t.integer "seller_id", null: false
     t.integer "category_id", null: false
@@ -144,6 +126,15 @@ ActiveRecord::Schema.define(version: 2019_10_06_071451) do
     t.string "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -122,7 +122,15 @@
     }
 
     .icon-arrow-bottom{
+      top: 26px;
       right: 12px;
+    }
+
+    #user_birth_year:after{
+      content: "年";
+      font-size: 14px;
+      position: absolute;
+      right: 0;
     }
   }
 }
