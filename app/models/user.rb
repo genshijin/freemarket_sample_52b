@@ -39,37 +39,56 @@ class User < ApplicationRecord
     provider = auth.provider
     snscredential = SnsCredential.find_by(uid: uid, provider: provider)
 
-    if snscredential.present? #SNS認証済みの分岐
+    #SNS認証済みの分岐
+    if snscredential.present?
+      # ユーザーidとSNS認証のuser_idが紐付いているか
       user = User.find_by(id: snscredential.user_id)
       unless user.present?
-        user = User.new(
-          nickname: auth.info.name,
-          email: auth.info.email,
-          password: Devise.friendly_token.first(8)
-        )
+        # 紐付いていない時、メアドが一致するか確認
+        user = User.find_by(email: auth.info.email)
+        if user.present?
+          # メアドが一致する時 snsカラムの更新
+          SnsCredential.update(user_id: user.id)
+        else
+          # メアドが一致しない時 ユーザー情報の作成
+          user = User.new(
+            nickname: auth.info.name,
+            email: auth.info.email,
+            password: Devise.friendly_token.first(8)
+          )
+        end
       end
+      # 作成済みSNS認証の保持
       sns = snscredential
-    else #SNS未登録の分岐
+
+    #SNS未登録の分岐
+    else
+      # ユーザー登録済みか
       user = User.find_by(email: auth.info.email)
       if user.present?
+        # 登録済みユーザーの場合 SNS認証カラムの作成・保存
         sns = SnsCredential.create(
           uid: uid,
           provider: provider,
           user_id: user.id
         )
       else
+        # 未登録ユーザーの場合 ユーザーインスタンス作成
         user = User.new(
           nickname: auth.info.name,
           email:    auth.info.email,
           password: Devise.friendly_token.first(8)
         )
+        # 未登録ユーザーの場合 SNS認証インスタンス作成・DB保存
         sns = SnsCredential.create(
           uid: uid,
           provider: provider
         )
       end
     end
+    # user情報と作成したsns認証カラムのidを返す
     return { user: user, sns_id: sns.id }
   end
 
 end
+
