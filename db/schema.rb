@@ -128,6 +128,15 @@ ActiveRecord::Schema.define(version: 2019_10_06_071451) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -161,4 +170,5 @@ ActiveRecord::Schema.define(version: 2019_10_06_071451) do
   add_foreign_key "category_options", "categories"
   add_foreign_key "creditcards", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "sns_credentials", "users"
 end

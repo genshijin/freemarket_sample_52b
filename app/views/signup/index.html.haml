@@ -10,11 +10,11 @@
     %h2.main__head.registration 新規会員登録
     .main__inner.registration-form
       .signup-content
-        = link_to step1_signup_index_path,class: "btn-default btn-red btn-sns" do
+        = link_to step1_signup_index_path, class: "btn-default btn-red btn-sns" do
           %i.far.fa-envelope.icon_mail
           メールアドレスで登録する
-        %button#facebook-login.btn-default.btn-sns.btn-sns-facebook
+        = link_to user_facebook_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-facebook", id: "facebook-login", method: :post do
           %i.fab.fa-facebook-square
           Facebookで登録する
-        %button#google-login.btn-default.btn-sns.btn-sns-google
+        = link_to user_google_oauth2_omniauth_authorize_path, class: "btn-default btn-sns btn-sns-google", id: "google-login", method: :post do
           Googleで登録する
