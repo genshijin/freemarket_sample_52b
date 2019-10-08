@@ -19,16 +19,16 @@
                 %span.form-require 必須
                 = a.text_field :first_name, class: 'input-default', placeholder: '例) 山田'
                 = a.text_field :last_name, class: 'input-default', placeholder: '例) 彩'
-                = render partial: 'address-error-messages', locals: {user: @user, column: "first_name"} if @user.address.errors.any?
-                = render partial: 'address-error-messages', locals: {user: @user, column: "last_name"} if @user.address.errors.any?
+                - ['first_name', 'last_name'].each do |column|
+                  = render partial: 'address-error-messages', locals: { user: @user, column: column } if @user.address.errors.any?
 
               .form-group
                 = a.label :name_kana, "フリガナ"
                 %span.form-require 必須
                 = a.text_field :first_name_kana, class: 'input-default', placeholder: '例) ヤマダ'
                 = a.text_field :last_name_kana, class: 'input-default', placeholder: '例)アヤ'
-                = render partial: 'address-error-messages', locals: {user: @user, column: "first_name_kana"} if @user.address.errors.any?
-                = render partial: 'address-error-messages', locals: {user: @user, column: "last_name_kana"} if @user.address.errors.any?
+                - ['first_name_kana', 'last_name_kana'].each do |column|
+                  = render partial: 'address-error-messages', locals: { user: @user, column: column } if @user.address.errors.any?
 
               .form-group
                 = a.label :postal_code, "郵便番号"
@@ -44,20 +44,24 @@
                     %i.fa.fa-angle-down
                   = a.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
                   = render partial: 'address-error-messages', locals: {user: @user, column: "prefecture_id"} if @user.address.errors.any?
+
               .form-group
                 = a.label :city, "市区町村"
                 %span.form-require 必須
                 = a.text_field :city, class: 'input-default', placeholder: "例) 横浜市緑区"
                 = render partial: 'address-error-messages', locals: {user: @user, column: "city"} if @user.address.errors.any?
+
               .form-group
                 = a.label :address, "番地"
                 %span.form-require 必須
                 = a.text_field :address, class: 'input-default', placeholder: "例) 青山1−1−1"
                 = render partial: 'address-error-messages', locals: {user: @user, column: "address"} if @user.address.errors.any?
+
               .form-group
                 = a.label :building_name, "建物名"
                 %span.form-arbitrary 任意
                 = a.text_field :building_name, class: 'input-default', placeholder: "例) 柳ビル103"
+                
               .form-group
                 = a.label :phone_number, "電話番号"
                 %span.form-arbitrary 任意
