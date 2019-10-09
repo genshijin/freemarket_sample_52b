@@ -91,7 +91,7 @@
         %button.btn-default.btn-gray{type: "submit"} 
           = link_to "出品を一旦停止する","#"
         %button.btn-default.btn-gray{type: "submit"} 
-          = link_to "この商品を削除する","#"
+          = link_to 'この商品を削除する', item_path(@item), method: :delete
       .item-detail__message
         .message__container
           = render 'items/message'
