@@ -1,10 +1,10 @@
 .tab-contents
-  = link_to "/exhibit/1", class: 'mypage-tab__item' do
+  = link_to exhibit_path(item), class: 'mypage-tab__item' do
     %figure.mypage-tab__item__icon
-      =image_tag src="ruffy.jpeg",class: " mypage-tab__item__icon__mercari",alt: "","data-src": "/assets/ruffy.jpeg" 
+      = image_tag item.image_url,class: "mypage-tab__item__icon__mercari",alt: ""
     .mypage-tab__item__body
       .mypage-tab__item__body__text
-        ルフィのぬいぐるみ
+        = item.name 
       .listing
         .listing__count
           %i.far.fa-heart

@@ -50,6 +50,14 @@
   }
 }
 
+.has-error{
+  border-color: $mercari-red;
+}
+
+.has-error-text{
+  color: $mercari-red;
+}
+
 // settings
 .form-question{
   display: inline-block;

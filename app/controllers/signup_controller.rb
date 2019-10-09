@@ -3,6 +3,7 @@ class SignupController < ApplicationController
   before_action :validates_step2, only: :step3
 
   def index
+    session.clear
   end
 
   def step1
@@ -13,8 +14,11 @@ class SignupController < ApplicationController
     #setp1 入力項目
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
-    session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
+    #メールからの場合、パスワードは入力項目から取得する
+    unless session[:sns_id].present?
+      session[:password] = user_params[:password]
+      session[:password_confirmation] = user_params[:password_confirmation]
+    end
     session[:first_name] = user_params[:first_name]
     session[:last_name] = user_params[:last_name]
     session[:first_name_kana] = user_params[:first_name_kana]
@@ -37,8 +41,12 @@ class SignupController < ApplicationController
       birth_day: session[:birth_day],
       phone_number: "000-0000-0000"
     )
-
-    render '/signup/step1' unless @user.valid?
+    # sns認証からの場合とメールからの場合でエラー時の表示先の分岐
+    if session[:sns_id].present?
+      render '/signup/step1-sns' unless @user.valid?
+    else
+      render '/signup/step1' unless @user.valid?
+    end
   end
 
   def step2
@@ -93,6 +101,13 @@ class SignupController < ApplicationController
     )
     @user.build_address(user_params[:address_attributes])
     if @user.save
+      # sns認証からの場合sns_credentialテーブルにユーザーIDの保存
+      if session[:sns_id].present?
+        SnsCredential.update(user_id: @user.id)
+      end
+      # セッション情報の一時削除
+      session.clear
+      # ログイン用のセッションID取得
       session[:id] = @user.id
       redirect_to done_signup_index_path
     else
@@ -101,6 +116,7 @@ class SignupController < ApplicationController
   end
 
   def done
+    #取得したセッションIDからサインインする
     sign_in User.find(session[:id]) unless user_signed_in?
   end
 

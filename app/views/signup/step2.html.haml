@@ -16,7 +16,7 @@
             .form-group
               = f.label :phone_number, "携帯電話の番号"
               = f.text_field :phone_number, class: 'input-default', placeholder: "携帯電話の番号を入力(000-0000-0000)"
-              = render partial: 'error-messages', locals: {user: @user, column: "phone_number"}
+              = render partial: 'error-messages', locals: {user: @user, column: "phone_number"} if @user.errors.any?
               %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
 
             .form-group
