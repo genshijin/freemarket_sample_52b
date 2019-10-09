@@ -3,6 +3,7 @@
   width: 620px;
   .sellitem_contener{
     border: 1px solid #eee;
+    margin: 0 0 10px 10px;
     display: inline;
     &_image{
       width: 116px;
@@ -24,8 +25,11 @@
       }
     }
   }
+  .file_upload_box{
+    width: 100%;
+  }
   .sell-upload-drop-box.have-item-0.edit_page{
-    width: 491px;
+    width: 100%;
     margin-left: 2%;
   }
 }

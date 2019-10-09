@@ -9,7 +9,6 @@
   = render 'shared/footer'
 = content_for :sell_btn do
   = render 'shared/sell-btn'
-
 .mypage-container
   .content
     %section.content__wrap
@@ -25,8 +24,8 @@
               取引中
           %li
             = link_to completed_mypage_path do
-              売却済み   
-        =render partial:'shared/tab-content-item'
+              売却済み    
+        = render partial: 'shared/tab-content-item', collection: @items, as: "item"
     .pagemove
       %li.pagemove__btn
         =link_to "#" do

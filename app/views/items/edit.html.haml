@@ -9,7 +9,7 @@
           .sell-container__inner
             %h2.main__head
               %b 商品の情報を入力
-            %form.sell-form
+            = form_with model: @item, method: :patch, local: true do |f|
               .sell-upload-box
                 %h3.sell-upload-box__head
                   %b 出品画像
@@ -18,15 +18,12 @@
                 .sell-dropbox-container.clearfix.edit_page
                   .sellitem_contener
                     .sellitem_contener_image
-                      = image_tag "ruffy.jpeg", alt: "", class: "edit_image"
+                      = image_tag "#{@item.image}", alt: "", class: "edit_image"
                     .sell-image-upload
                       = link_to "編集", "#", class: "sell-image-upload-btn"
                       = link_to "削除", "#", class: "sell-image-upload-btn"
-                  .sell-upload-items-container
-                    .sell-upload-items__have-item
-                      %ul
-                  %label
-                    %input.sell-upload-drop-file{style: "display: none;", type: "file"}/
+                  %label.file_upload_box
+                    = f.file_field :image,style: "display: none;",class:'sell-upload-drop-file'
                     .sell-upload-drop-box.have-item-0.edit_page
                       %pre.visible-pc
                         ドラッグアンドドロップ
@@ -40,13 +37,12 @@
                     %b 商品名
                     %span.form-require 必須
                   %div
-                    %input.input-default{placeholder: "商品名（必須 40文字まで）", value: "ルフィのぬいぐるみ"}/
+                    = f.text_field :name,class:'input-default',placeholder: "商品名（必須 40文字まで）", value: "#{@item.name}"
                 .form-group
                   %label
                     %b 商品の説明
                     %span.form-require 必須
-                  %textarea.textarea-default{maxlength: "1000", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", row: "5"}
-                    フーシャ村出身
+                  = f.text_area :comment, maxlength: "1000", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", row: "5", class: "textarea-default"
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 商品の詳細
@@ -59,21 +55,7 @@
                       .select-wrap-exhibit
                         .icon-arrow-bottom
                           %i.fa.fa-angle-down{"aria-hidden": "true"}
-                        %select.select-default
-                          %option{value: ""} ---
-                          %option{value: "1"} レディース
-                          %option{value: "2"} メンズ
-                          %option{value: "3"} ベビー・キッズ
-                          %option{value: "4"} インテリア・住まい・小物
-                          %option{value: "5"} 本・音楽・ゲーム
-                          %option{value: "1328"} おもちゃ・ホビー・グッズ
-                          %option{value: "6"} コスメ・香水・美容
-                          %option{value: "7"} 家電・スマホ・カメラ
-                          %option{value: "8"} スポーツ・レジャー
-                          %option{value: "9"} ハンドメイド
-                          %option{value: "1027"} チケット
-                          %option{value: "1318"} 自動車・オートバイ
-                          %option{value: "10"} その他
+                        = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default', prompt: "--"
                   .form-group
                     %label
                       %b 商品の状態
@@ -81,14 +63,7 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "1"} 新品、未使用
-                        %option{value: "2"} 未使用に近い
-                        %option{value: "3"} 目立った傷や汚れなし
-                        %option{value: "4"} やや傷や汚れあり
-                        %option{value: "5"} 傷や汚れあり
-                        %option{value: "6"} 全体的に状態が悪い
+                      = f.collection_select :state_id, State.all, :id, :name, prompt: "--",class: 'select-default'
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 配送について
@@ -101,10 +76,7 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "2"} 送料込み（出品者負担）
-                        %option{value: "1"} 着払い（購入者負担）
+                      = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name, prompt: "--",class: 'select-default'
                   .form-group
                     %label
                       %b 配送方法
@@ -112,19 +84,13 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "1"} 未定
-                        %option{value: "2"} クロネコヤマト
-                        %option{value: "3"} ゆうパック
-                        %option{value: "4"} ゆうメール
+                      = f.collection_select :shipping_way_id, ShippingWay.all, :id, :name, prompt: "--",class: 'select-default'
                   .form-group
                     %label
                       %b 発送元の地域
                       %span.form-require 必須
                     .select-wrap-exhibit
-                      = form_for '' do |f|
-                        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---", class: '.select-default'
+                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt:"--", class: '.select-default'
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                   .form-group
@@ -134,11 +100,7 @@
                     .select-wrap-exhibit
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      %select.select-default
-                        %option{value: ""} ---
-                        %option{value: "1"} 1〜2日で発送
-                        %option{value: "2"} 2〜3日で発送
-                        %option{value: "2"} 4〜7日で発送
+                      = f.collection_select :shipping_date_id, ShippingDate.all, :id, :name, prompt: "--", class: '.select-default'
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 販売価格(300〜9,999,999)
@@ -153,21 +115,25 @@
                         .clearfix__right.sell-price-input
                           ¥
                           %div
-                            %input.input-price{placeholder: "例）300", value: "5656"}/
+                            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: "#{@item.price}"
                     %li.clearfix
                       .clearfix__left
                         販売手数料(10%)
-                        .clearfix__right -
+                        .clearfix__right 
+                          - fee=@item.price*0.1
+                          #{fee.floor}
                     %li.clearfix.bold
                       .clearfix__left
                         %b 販売利益
                         .clearfix__right
-                          %b -
+                          %b
+                            - profit=@item.price - fee.floor
+                            ¥#{profit.to_s(:delimited)}
               .model{role: "dialog", tabindex: "-1"}
                 .model-inner
               .sell-content.sell-btn-box
-                %button.btn-default.btn-red{type: "submit"} 変更する
+                = f.submit '変更する', class: 'btn-default btn-red'
                 .btn-default.btn-gray
-                  = link_to "キャンセル", "/exhibit/1", class: ""
+                  = link_to "キャンセル", exhibit_path(@item), class: ""
             .overlay
   = render partial: 'shared/footer-exhibit'
