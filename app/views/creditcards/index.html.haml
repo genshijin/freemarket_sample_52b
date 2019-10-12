@@ -1,0 +1,43 @@
+- @page_title = '支払い方法'
+- breadcrumb :card
+
+= content_for :header do
+  = render 'shared/header'
+= content_for :app_banner do
+  = render 'shared/app-banner'
+= content_for :footer do
+  = render 'shared/footer'
+= content_for :sell_btn do
+  = render 'shared/sell-btn'
+
+.mypage-container
+  .content
+    %section.content__wrap
+      %h2.content__title 支払い方法
+      .content__body
+        .content__inner
+          %h3.content__subtitle クレジットカード一覧
+          - unless @card.present?
+            = link_to new_mypage_card_path, class: 'btn-default btn-red add-card__btn' do
+              %i.far.fa-credit-card.add-card__icon
+              クレジットカードを追加する
+          - else
+            .content__credit-card
+              .content__credit-card__list
+                %figure
+                  = image_tag "cards/new/#{@card_src}", size: "#{@logo_size}", alt: @card_brand, id: "card_image"
+                %p.content__credit-card__list--info
+                  -#以下カード情報を表示
+                  = "**** **** **** " + @card_information.last4
+                %p.content__credit-card__list--info
+                  - exp_month = @card_information.exp_month.to_s
+                  - exp_year = @card_information.exp_year.to_s.slice(2,3)
+                  = exp_month + " / " + exp_year
+              = form_with url: mypage_card_path(@card.id), method: :delete, local: true, id: 'charge-form' do |f|
+                = f.hidden_field 'card_id'
+                = f.submit "削除する", {class: "btn-small btn-white-red"}
+        .setting-not-regist
+          = link_to '#' do
+            支払い方法について
+            %i.fa.fa-angle-right
+  = render 'shared/sidebar-mypage'
