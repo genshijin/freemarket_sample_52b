@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
 
-  resources :items, only: [:show,:new,:create,:edit,:create,:update] do
+  resources :items, only: [:show,:new,:create,:edit,:create,:update,:destroy] do
     resources :purchase, only: [:index]
   end
   
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   # マイページ周りの設定
-  resource :mypage, controller: :users, onry: [:edit] do
+  resource :mypage, controller: :users, only: [:edit] do
     collection do
       get :index
       get :logout

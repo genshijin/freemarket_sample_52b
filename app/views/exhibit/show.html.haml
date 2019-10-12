@@ -88,10 +88,10 @@
           = link_to "商品の編集", edit_item_path(@item)
         %p 
           or
-        %button.btn-default.btn-gray{type: "submit"} 
+        %button.btn-default.btn-gray
           = link_to "出品を一旦停止する","#"
-        %button.btn-default.btn-gray{type: "submit"} 
-          = link_to "この商品を削除する","#"
+        %button.js-modal-open.btn-default.btn-gray
+          この商品を削除する
       .item-detail__message
         .message__container
           = render 'items/message'
@@ -103,19 +103,27 @@
               %textarea{name: 'body', class: '.textarea-default'}
               %button{type: 'submit', class: 'btn-bray'}
                 %span コメントする
-          %aside.model.animate
-            .model-inner
-              .model-body
-                .model-head.bold
-                  確認
-                  %p
-                    削除すると２度と復活できません。
-                    %br
-                    削除する代わりに停止することもできます
-                    %br
-                    %br
-                    本当に削除しますか?
-                .clearfix
-                  .model-btn.model-btn-cancel キャンセル
-                  %button{type: 'submit', class: 'modal-btn modal-btn-submit'}
+.modal.js-modal
+  .modal__bg.js-modal-close
+    .modal__content
+      .modal__content__top
+        %b
+          確認
+        %p
+          削除すると２度と復活できません。
+        %p
+          削除する代わりに停止することもできます。
+          %br
+          %br
+          本当に削除しますか?
+      .modal__btn
+        .modal__btn__cancel
+          %button{type: 'button', class: '.js-modal-close'}
+          キャンセル
+        .modal__btn__submit
+          = link_to '削除する', item_path(@item), method: :delete,id: "delete_btn"
+
+      
+
+
                 
