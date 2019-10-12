@@ -10,7 +10,6 @@
     %section.content__wrap
       %h2.main__head.registration 電話番号の確認
       .content__body
-        -# = form_for @user, url: signup_index_path, method: :post, class: 'main__inne registration-form' do |f|
         = form_for @user, url: step3_signup_index_path, method: :get, class: "main__inne registration-form" do |f|
           .signup-content
             .form-group
