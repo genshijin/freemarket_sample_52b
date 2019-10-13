@@ -5,7 +5,7 @@ class PurchaseController < ApplicationController
   before_action :set_address, except: [:pay, :sold]
   before_action :get_payjp_info, only: [:index, :pay]
   before_action :seller_back, only: [:index, :pay]
-  before_action :sold_back, except: [:sold]
+  before_action :sold_back, except: [:sold, :done]
 
   def index
     if @card.present?
@@ -80,9 +80,8 @@ class PurchaseController < ApplicationController
 
   # クレジットカード関連の処理
   def set_card
-    @card = Creditcard.where(user_id: current_user.id).first if Creditcard.where(user_id: current_user.id).present?
+    @card = current_user.creditcard if current_user.creditcard.present?
   end
-
   # 環境ごとのpayjpの秘密鍵取得
   def get_payjp_info
     if Rails.env == 'development'
