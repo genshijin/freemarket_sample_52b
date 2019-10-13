@@ -16,15 +16,9 @@
                   %span.form-require 必須
                 %p 最大10枚までアップロードできます
                 .sell-dropbox-container.clearfix.edit_page#edit_page
-                  .sellitem_contener
-                    .sellitem_contener_image
-                      = image_tag "#{@item.image}", alt: "", class: "edit_image"
-                    .sell-image-upload
-                      = link_to "編集", "#", class: "sell-image-upload-btn"
-                      = link_to "削除", "#", class: "sell-image-upload-btn"
-                  %label.file_upload_box
+                  %label
                     = f.file_field :image,style: "display: none;",class:'sell-upload-drop-file',id:'file_input'
-                    .sell-upload-drop-box.have-item-0.edit_page
+                    .sell-upload-drop-box.have-item-0
                       %pre.visible-pc
                         ドラッグアンドドロップ
                         %br>/
@@ -37,12 +31,12 @@
                     %b 商品名
                     %span.form-require 必須
                   %div
-                    = f.text_field :name,class:'input-default',placeholder: "商品名（必須 40文字まで）", value: "#{@item.name}"
+                    = f.text_field :name,class:'input-default',placeholder: "商品名（必須 40文字まで）", value: ""
                 .form-group
                   %label
                     %b 商品の説明
                     %span.form-require 必須
-                  = f.text_area :comment, maxlength: "1000", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", row: "5", class: "textarea-default"
+                  = f.text_area :comment,class:'textarea-default',placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", row: "5"
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 商品の詳細
@@ -55,7 +49,7 @@
                       .select-wrap-exhibit
                         .icon-arrow-bottom
                           %i.fa.fa-angle-down{"aria-hidden": "true"}
-                        = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default', prompt: "--"
+                        = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default'
                   .form-group
                     %label
                       %b 商品の状態
@@ -79,7 +73,7 @@
                       = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name, prompt: "--",class: 'select-default'
                   .form-group
                     %label
-                      %b 配送方法
+                      %b 発送方法
                       %span.form-require 必須
                     .select-wrap-exhibit
                       .icon-arrow-bottom
@@ -90,7 +84,7 @@
                       %b 発送元の地域
                       %span.form-require 必須
                     .select-wrap-exhibit
-                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt:"--", class: '.select-default'
+                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: '.select-default'
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                   .form-group
@@ -115,7 +109,7 @@
                         .clearfix__right.sell-price-input
                           ¥
                           %div
-                            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: "#{@item.price}"
+                            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: ""
                     %li.clearfix
                       .clearfix__left
                         販売手数料(10%)
