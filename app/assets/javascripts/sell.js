@@ -2,11 +2,8 @@ $(document).on('turbolinks:load', function() {
   $(function(){
 
     function real_price(price){
-      var p_01 = Math.floor(price / 10)
-      var html_01 = `<b class='price_01'>${p_01}</b>`
-      var html_09 = `<b class='price_09'>${price - p_01}</b>`
-      $('#01').append(html_01);
-      $('#09').append(html_09);
+      var HTML = ``
+      
     }
 
 
