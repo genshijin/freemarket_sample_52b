@@ -14,6 +14,13 @@
           %i.far.fa-comment-alt
           %span
             0
-        .item_status
-          出品中
+        - if item.item_status == 0 
+          .item_status.exhibition
+            出品中
+        - elsif item.item_status == 1
+          .item_status.trading
+            発送待ち
+        - else
+          .item_status.completed
+            取引済み
     %i.fa.fa-chevron-right
