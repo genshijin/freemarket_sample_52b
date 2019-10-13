@@ -1,0 +1,13 @@
+@mixin flash($color,$backcoler){
+  background-color: $backcoler;
+  z-index: 3000;
+  padding: 24px 56px;
+  line-height: 1.5;
+  animation: fade-out ease-out 4.5s;
+  animation-fill-mode: forwards;
+  opacity: 1;
+  transition: all ease-out .3s;
+  color: $color;
+  text-align: center;
+  cursor: pointer;
+}
