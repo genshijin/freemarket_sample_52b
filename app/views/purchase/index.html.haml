@@ -9,7 +9,7 @@
       %section.buy-content.buy-item
         .buy-content__inner
           %h3.buy-item__image
-            = image_tag "#{@item.image}", alt: "", class: "is-higher-height.lazyloaded"
+            = image_tag "#{@item.image}", alt: "", class: "purchase-img", data: "#{@item.id}"
           %p.buy-item__name.bold
             = @item.name
           .buy-form
