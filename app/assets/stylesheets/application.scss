@@ -3,8 +3,8 @@
 
 @import "reset";
 
-@import "config/btn";
 @import "config/color";
+@import "config/btn";
 
 @import "mixin/mixin";
 @import "mixin/media";
@@ -45,6 +45,7 @@
 @import "page/users/signup-signin";
 @import "page/exhibit/exhibit";
 @import "page/purchase/purchase";
+@import "page/purchase/done";
 @import "page/mypage/users";
 @import "page/mypage/tab-content";
 @import "page/mypage/tab-content-item";

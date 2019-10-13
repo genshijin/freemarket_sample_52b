@@ -14,19 +14,20 @@ class User < ApplicationRecord
   has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "saler_id", class_name: "Item"
 
   reg_email = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  reg_only_zenkaku = /\A[ぁ-んァ-ン一-龥]/
   reg_only_kana = /\A[ァ-ヴ]+\z/
   reg_phone_number = /\A[0-9-]{,14}\z/
-  reg_alphanumeric_7characters = /\A[a-zA-Z0-9]+\z/
+  reg_alphanumeric_7characters = /\A[ -~]+\z/
 
   # step1
   validates :nickname, presence: true
   validates :email, uniqueness: true, format: { with: reg_email }
   validates :password, format: { with: reg_alphanumeric_7characters, message: '英数字で設定してください' }, length: { minimum: 7, maximum: 128 }
   validates :password_confirmation, presence: true
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :first_name_kana, presence: true, format: { with: reg_only_kana, message: 'は全角カタカナで入力ください' }
-  validates :last_name_kana, presence: true, format: { with: reg_only_kana, message: 'は全角カタカナで入力ください' }
+  validates :first_name, presence: true, format: { with: reg_only_zenkaku, message: 'は全角文字でご入力ください' }
+  validates :last_name, presence: true, format: { with: reg_only_zenkaku, message: 'は全角文字でご入力ください' }
+  validates :first_name_kana, presence: true, format: { with: reg_only_kana, message: 'は全角カタカナでご入力ください' }
+  validates :last_name_kana, presence: true, format: { with: reg_only_kana, message: 'は全角カタカナでご入力ください' }
   validates :birth_year, presence: { message: 'を選択してください'}
   validates :birth_month, presence: { message: 'を選択してください'}
   validates :birth_day, presence: { message: 'を選択してください'}

@@ -10,7 +10,6 @@
     %section.content__wrap
       %h2.main__head.registration お届け先住所入力
       .content__body
-        -# = form_for @user, url: step4_signup_index_path, method: :get, class: 'main__inne registration-form' do |f|
         = form_for @user, url: signup_index_path, class: 'main__inne registration-form' do |f|
           .signup-content
             = f.fields_for :address do |a|
