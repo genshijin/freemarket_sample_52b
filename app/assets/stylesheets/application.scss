@@ -11,6 +11,7 @@
 @import "mixin/font-style";
 @import "mixin/vendor_prefix";
 @import "mixin/background";
+@import "mixin/flash";
 
 @import "modules/general";
 @import "modules/default";
@@ -33,6 +34,7 @@
 @import "page/item/itembox";
 @import "page/item/item-show";
 @import "page/item/item-edit";
+@import "page/item/modal";
 
 @import "page/mypage/sidebar-mypage";
 
@@ -54,3 +56,5 @@
 @import "page/card/card";
 
 @import "modules/sold.scss";
+@import "flash"
+

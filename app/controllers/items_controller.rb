@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:show, :update, :edit]
+  before_action :set_item, only: [:show, :update, :edit, :destroy]
 
   def index
     @items= Item.order("id DESC")   
@@ -32,6 +32,14 @@ class ItemsController < ApplicationController
   def update
     @item.update(item_params)
     redirect_to controller: :exhibit, action: :show
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to exhibition_mypage_path, notice: '商品を削除しました'
+    else  
+      redirect_to exhibit_path(@item), alert: '商品を削除できませんでした'
+    end
   end
 
 
