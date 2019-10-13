@@ -6,10 +6,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'items#index'
 
-  resources :items, only: [:show,:new,:create,:edit,:create,:update] do
-    resources :purchase, only: [:index]
+  resources :items, except: [:index] do
+    resources :purchase, only: [:index] do
+      collection do
+        post 'pay', to: 'purchase#pay'
+        get 'done', to: 'purchase#done'
+        get 'sold', to: 'purchase#sold'
+      end
+    end
   end
-  
+
   resources :exhibit, only: [:index,:show]
 
   #新規登録周りの設定
@@ -24,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   # マイページ周りの設定
-  resource :mypage, controller: :users, onry: [:edit] do
+  resource :mypage, controller: :users, only: [:edit] do
     collection do
       get :index
       get :logout
@@ -32,7 +38,7 @@ Rails.application.routes.draw do
       get :trading
       get :completed
     end
-    resources :cards, only: [:index, :new]
+    resources :cards, controller: :creditcards, only: [:index, :new, :create, :destroy]
     resources :profile ,controller: :user_profiles, only: [:index]
   end
 end
