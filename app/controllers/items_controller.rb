@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to controller: :users, action: :exhibition
+    redirect_to exhibition_mypage_path
   end
 
 
