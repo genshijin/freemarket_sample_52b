@@ -35,8 +35,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
-    redirect_to exhibition_mypage_path
+    if @item.destroy
+      redirect_to exhibition_mypage_path, notice: '商品を削除しました'
+    else  
+      redirect_to exhibit_path(@item), alert: '商品を削除できませんでした'
+    end
   end
 
 
