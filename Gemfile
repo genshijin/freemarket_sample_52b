@@ -92,4 +92,3 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem "omniauth-rails_csrf_protection"
 gem 'ancestry'
-gem 'jquery-turbolinks', '2.1.0'
