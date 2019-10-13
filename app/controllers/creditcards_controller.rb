@@ -35,7 +35,6 @@ class CreditcardsController < ApplicationController
   end
 
   def new
-    card = Creditcard.where(user_id: current_user.id).first
     redirect_to action: "index" if @card.present?
   end
 
@@ -71,11 +70,7 @@ class CreditcardsController < ApplicationController
   private
 
   def set_card
-    @card = Creditcard.where(user_id: current_user.id).first if Creditcard.where(user_id: current_user.id).present?
-  end
-
-  def get_user_params
-    @user = current_user
+    @card = current_user.creditcard if current_user.creditcard.present?
   end
 
   def get_payjp_info
