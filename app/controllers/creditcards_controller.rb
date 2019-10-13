@@ -1,16 +1,13 @@
-class PurchaseController < ApplicationController
-  require 'payjp'
-  before_action :set_item
-  before_action :set_card, except: [:done, :sold]
-  before_action :set_address, except: [:pay, :sold]
-  before_action :get_payjp_info, only: [:index, :pay]
-  before_action :seller_back, only: [:index, :pay]
-  before_action :sold_back, except: [:sold]
+class CreditcardsController < ApplicationController
+  require "payjp"
+  before_action :set_card
+  before_action :get_payjp_info, only: [:index, :new, :create, :destroy]
 
   def index
     if @card.present?
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
+
       # 登録しているカード会社のブランドアイコンを表示するためのコード ---------
       @card_brand = @card_information.brand
       case @card_brand
@@ -37,53 +34,50 @@ class PurchaseController < ApplicationController
     end
   end
 
-  def pay
-    Payjp::Charge.create(
-      amount: @item.price,
-      customer: @card.customer_id,
-      currency: 'jpy'
-    )
-    if @item.update(buyer_id: current_user.id)
-      redirect_to action: "done"
+  def new
+    card = Creditcard.where(user_id: current_user.id).first
+    redirect_to action: "index" if @card.present?
+  end
+
+  def create
+    if params['payjp-token'].blank?
+      redirect_to action: "new"
     else
-      flash[:alert] = '購入に失敗しました。'
-      redirect_to item_path(@item.id)
+      customer = Payjp::Customer.create(
+        email: current_user.email,
+        card: params['payjp-token'],
+        metadata: {user_id: current_user.id}
+      )
+      @card = Creditcard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
+        redirect_to action: "index"
+      else
+        redirect_to action: "create"
+      end
     end
   end
 
-  def done
-  end
-
-  def sold
+  def destroy
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    customer.delete
+    if @card.destroy
+      redirect_to action: "index", notice: "削除しました"
+    else
+      flash.now[:alert] = "削除できませんでした"
+      render action: "index"
+    end
   end
 
   private
-  # 商品のセッター
-  def set_item
-    @item = Item.find(params[:item_id])
-  end
 
-  # 発送先情報のセッター
-  def set_address
-    @buyer_address = Address.where('id = ?', current_user.id)
-  end
-
-  # 出品者がアクセスした場合、商品ページに戻る
-  def seller_back
-    redirect_to item_path(@item.id) if @item.seller_id == current_user.id
-  end
-
-  # 購入者がいる場合、売り切れのビューへ飛ぶ
-  def sold_back
-    redirect_to action: "sold" if @item.buyer_id != nil
-  end
-
-  # クレジットカード関連の処理
   def set_card
     @card = Creditcard.where(user_id: current_user.id).first if Creditcard.where(user_id: current_user.id).present?
   end
 
-  # 環境ごとのpayjpの秘密鍵取得
+  def get_user_params
+    @user = current_user
+  end
+
   def get_payjp_info
     if Rails.env == 'development'
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -91,6 +85,4 @@ class PurchaseController < ApplicationController
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     end
   end
-
 end
-
