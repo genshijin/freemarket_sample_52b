@@ -18,10 +18,10 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @price = params[:keyword]
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.json
+    # end
   end
 
   def create

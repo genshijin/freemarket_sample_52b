@@ -1,32 +1,39 @@
-$(function(){
+$(document).on('turbolinks:load', function() {
+  $(function(){
 
-  function real_price(price){
-    var p_01 = Math.floor(price / 10)
-    var html_01 = `<b class='price_01'>${p_01}</b>`
-    var html_09 = `<b class='price_09'>${price - p_01}</b>`
-    $('.clearfix__right 01').append(html_01);
-    $('.clearfix__right 09').append(html_09);
-  }
+    function add_html(blobUrl){
+      var HTML = `
+      <div class='sellitem_contener_image'>
+        <img class="edit_image" src='${blobUrl}' id='image_tag'></img>
+      </div>
+      <div class='sell-image-upload'>
+        <a class='sell-image-upload-btn'>編集</a>
+        <a class='sell-image-upload-btn'>削除</a>
+      </div>`
+      $('#img').append(HTML);
+      
+    }
 
-  $('.input-price').on('keyup', function(e){
-    
-    var input = $('.input-price').val();
-    
-    $.ajax({
-     type: 'GET',
-     url: '/items/new',
-     data: { keyword: input },
-     dataType: 'json'
-    })
-    .done(function(price) {
-      $('.price_01').empty();
-      $('.price_09').empty();
-      if (Number(price) >= 100) {
-        real_price(Number(price));
+
+    $('.input-price').on('keyup', function(e){
+      
+      $('#01').empty();
+      $('#09').empty();
+      var input = $('.input-price').val();
+      var input_01 = Math.ceil(input * 0.1);
+      var input_09 = input - input_01;
+      if(input_01){
+        $('#01').text('¥' + input_01);
+        $('#09').text('¥' + input_09);
       }
     })
-    // .fail(function() {
-    //   alert('失敗しました');
-    // })
-  })
+
+    $('#file_input').on('change', function(e){
+      var file = e.target.files[0];
+      var blobUrl = window.URL.createObjectURL(file);
+      $('#img').empty();
+      add_html(blobUrl);
+    })
+
+  });
 });

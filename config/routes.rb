@@ -7,12 +7,16 @@ Rails.application.routes.draw do
   root 'items#index'
 
   resources :items, only: [:show,:new,:create,:edit,:create,:update,:destroy] do
-    resources :purchase, only: [:index]
-    collection do
-      get :search
+    resources :purchase, only: [:index] do
+      collection do
+        post 'pay', to: 'purchase#pay'
+        get 'done', to: 'purchase#done'
+        get 'sold', to: 'purchase#sold'
+        get :search
+      end
     end
   end
-  
+
   resources :exhibit, only: [:index,:show]
 
   #新規登録周りの設定
@@ -35,7 +39,7 @@ Rails.application.routes.draw do
       get :trading
       get :completed
     end
-    resources :cards, only: [:index, :new]
+    resources :cards, controller: :creditcards, only: [:index, :new, :create, :destroy]
     resources :profile ,controller: :user_profiles, only: [:index]
   end
 end

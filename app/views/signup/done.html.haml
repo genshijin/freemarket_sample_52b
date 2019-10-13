@@ -12,8 +12,9 @@
       .content__body
         .signup-content
           %p.main__finish-text
-            &nbsp;ありがとうございます。
+            ありがとうございます。
             %br
             会員登録が完了しました。
             %br
-          = link_to "メルカリをはじめる", mypage_path, class: "btn-default btn-red"
+          = link_to "メルカリをはじめる", mypage_path, class: "btn-default btn-red start-btn"
+          = link_to "クレジットカードを登録する", new_mypage_card_path, class: "btn-default btn-red start-btn"
