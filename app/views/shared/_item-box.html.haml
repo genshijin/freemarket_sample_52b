@@ -1,6 +1,9 @@
 .itembox
   = link_to item_path(item.id),data: {"turbolinks": false} do
-    %figure.itembox__photo
+    %figure.itembox__photo{"data-item-id": "#{item.id}"}
+      - if item.buyer_id.present? 
+        .item-sold-out
+          %div SOLD
       = image_tag "#{item.image}"
     .itembox__body
       %h3.itembox__name
@@ -11,3 +14,5 @@
         %p.itembox__like
           %i.far.fa-heart
           3
+    
+      

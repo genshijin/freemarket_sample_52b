@@ -3,14 +3,15 @@
 
 @import "reset";
 
-@import "config/btn";
 @import "config/color";
+@import "config/btn";
 
 @import "mixin/mixin";
 @import "mixin/media";
 @import "mixin/font-style";
 @import "mixin/vendor_prefix";
 @import "mixin/background";
+@import "mixin/flash";
 
 @import "modules/general";
 @import "modules/default";
@@ -33,6 +34,7 @@
 @import "page/item/itembox";
 @import "page/item/item-show";
 @import "page/item/item-edit";
+@import "page/item/modal";
 
 @import "page/mypage/sidebar-mypage";
 
@@ -43,6 +45,7 @@
 @import "page/users/signup-signin";
 @import "page/exhibit/exhibit";
 @import "page/purchase/purchase";
+@import "page/purchase/done";
 @import "page/mypage/users";
 @import "page/mypage/tab-content";
 @import "page/mypage/tab-content-item";
@@ -52,3 +55,7 @@
 @import "page/mypage/myitem_infomation";
 
 @import "page/card/card";
+
+@import "modules/sold.scss";
+@import "flash"
+

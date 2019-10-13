@@ -78,12 +78,6 @@ class SignupController < ApplicationController
     @user.build_address
   end
 
-  def step4
-    session[:address_attributes_after_step3] = user_params[:address_attributes]
-    @user = User.new
-    @user.build_address
-  end
-
   def create
     @user = User.new(
       nickname: session[:nickname],

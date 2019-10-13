@@ -1,3 +1,22 @@
+.content{
+  &__credit-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+
+    &__list{
+      &--info{
+        margin: 8px 0 0;
+
+        &:last-child{
+          margin: 6px 0 0;
+        }
+      }
+    }
+  }
+}
+
 .add-card{
   &__btn{
     margin: 24px 0 30px;

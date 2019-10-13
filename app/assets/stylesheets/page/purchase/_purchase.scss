@@ -3,20 +3,25 @@
   flex-wrap: wrap;
 }
 
-.buy-item img {
-  width: 64px;
-}
-
-.buy-item img.is-higher-height {
-  width: 64px;
-}
-
 .buy-item{
   text-align: center;
+
+  & img{
+    width: 64px;
+
+    &.is-higher-height {
+      width: 64px;
+    }
+  }
+
   &__name {
     width: calc(100% - 80px);
     margin: 0 0 0 16px;
     text-align: left;
+  }
+
+  & .btn-red {
+    margin: 8px 0 0;
   }
 }
 
@@ -25,8 +30,10 @@
   display: inline;
 }
 
-.buy-price__en {
-  display: inline;
+.buy-price{
+  &__en {
+    display: inline;
+  }
 }
 
 .buy-form {
@@ -35,40 +42,34 @@
 
 .buy-you-pay {
   font-size: 16px;
-}
 
-@media screen and (min-width: 768px) {
-  .buy-you-pay {
-      font-size: 18px;
+  @include tb{
+    font-size: 18px;
   }
-} 
-
-.buy-item .btn-red {
-  margin: 8px 0 0;
-}
-
-.buy-content:last-of-type {
-  padding: 24px 12.5% 40px;
-}
-
-.buy-content:first-of-type{
-  margin: 0;
 }
 
 .buy-content{
   margin: 40px;
   padding: 24px 12.5% 0;
   border-top: 1px solid #f5f5f5;
+
+  &:first-of-type{
+    margin: 0;
+  }
+
+  &:last-of-type{
+    padding: 24px 12.5% 40px;
+  }
+
   &__inner{
     max-width: 320px;
     margin: 0 auto;
-  }
-}
 
-.buy-price__including-postage .item-shipping-fee{
-  margin: 0 0 0 8px;
-  font-size: 14px;
-  font-weight: 400px;
+    &>figure{
+      margin-left: 0;
+      margin-top: 0;
+    }
+  }
 }
 
 .item-shipping-fee{
@@ -77,14 +78,14 @@
 
 .buy-accordion{
   margin: 16px 0 0;
-}
 
-.buy-accordion.not-have{
-  background: #ccc;
-}
+  &.not-have{
+    background: #ccc;
 
-.buy-accordion.not-have .accordion-toggle{
-  padding: 16px;
+    & .accordion-toggle{
+      padding: 16px;
+    }
+  }
 }
 
 .accordion-toggle{
@@ -95,46 +96,49 @@
   display: table;
   border-collapse: collape;
   width: 100%;
+
   &__total{
     display: table-cell;
     padding: 16px 0;
     text-align: right;
+
+    &:first-child{
+      text-align: left;
+      width: 100%;
+    }
+
     span{
       font-size: 28px;
       font-weight: bold;
-    }    
+    }
   }
   &__including-postage {
     margin: 16px 0 0;
     font-size: 22px;
+
+    & .item-shipping-fee{
+      margin: 0 0 0 8px;
+      font-size: 14px;
+      font-weight: 400px;
+    }
   }
 }
 
-.buy-price__total:first-child{
-  text-align: left;
-  width: 100%;
-}
-
-.buy-content__inner>figure{
-  margin-left: 0;
-  margin-top: 0;
-}
-
-.buy-user-info h3{
-  font-size: 14px;
-  margin: 40px 0 0;
-  font-weight: bold;
-}
-
-.buy-user-info h3:first-child{
-  margin: 0;
-}
-
-.buy-user-info address{
-  display: block;
-}
-
 .buy-user-info{
+  & h3{
+    font-size: 14px;
+    margin: 40px 0 0;
+    font-weight: bold;
+
+    &:first-child{
+      margin: 0;
+    }
+  }
+
+  & address{
+    display: block;
+  }
+
   &__text{
     margin: 8px 0 0;
     font-size: 14px;
@@ -150,3 +154,14 @@
   font-size: 14px;
 }
 
+// 購入するボタンのCSS上書き
+#payjp_checkout_box
+input[type=button]{
+  border: initial !important;
+  background-image: initial !important;
+  background-color: $mercari-red !important;
+  margin: 20px 0 0 !important;
+  padding: 15px 130px !important;
+  font-size: 15px !important;
+  font-weight: bold;
+}

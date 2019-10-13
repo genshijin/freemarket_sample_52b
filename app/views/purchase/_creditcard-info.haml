@@ -1,0 +1,23 @@
+.buy-content__inner
+  %h3 支払い方法
+  - if @card_information.present?
+    -#以下カード情報を表示
+    .content__credit-card
+      .content__credit-card__list
+        %figure
+          = image_tag "cards/new/#{@card_src}", size: "#{@logo_size}", alt: @card_brand, id: "card_image"
+        %p.content__credit-card__list--info
+          -#以下カード情報を表示
+          = "**** **** **** " + @card_information.last4
+        %p.content__credit-card__list--info
+          - exp_month = @card_information.exp_month.to_s
+          - exp_year = @card_information.exp_year.to_s.slice(2,3)
+          = exp_month + " / " + exp_year
+      = link_to new_mypage_card_path, class: 'buy-user-info__fix' do
+        %span.change 変更する
+        %i.fa.fa-angle-right
+  - else
+    %br /
+    = link_to new_mypage_card_path, class: 'buy-user-info__fix' do
+      %span.change 変更する
+      %i.fa.fa-angle-right

@@ -17,6 +17,9 @@
         .sell-item__photo
           .sell-item__photo__all
             .sell-item__photo__main
+              - if @item.buyer_id.present? 
+                .item-sold-out-big
+                  %div SOLD
               = image_tag "#{@item.image}", alt: "", id: "translate-img"
             = render partial:'items/item-photo', locals:{ image: @images}
         .sell-item__price-box.display-none
@@ -89,8 +92,12 @@
             = @item.price
           %span.sell-item__tax  (税込)
           %span.sell-item__shipping-fee 送料込み
-        = link_to item_purchase_index_path(@item.id), class: "item-buy__btn" do
-          購入画面に進む
+        - if @item.buyer_id.present? 
+          .btn-disabled
+            売り切れました( ・∇・)
+        - else
+          = link_to item_purchase_index_path(@item.id), class: "item-buy__btn",data: {"turbolinks": false} do
+            購入画面に進む
       .item-description
         %p.item-description__inner
           = @item.comment

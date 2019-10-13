@@ -1,0 +1,15 @@
+.buy-content__inner
+  %h3 配送先
+  %address.buy-user-info__text
+    = "〒#{@buyer_address.first.postal_code}"
+    %br/
+    = @buyer_address[0].prefecture.name
+    = @buyer_address.first.city
+    = @buyer_address.first.address
+    %br/
+    = current_user.first_name
+    = current_user.last_name
+  %p.buy-user-info__text
+  %a.buy-user-info__fix{href: "#"}
+    %span.change 変更する
+    %i.fa.fa-angle-right
