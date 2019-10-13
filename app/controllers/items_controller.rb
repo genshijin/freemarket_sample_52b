@@ -1,8 +1,12 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :update, :edit, :destroy]
+  before_action :search
 
   def index
+    @q = Item.ransack(params[:a])
+    @search_items = @q.result(distinct: true)
+
     @items= Item.order("id DESC")   
   end
 
@@ -42,6 +46,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @q = Item.ransack(params[:a])
+    @search_items = @q.result(distinct: true)
+  end
 
   private
 
@@ -52,4 +60,5 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
 end

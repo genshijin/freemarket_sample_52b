@@ -153,7 +153,7 @@
   .items__user-profile
     %section.items-box__container
       %h2.items-box__head
-        = link_to 'ほげ太さんのその他の出品', '#'
+        = link_to "#{@seller.first.nickname}さんのその他の出品", '#'
       .item__content
         - for i in 1..6
           = render 'shared/relational.item', locals: {item: @item}

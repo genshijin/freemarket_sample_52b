@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :search
+
   def index
   end
 
@@ -16,5 +18,10 @@ class UsersController < ApplicationController
   end
 
   def completed
+  end
+
+  def search
+    @q = Item.ransack(params[:a])
+    @search_items = @q.result(distinct: true)
   end
 end

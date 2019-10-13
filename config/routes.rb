@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show,:new,:create,:edit,:create,:update,:destroy] do
     resources :purchase, only: [:index]
+    collection do
+      get :search
+    end
   end
   
   resources :exhibit, only: [:index,:show]
