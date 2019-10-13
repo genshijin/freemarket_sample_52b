@@ -1,5 +1,5 @@
 .tab-contents
-  = link_to exhibit_path(item), class: 'mypage-tab__item' do
+  = link_to exhibit_path(item),data: {"turbolinks": false}, class: 'mypage-tab__item' do
     %figure.mypage-tab__item__icon
       = image_tag item.image_url,class: "mypage-tab__item__icon__mercari",alt: ""
     .mypage-tab__item__body
