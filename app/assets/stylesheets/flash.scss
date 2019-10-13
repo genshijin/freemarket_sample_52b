@@ -1,0 +1,9 @@
+.notifications {
+  width:100%;
+  .notice {
+    @include flash(#468847,#dff0d8);
+  }
+  .alert {
+    @include flash(white,orangered);
+  }
+}
