@@ -39,14 +39,13 @@ class CreditcardsController < ApplicationController
     redirect_to action: "index" if @card.present?
   end
 
-  def create #PayjpとCardのデータベースを作成
+  def create
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
-      # トークンが正常に発行されていたら、顧客情報をPAY.JPに登録します。
       customer = Payjp::Customer.create(
         email: current_user.email,
-        card: params['payjp-token'], # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
+        card: params['payjp-token'],
         metadata: {user_id: current_user.id}
       )
       @card = Creditcard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
@@ -58,13 +57,14 @@ class CreditcardsController < ApplicationController
     end
   end
 
-  def destroy #PayjpとCardのデータベースを削除
+  def destroy
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     if @card.destroy
-      redirect_to action: "index"
-    else #削除に失敗した時にアラートを表示します。
-      redirect_to action: "index", alert: "削除できませんでした"
+      redirect_to action: "index", notice: "削除しました"
+    else
+      flash.now[:alert] = "削除できませんでした"
+      render action: "index"
     end
   end
 

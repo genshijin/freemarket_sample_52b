@@ -34,8 +34,9 @@ crumb :logout do
 end
 
 # 商品ページ
-crumb :items do
-  link "商品詳細", item_path(1)
+crumb :items do |item|
+  item = Item.find_by(id: params[:id])
+  link item.name
   parent :root
 end
 
