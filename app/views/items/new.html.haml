@@ -16,12 +16,7 @@
                   %span.form-require 必須
                 %p 最大10枚までアップロードできます
                 .sell-dropbox-container.clearfix.edit_page#edit_page
-                  .sellitem_contener
-                    .sellitem_contener_image
-                      = image_tag "#{@item.image}", alt: "", class: "edit_image"
-                    .sell-image-upload
-                      = link_to "編集", "#", class: "sell-image-upload-btn"
-                      = link_to "削除", "#", class: "sell-image-upload-btn"
+                  .sellitem_contener#img
                   %label.file_upload_box
                     = f.file_field :image,style: "display: none;",class:'sell-upload-drop-file',id:'file_input'
                     .sell-upload-drop-box.have-item-0.edit_page
