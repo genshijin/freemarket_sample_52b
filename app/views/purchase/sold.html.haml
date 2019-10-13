@@ -1,0 +1,16 @@
+- @page_title = 'Sold Out'
+
+= content_for :header do
+  = render 'shared/header-exhibit'
+= content_for :footer do
+  = render 'shared/footer-exhibit'
+
+.main__container
+  .content
+    %section.content__wrap
+      %h2.main__head.registration 商品は既に売り切れています。
+      .content__body.sold
+        .sold-item__back-link
+          = link_to item_path(@item.id) do
+            %span.change 商品ページへ戻る
+            %i.fa.fa-angle-right

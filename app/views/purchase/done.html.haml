@@ -1,0 +1,47 @@
+- @page_title = '購入完了'
+
+= content_for :header do
+  = render 'shared/header-exhibit'
+= content_for :footer do
+  = render 'shared/footer-exhibit'
+
+.main__container
+  .content
+    %section.content__wrap
+      .buy-message
+        %h3
+          %i.far.fa-clock
+          発送をお待ち下さい
+        %p 出品者からの発送通知をお待ち下さい
+
+      %h2.main__head.registration 購入完了しました
+      .content__body.buy
+        .buy-item__content
+          .buy-item__image
+            = image_tag "#{@item.image}", alt: ""
+            %p.buy-item__name
+              = @item.name
+
+          .buy-item__money
+            %span.buy-item__money--en ¥
+            %span.buy-item__money--price
+              = @item.price
+            %span.buy-item__money--tax（税込）
+            %span.buy-item__money--shipping 送料込み
+
+          .buy-item__buyer-address
+            %h3 配送先
+            %address.buy-user-info__text
+              = "〒#{@buyer_address.first.postal_code}"
+              %br/
+              = @buyer_address[0].prefecture.name
+              = @buyer_address.first.city
+              = @buyer_address.first.address
+              %br/
+              = current_user.first_name
+              = current_user.last_name
+
+          .buy-item__back-link
+            = link_to item_path(@item.id) do
+              %span.change 商品ページへ戻る
+              %i.fa.fa-angle-right
