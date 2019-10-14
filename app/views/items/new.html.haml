@@ -53,7 +53,7 @@
                       .select-wrap-exhibit
                         .icon-arrow-bottom
                           %i.fa.fa-angle-down{"aria-hidden": "true"}
-                        = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default'
+                        = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default', prompt: "--"
                       = render partial: 'shared/item_error_messages', locals: {item: @item, column: "category"}
                   .form-group
                     %label
