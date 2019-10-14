@@ -10,14 +10,14 @@ class UsersController < ApplicationController
   end
 
   def exhibition
-    @items=Item.where(seller:current_user[:id],item_status:0)
+    @items=Item.where(seller:current_user[:id],item_status:"exhibition")
   end
 
   def trading
-    @items=Item.where(seller:current_user[:id],item_status:1)
+    @items=Item.where(seller:current_user[:id],item_status:"trading")
   end
 
   def completed
-    @items=Item.where(seller_id:current_user[:id],item_status:2)
+    @items=Item.where(seller_id:current_user[:id],item_status:"completed")
   end
 end

@@ -14,10 +14,10 @@
           %i.far.fa-comment-alt
           %span
             0
-        - if item.item_status == 0 
+        - if item.item_status == "exhibition" 
           .item_status.exhibition
             出品中
-        - elsif item.item_status == 1
+        - elsif item.item_status == "trading"
           .item_status.trading
             発送待ち
         - else

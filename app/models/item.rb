@@ -13,6 +13,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_burden
   belongs_to_active_hash :shipping_way
   belongs_to_active_hash :prefecture
+  
+  enum item_status:{exhibition: 0,trading:1,completed:2,stopping:3}
 
   validate :add_error_sample
  
