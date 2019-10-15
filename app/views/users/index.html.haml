@@ -52,11 +52,17 @@
           %input#trade{name: "tabs-item", type: "radio"}/
           %label.tabs__item{for: "trade"} 過去の取引
           #trading_content.tab_content
-            .not-item
-              %li.not-item__content
-                取引中のアイテムがありません
+            - @items = @item.where(item_status:"trading")
+            - if @items.count > 0
+              = render partial: 'shared/tab-content-item', collection: @items, as: "item"
+            - else
+              - comment="取引中のアイテムがありません"
+              = render partial: 'shared/tab_not_item' ,locals: {comment:comment}
           #trade_content.tab_content
-            .not-item
-              %li.not-item__content
-                過去に取引した商品はありません
+            - @items = @item.where(item_status:"completed")
+            - if @items.count > 0
+              = render partial: 'shared/tab-content-item', collection: @items, as: "item"
+            - else
+              - comment="過去に取引した商品はありません"
+              = render partial: 'shared/tab_not_item' ,locals: {comment:comment}
   = render 'shared/sidebar-mypage'

@@ -1,5 +1,5 @@
 .tab-contents
-  = link_to exhibit_path(item), class: 'mypage-tab__item' do
+  = link_to exhibit_path(item),data: {"turbolinks": false}, class: 'mypage-tab__item' do
     %figure.mypage-tab__item__icon
       = image_tag item.image_url,class: "mypage-tab__item__icon__mercari",alt: ""
     .mypage-tab__item__body
@@ -14,6 +14,13 @@
           %i.far.fa-comment-alt
           %span
             0
-        .item_status
-          出品中
+        - if item.item_status == "exhibition" 
+          .item_status.exhibition
+            出品中
+        - elsif item.item_status == "trading"
+          .item_status.trading
+            発送待ち
+        - else
+          .item_status.completed
+            取引済み
     %i.fa.fa-chevron-right

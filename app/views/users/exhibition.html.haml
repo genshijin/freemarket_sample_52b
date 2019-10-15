@@ -27,7 +27,11 @@
           %li
             = link_to completed_mypage_path do
               売却済み    
-        = render partial: 'shared/tab-content-item', collection: @items, as: "item"
+        - if @items.count > 0
+          = render partial: 'shared/tab-content-item', collection: @items, as: "item"
+        - else
+          - comment="出品中の商品がありません"
+          = render partial: 'shared/tab_not_item' ,locals: {comment:comment} 
     .pagemove
       %li.pagemove__btn
         =link_to "#" do

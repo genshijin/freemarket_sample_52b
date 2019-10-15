@@ -26,9 +26,11 @@
           %li.active
             = link_to completed_mypage_path do
               売却済み   
-        .not-item
-          %li.not-item__content
-            売却済みの商品がありません
+        - if @items.count > 0
+          = render partial: 'shared/tab-content-item', collection: @items, as: "item"
+        - else
+          - comment="売却済みの商品がありません"
+          = render partial: 'shared/tab_not_item' ,locals: {comment:comment}  
     .pagemove
       %li.pagemove__btn
         =link_to "#" do

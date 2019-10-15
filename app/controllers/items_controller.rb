@@ -14,16 +14,15 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @price = params[:keyword]
-    # respond_to do |format|
-    #   format.html
-    #   format.json
-    # end
   end
 
   def create
-    itemf = Item.new(item_params)
-    itemf.save
-    redirect_to action: :index
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path,notice: '商品を出品しました'
+    else
+      render :new
+    end
   end
 
   def edit
