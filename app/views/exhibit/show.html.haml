@@ -9,7 +9,7 @@
   = render 'shared/app-banner'
 = content_for :footer do
   = render 'shared/footer'
-
+ 
 .item-box__container
   %main.main
     .main__container__edit-item-box
@@ -20,6 +20,9 @@
           .sell-item__photo
             .sell-item__photo__all
               .sell-item__photo__main
+                - if @item.buyer_id.present? 
+                  .item-sold-out-big
+                    %div SOLD
                 = image_tag @item.image_url, alt: "", id: "translate-img"
               = render partial:'items/item-photo', locals:{ image: @images}
           %table.sell-item__detail-table
@@ -57,6 +60,10 @@
               %tr
                 %th ブランド
                 %td
+                  = link_to "ブランド名"
+              %tr
+                %th 商品のサイズ
+                %td FREE
               %tr
                 %th 商品の状態
                 %td 
@@ -72,7 +79,7 @@
               %tr
                 %th 配送元地域
                 %td
-                  = @item.prefecture.name
+                  = link_to "#{@item.prefecture.name}"
               %tr
                 %th 発送日の目安
                 %td 
@@ -85,15 +92,16 @@
         .item-description
           %p.item-description__inner{style: "font-size: 18px"}
             =@item.comment
-      .item-change__box
-        %button.btn-default.btn-red{type: "submit"} 
-          = link_to "商品の編集", edit_item_path(@item)
-        %p 
-          or
-        %button.btn-default.btn-gray
-          = link_to "出品を一旦停止する","#"
-        %button.js-modal-open.btn-default.btn-gray
-          この商品を削除する
+      -if @item.item_status == "exhibition" 
+        .item-change__box
+          %button.btn-default.btn-red{type: "submit"} 
+            = link_to "商品の編集", edit_item_path(@item)
+          %p 
+            or
+          %button.btn-default.btn-gray
+            = link_to "出品を一旦停止する","#"
+          %button.js-modal-open.btn-default.btn-gray
+            この商品を削除する
       .item-detail__message
         .message__container
           = render 'items/message'
@@ -103,8 +111,12 @@
               %p
                 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
               %textarea{name: 'body', class: '.textarea-default'}
-              %button{type: 'submit', class: 'btn-bray'}
-                %span コメントする
+              -if @item.item_status == "exhibition"
+                %button{type: 'submit', class: 'btn-bray'}
+                  %span コメントする
+              - else
+                %button{type: 'submit', class: 'btn-bray'}
+                  %span 売り切れのためコメントできません
 .modal.js-modal
   .modal__bg.js-modal-close
     .modal__content
