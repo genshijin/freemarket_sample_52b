@@ -23,6 +23,10 @@
                 - if @item.buyer_id.present? 
                   .item-sold-out-big
                     %div SOLD
+                - elsif @item.item_status == "stopping"
+                  .item-sold-out-big.stopping
+                    %div 公開停止中
+
                 = image_tag @item.image_url, alt: "", id: "translate-img"
               = render partial:'items/item-photo', locals:{ image: @images}
           %table.sell-item__detail-table
@@ -92,14 +96,20 @@
         .item-description
           %p.item-description__inner{style: "font-size: 18px"}
             =@item.comment
-      -if @item.item_status == "exhibition" 
+      -if @item.item_status == "exhibition" || @item.item_status == "stopping"
         .item-change__box
           %button.btn-default.btn-red{type: "submit"} 
             = link_to "商品の編集", edit_item_path(@item)
           %p 
             or
-          %button.btn-default.btn-gray
-            = link_to "出品を一旦停止する","#"
+          - if @item.item_status == "exhibition"
+            = form_with model: @item, method: :patch, local: true do |f|
+              = f.hidden_field :item_status,value: :stopping
+              = f.submit "出品を一旦停止する",class: 'btn-default btn-gray'
+          - elsif @item.item_status == "stopping"
+            = form_with model: @item, method: :patch, local: true do |f|
+              = f.hidden_field :item_status,value: :exhibition
+              = f.submit "商品を再開する",class: 'btn-default btn-red'
           %button.js-modal-open.btn-default.btn-gray
             この商品を削除する
       .item-detail__message
