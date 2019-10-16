@@ -1,0 +1,16 @@
+.sell-upload-box
+  %h3.sell-upload-box__head
+    %b 出品画像
+    %span.form-require 必須
+  %p 最大10枚までアップロードできます
+  .sell-dropbox-container.clearfix.edit_page#edit_page
+    .sellitem_contener#img
+    %label.file_upload_box
+      = f.file_field :image, style: "display: none;", class:'sell-upload-drop-file', id:'file_input'
+      .sell-upload-drop-box.have-item-0.edit_page
+        %pre.visible-pc
+          ドラッグアンドドロップ
+          %br>/
+          またはクリックしてファイルをアップロード
+        .icon-camera
+          %i.fa.fa-camera{"aria-hidden": "true"}

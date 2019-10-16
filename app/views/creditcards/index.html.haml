@@ -14,6 +14,7 @@
   .content
     %section.content__wrap
       %h2.content__title 支払い方法
+
       .content__body
         .content__inner
           %h3.content__subtitle クレジットカード一覧
@@ -36,8 +37,10 @@
               = form_with url: mypage_card_path(@card.id), method: :delete, local: true, id: 'charge-form' do |f|
                 = f.hidden_field 'card_id'
                 = f.submit "削除する", {class: "btn-small btn-white-red"}
+
         .setting-not-regist
           = link_to '#' do
             支払い方法について
             %i.fa.fa-angle-right
+
   = render 'shared/sidebar-mypage'

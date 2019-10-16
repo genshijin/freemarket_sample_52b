@@ -1,0 +1,25 @@
+%h3.sell-sub-head
+  %b 販売価格(300〜9,999,999)
+%a.form-question{href: "#", target: "_blank"} ?
+.sell-form-box
+  %ul.sell-price
+    %li.form-group
+      .clearfix
+        %label.clearfix__left
+          %b 価格
+          %span.form-require 必須
+        .clearfix__right.sell-price-input
+          ¥
+          %div
+            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: "#{@item.price}",min:300,max:999999999
+    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "price"}
+    %li.clearfix
+      .clearfix__left
+        販売手数料(10%)
+        .clearfix__right{id: '01'}
+    %li.clearfix.bold
+      .clearfix__left
+        %b 販売利益
+        .clearfix__right{id: '09'}
+.model{role: "dialog", tabindex: "-1"}
+.model-inner

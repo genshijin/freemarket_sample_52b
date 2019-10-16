@@ -1,0 +1,10 @@
+= f.label :セキュリティコード
+%span.form-require 必須
+%br
+= f.text_field :cvc, type: 'text', class: 'input-default', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+
+.signup-seqcode
+  .signup-seqcode__text(data-js='show-tips-toggle')
+    %span.form-question ?
+    %span.cvc-faq カード裏面の番号とは？
+  = render 'creditcards/card-form/seqcode_info'

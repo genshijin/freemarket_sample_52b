@@ -1,0 +1,22 @@
+%h3.sell-sub-head
+  %b 商品の詳細
+.sell-form-box
+  .form-group
+    %label
+      %b カテゴリー
+      %span.form-require 必須
+    %div
+      .select-wrap-exhibit
+        .icon-arrow-bottom
+          %i.fa.fa-angle-down{"aria-hidden": "true"}
+        = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default', prompt: "--"
+      = render partial: 'shared/item_error_messages', locals: {item: @item, column: "category"}
+  .form-group
+    %label
+      %b 商品の状態
+      %span.form-require 必須
+    .select-wrap-exhibit
+      .icon-arrow-bottom
+        %i.fa.fa-angle-down{"aria-hidden": "true"}
+      = f.collection_select :state_id, State.all, :id, :name, prompt: "--",class: 'select-default'
+    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "state"}

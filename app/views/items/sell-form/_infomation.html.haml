@@ -1,0 +1,13 @@
+.form-group
+  %label
+    %b 商品名
+    %span.form-require 必須
+  %div
+    = f.text_field :name,class:'input-default',placeholder: "商品名（必須 40文字まで）", value: "#{@item.name}"
+  = render partial: 'shared/item_error_messages', locals: {item: @item, column: "name"}
+.form-group
+  %label
+    %b 商品の説明
+    %span.form-require 必須
+  = f.text_area :comment, maxlength: "1000", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", row: "5", class: "textarea-default"
+  = render partial: 'shared/item_error_messages', locals: {item: @item, column: "comment"}

@@ -1,7 +1,11 @@
 - @page_title = '出品'
 
+= content_for :header do
+  = render 'shared/header-exhibit'
+= content_for :footer do
+  = render 'shared/footer-exhibit'
+
 .exhibit-container
-  = render partial: 'shared/header-exhibit'
   %main.main
     %section.main__container.buy-item-container
       #sell-container
@@ -9,144 +13,16 @@
           .sell-container__inner
             %h2.main__head
               %b 商品の情報を入力
-            = form_for @item,html: {class: "sell-form"} do |f|
-              .sell-upload-box
-                %h3.sell-upload-box__head
-                  %b 出品画像
-                  %span.form-require 必須
-                %p 最大10枚までアップロードできます
-                .sell-dropbox-container.clearfix.edit_page#edit_page
-                  .sellitem_contener#img
-                  %label.file_upload_box
-                    = f.file_field :image,style: "display: none;",class:'sell-upload-drop-file',id:'file_input'
-                    .sell-upload-drop-box.have-item-0.edit_page
-                      %pre.visible-pc
-                        ドラッグアンドドロップ
-                        %br>/
-                        またはクリックしてファイルをアップロード
-                      .icon-camera
-                        %i.fa.fa-camera{"aria-hidden": "true"}
-                = render partial: 'shared/item_error_messages', locals: {item: @item, column: "image"}
+            = form_for @item, class: "sell-form" do |f|
+              = render 'items/sell-form/image-upload', f: f ,loacls: {item: @item}
               .sell-content
-                .form-group
-                  %label
-                    %b 商品名
-                    %span.form-require 必須
-                  %div
-                    = f.text_field :name,class:'input-default',placeholder: "商品名（必須 40文字まで）", value: "#{@item.name}"
-                  = render partial: 'shared/item_error_messages', locals: {item: @item, column: "name"}
-                .form-group
-                  %label
-                    %b 商品の説明
-                    %span.form-require 必須
-                  = f.text_area :comment, maxlength: "1000", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", row: "5", class: "textarea-default"
-                  = render partial: 'shared/item_error_messages', locals: {item: @item, column: "comment"}
+                = render 'items/sell-form/infomation', f: f ,loacls: {item: @item}
               .sell-content.clearfix
-                %h3.sell-sub-head
-                  %b 商品の詳細
-                .sell-form-box
-                  .form-group
-                    %label
-                      %b カテゴリー
-                      %span.form-require 必須
-                    %div
-                      .select-wrap-exhibit
-                        .icon-arrow-bottom
-                          %i.fa.fa-angle-down{"aria-hidden": "true"}
-                        = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default', prompt: "--"
-                      = render partial: 'shared/item_error_messages', locals: {item: @item, column: "category"}
-                  .form-group
-                    %label
-                      %b 商品の状態
-                      %span.form-require 必須
-                    .select-wrap-exhibit
-                      .icon-arrow-bottom
-                        %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :state_id, State.all, :id, :name, prompt: "--",class: 'select-default'
-                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "state"}
+                = render 'items/sell-form/item-details', f: f ,loacls: {item: @item}
               .sell-content.clearfix
-                %h3.sell-sub-head
-                  %b 配送について
-                %a.form-question{href: "#", target: "_blank"} ?
-                .sell-form-box
-                  .form-group
-                    %label
-                      %b 配送料の負担
-                      %span.form-require 必須
-                    .select-wrap-exhibit
-                      .icon-arrow-bottom
-                        %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name, prompt: "--",class: 'select-default'
-                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "postage_burden"}
-                  .form-group
-                    %label
-                      %b 配送方法
-                      %span.form-require 必須
-                    .select-wrap-exhibit
-                      .icon-arrow-bottom
-                        %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :shipping_way_id, ShippingWay.all, :id, :name, prompt: "--",class: 'select-default'
-                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "shipping_way"}
-                  .form-group
-                    %label
-                      %b 発送元の地域
-                      %span.form-require 必須
-                    .select-wrap-exhibit
-                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: '.select-default'
-                      .icon-arrow-bottom
-                        %i.fa.fa-angle-down{"aria-hidden": "true"}
-                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "prefecture"}
-                  .form-group
-                    %label
-                      %b 発送までの日数
-                      %span.form-require 必須
-                    .select-wrap-exhibit
-                      .icon-arrow-bottom
-                        %i.fa.fa-angle-down{"aria-hidden": "true"}
-                      = f.collection_select :shipping_date_id, ShippingDate.all, :id, :name, prompt: "--", class: '.select-default'
-                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "shipping_date"}
+                = render 'items/sell-form/delivery', f: f ,loacls: {item: @item}
               .sell-content.clearfix
-                %h3.sell-sub-head
-                  %b 販売価格(300〜9,999,999)
-                %a.form-question{href: "#", target: "_blank"} ?
-                .sell-form-box
-                  %ul.sell-price
-                    %li.form-group
-                      .clearfix
-                        %label.clearfix__left
-                          %b 価格
-                          %span.form-require 必須
-                        .clearfix__right.sell-price-input
-                          ¥
-                          %div
-                            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: "#{@item.price}",min:300,max:999999999
-                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "price"}
-                    %li.clearfix
-                      .clearfix__left
-                        販売手数料(10%)
-                        .clearfix__right{id: '01'}
-                    %li.clearfix.bold
-                      .clearfix__left
-                        %b 販売利益
-                        .clearfix__right{id: '09'}
-              .model{role: "dialog", tabindex: "-1"}
-                .model-inner
+                = render 'items/sell-form/price-detail', f: f ,loacls: {item: @item}
               .sell-content.sell-btn-box
-                %div
-                  %p.info
-                    = link_to "禁止されている出品", "#", target: "_blank"
-                    、
-                    = link_to "行為", "#"
-                    を必ずご確認ください。
-                  %p.info
-                    また、ブランド品でシリアルナンバー等がある場合はご記載ください。
-                    = link_to " 偽ブランドの販売", "#", target: "_blank"
-                    は犯罪であり処罰される可能性があります。
-                  %p.info
-                    また、出品をもちまして
-                    = link_to " 加盟店規約", "#", target: "_blank"
-                    に同意したことになります。
-                = f.submit "出品する",class: 'btn-default btn-red'
-                %a.btn-default.btn-gray もどる
-            .overlay
-  = render partial: 'shared/footer-exhibit'
+                = render 'items/sell-form/submit-btn', f: f ,loacls: {item: @item}
+      .overlay

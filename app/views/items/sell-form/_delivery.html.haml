@@ -1,0 +1,40 @@
+%h3.sell-sub-head
+  %b 配送について
+%a.form-question{href: "#", target: "_blank"} ?
+.sell-form-box
+  .form-group
+    %label
+      %b 配送料の負担
+      %span.form-require 必須
+    .select-wrap-exhibit
+      .icon-arrow-bottom
+        %i.fa.fa-angle-down{"aria-hidden": "true"}
+      = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name, prompt: "--",class: 'select-default'
+    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "postage_burden"}
+  .form-group
+    %label
+      %b 配送方法
+      %span.form-require 必須
+    .select-wrap-exhibit
+      .icon-arrow-bottom
+        %i.fa.fa-angle-down{"aria-hidden": "true"}
+      = f.collection_select :shipping_way_id, ShippingWay.all, :id, :name, prompt: "--",class: 'select-default'
+    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "shipping_way"}
+  .form-group
+    %label
+      %b 発送元の地域
+      %span.form-require 必須
+    .select-wrap-exhibit
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: '.select-default'
+      .icon-arrow-bottom
+        %i.fa.fa-angle-down{"aria-hidden": "true"}
+    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "prefecture"}
+  .form-group
+    %label
+      %b 発送までの日数
+      %span.form-require 必須
+    .select-wrap-exhibit
+      .icon-arrow-bottom
+        %i.fa.fa-angle-down{"aria-hidden": "true"}
+      = f.collection_select :shipping_date_id, ShippingDate.all, :id, :name, prompt: "--", class: '.select-default'
+    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "shipping_date"}

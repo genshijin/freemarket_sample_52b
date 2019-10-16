@@ -1,0 +1,5 @@
+= f.label :カード番号
+%span.form-require 必須
+%br
+= f.text_field :card_number, type: 'text', class: 'input-default', placeholder: '半角数字のみ', maxlength: "16"
+= render 'creditcards/card-form/card-list'
