@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def exhibition
     @items=Item.where(seller:current_user[:id],item_status:"exhibition")
+               .or(Item.where(seller:current_user[:id],item_status:"stopping"))
   end
 
   def trading
