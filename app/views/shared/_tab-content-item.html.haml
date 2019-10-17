@@ -15,12 +15,15 @@
           %span
             0
         - if item.item_status == "exhibition" 
-          .item_status.exhibition
+          .item_status.blue
             出品中
         - elsif item.item_status == "trading"
-          .item_status.trading
+          .item_status.red
             発送待ち
+        - elsif item.item_status == "stopping"
+          .item_status.red
+            公開停止中
         - else
-          .item_status.completed
+          .item_status.gray
             取引済み
     %i.fa.fa-chevron-right

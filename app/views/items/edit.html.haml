@@ -119,14 +119,19 @@
                     %li.clearfix
                       .clearfix__left
                         販売手数料(10%)
-                        .clearfix__right 
-                          - fee=@item.price*0.1
-                          #{fee.floor}
+                        .clearfix__right{id: '01'}
+                          - if @item.price.nil?
+                            ¥
+                          - else
+                            - fee=@item.price*0.1
+                            #{fee.floor}
                     %li.clearfix.bold
                       .clearfix__left
                         %b 販売利益
-                        .clearfix__right
-                          %b
+                        .clearfix__right{id: '09'}
+                          - if @item.price.nil?
+                            ¥ 
+                          - else
                             - profit=@item.price - fee.floor
                             ¥#{profit.to_s(:delimited)}
               .model{role: "dialog", tabindex: "-1"}
