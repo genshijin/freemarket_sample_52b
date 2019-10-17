@@ -32,9 +32,9 @@ class ItemsController < ApplicationController
     @item.update(item_params)
     path = Rails.application.routes.recognize_path(request.referer)
     if path[:controller] == "exhibit" and path[:action] == "show"
-      if @item.item_status == "stopping"
+      if @item.stopping?
         redirect_to exhibit_path(@item),notice: '商品の一時停止をしました'
-      elsif @item.item_status == "exhibition"
+      elsif @item.exhibition?
         redirect_to exhibit_path(@item),notice: '商品の再開をしました'
       end
     else
