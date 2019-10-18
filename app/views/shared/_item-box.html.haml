@@ -1,5 +1,5 @@
 .itembox
-  - if item.seller_id == current_user.id
+  -# - if item.seller_id == current_user.id
     = link_to exhibit_path(item.id),data: {"turbolinks": false} do
       %figure.itembox__photo{"data-item-id": "#{item.id}"}
         - if item.buyer_id.present? 
@@ -15,21 +15,19 @@
           %p.itembox__like
             %i.far.fa-heart
             3
-  - else
-    = link_to item_path(item.id),data: {"turbolinks": false} do
-      %figure.itembox__photo{"data-item-id": "#{item.id}"}
-        - if item.buyer_id.present? 
-          .item-sold-out
-            %div SOLD
-        = image_tag "#{item.image}"
-      .itembox__body
-        %h3.itembox__name
-          = item.name
-        .itembox__num
-          %p.itembox__price 
-            = "¥#{item.price}"
-          %p.itembox__like
-            %i.far.fa-heart
-            3
-    
-      
+  -# - else
+  = link_to item_path(item.id),data: {"turbolinks": false} do
+    %figure.itembox__photo{"data-item-id": "#{item.id}"}
+      - if item.buyer_id.present?
+        .item-sold-out
+          %div SOLD
+      = image_tag "#{item.image}"
+    .itembox__body
+      %h3.itembox__name
+        = item.name
+      .itembox__num
+        %p.itembox__price
+          = "¥#{item.price}"
+        %p.itembox__like
+          %i.far.fa-heart
+          3
