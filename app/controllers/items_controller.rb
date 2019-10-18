@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  before_action :logout_rollback, except: [:index, :show]
   before_action :set_item, only: [:show, :update, :edit, :destroy]
 
   def index
@@ -40,13 +40,13 @@ class ItemsController < ApplicationController
     else
       redirect_to exhibit_path(@item)
     end
-    
+
   end
 
   def destroy
     if @item.destroy
       redirect_to exhibition_mypage_path, notice: '商品を削除しました'
-    else  
+    else
       redirect_to exhibit_path(@item), alert: '商品を削除できませんでした'
     end
   end
@@ -70,5 +70,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def logout_rollback
+    redirect_to :root unless user_signed_in?
   end
 end

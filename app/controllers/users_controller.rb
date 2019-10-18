@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logout_rollback
+
   def index
     @item=Item.where(buyer:current_user[:id])
   end
@@ -20,5 +22,11 @@ class UsersController < ApplicationController
 
   def completed
     @items=Item.where(seller_id:current_user[:id],item_status:"completed")
+  end
+
+  private
+
+  def logout_rollback
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
