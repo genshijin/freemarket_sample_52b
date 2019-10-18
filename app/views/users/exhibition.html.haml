@@ -11,6 +11,7 @@
   = render 'shared/footer'
 = content_for :sell_btn do
   = render 'shared/sell-btn'
+
 .mypage-container
   .content
     %section.content__wrap
@@ -26,12 +27,12 @@
               取引中
           %li
             = link_to completed_mypage_path do
-              売却済み    
+              売却済み
         - if @items.count > 0
           = render partial: 'shared/tab-content-item', collection: @items, as: "item"
         - else
           - comment="出品中の商品がありません"
-          = render partial: 'shared/tab_not_item' ,locals: {comment:comment} 
+          = render partial: 'shared/tab_not_item' ,locals: {comment:comment}
     .pagemove
       %li.pagemove__btn
         =link_to "#" do

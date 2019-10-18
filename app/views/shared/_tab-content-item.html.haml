@@ -1,10 +1,10 @@
 .tab-contents
   = link_to exhibit_path(item),data: {"turbolinks": false}, class: 'mypage-tab__item' do
     %figure.mypage-tab__item__icon
-      = image_tag item.image_url,class: "mypage-tab__item__icon__mercari",alt: ""
+      = image_tag "#{item.image}" ,class: "mypage-tab__item__icon__mercari",alt: ""
     .mypage-tab__item__body
       .mypage-tab__item__body__text
-        = item.name 
+        = item.name
       .listing
         .listing__count
           %i.far.fa-heart
@@ -14,7 +14,7 @@
           %i.far.fa-comment-alt
           %span
             0
-        - if item.item_status == "exhibition" 
+        - if item.item_status == "exhibition"
           .item_status.blue
             出品中
         - elsif item.item_status == "trading"
