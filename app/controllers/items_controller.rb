@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :logout_rollback, except: [:index, :show]
+  before_action :logout_rollback, except: [:index, :show, :search]
   before_action :set_item, only: [:show, :update, :edit, :destroy]
   before_action :set_search
 
