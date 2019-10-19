@@ -1,8 +1,12 @@
 class ItemsController < ApplicationController
-
+  before_action :logout_rollback, except: [:index, :show, :search]
   before_action :set_item, only: [:show, :update, :edit, :destroy]
+  before_action :set_search
 
   def index
+    @q = Item.ransack(params[:a])
+    @search_items = @q.result(distinct: true)
+  
     @items= Item.order("id DESC").where.not(item_status: "stopping")
   end
 
@@ -40,17 +44,21 @@ class ItemsController < ApplicationController
     else
       redirect_to exhibit_path(@item)
     end
-    
+
   end
 
   def destroy
     if @item.destroy
       redirect_to exhibition_mypage_path, notice: '商品を削除しました'
-    else  
+    else
       redirect_to exhibit_path(@item), alert: '商品を削除できませんでした'
     end
   end
 
+  def search
+    @q = Item.ransack(search_params)
+    @items = @q.result(distinct: true)
+  end
 
   private
 
@@ -71,4 +79,17 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def search_params
+    params.require(:q).permit(:name_cont)
+  end
+
+  def set_search
+    @q = Item.search(params[:q])
+  end
+
+  def logout_rollback
+    redirect_to :root unless user_signed_in?
+  end
+
 end

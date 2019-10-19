@@ -1,11 +1,13 @@
 class PurchaseController < ApplicationController
   require 'payjp'
+  before_action :logout_rollback
   before_action :set_item
   before_action :set_card, except: [:done, :sold]
   before_action :set_address, except: [:pay, :sold]
   before_action :get_payjp_info, only: [:index, :pay]
   before_action :seller_back, only: [:index, :pay]
   before_action :sold_back, except: [:sold, :done]
+  before_action :set_search
 
   def index
     if @card.present?
@@ -58,6 +60,10 @@ class PurchaseController < ApplicationController
   end
 
   private
+  def logout_rollback
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+
   # 商品のセッター
   def set_item
     @item = Item.find(params[:item_id])
@@ -84,7 +90,19 @@ class PurchaseController < ApplicationController
   end
   # 環境ごとのpayjpの秘密鍵取得
   def get_payjp_info
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    if Rails.env == 'development'
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    else
+      Payjp.api_key = Rails.application.secrets.payjp_private_key
+    end
+  end
+
+  def search_params
+    params.require(:q).permit(:name_cont)
+  end
+
+  def set_search
+    @q = Item.search(params[:q])
   end
 
 end

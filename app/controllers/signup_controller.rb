@@ -1,4 +1,5 @@
 class SignupController < ApplicationController
+  before_action :login_rollback
   before_action :validates_step1, only: :step2
   before_action :validates_step2, only: :step3
 
@@ -143,5 +144,9 @@ class SignupController < ApplicationController
         :phone_number
       ]
     )
+  end
+
+  def login_rollback
+    redirect_to :root if user_signed_in?
   end
 end

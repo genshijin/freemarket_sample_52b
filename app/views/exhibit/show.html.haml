@@ -1,5 +1,5 @@
 - @page_title = '出品商品画面'
-- breadcrumb :mypage
+- breadcrumb :items
 
 = content_for :header do
   = render 'shared/header'
@@ -9,7 +9,7 @@
   = render 'shared/app-banner'
 = content_for :footer do
   = render 'shared/footer'
- 
+
 .item-box__container
   %main.main
     .main__container__edit-item-box
@@ -27,7 +27,7 @@
                   .item-sold-out-big.stopping
                     %div 公開停止中
 
-                = image_tag @item.image_url, alt: "", id: "translate-img"
+                = image_tag "#{@item.image}", alt: "", id: "translate-img"
               = render partial:'items/item-photo', locals:{ image: @images}
           %table.sell-item__detail-table
             %tbody
@@ -70,15 +70,15 @@
                 %td FREE
               %tr
                 %th 商品の状態
-                %td 
+                %td
                   =@item.state.name
               %tr
                 %th 配送料の負担
-                %td 
+                %td
                   = @item.postage_burden.name
               %tr
                 %th 配送の方法
-                %td 
+                %td
                   =@item.shipping_way.name
               %tr
                 %th 配送元地域
@@ -86,10 +86,10 @@
                   = link_to "#{@item.prefecture.name}"
               %tr
                 %th 発送日の目安
-                %td 
+                %td
                   = @item.shipping_date.name
           .sell-item__price-box
-            %span.sell-item__price 
+            %span.sell-item__price
               ¥#{@item.price.to_s(:delimited)}
             %span.sell-item__tax  (税込)
             %span.sell-item__shipping-fee 送料込み
@@ -100,7 +100,7 @@
         .item-change__box
           %button.btn-default.btn-red{type: "submit"} 
             = link_to "商品の編集", edit_item_path(@item)
-          %p 
+          %p
             or
           - if @item.item_status == "exhibition"
             = form_with model: @item, method: :patch, local: true do |f|
@@ -147,7 +147,4 @@
         .modal__btn__submit
           = link_to '削除する', item_path(@item), method: :delete,id: "delete_btn"
 
-      
-
-
-                
+= render 'shared/breadcrumb-items'
