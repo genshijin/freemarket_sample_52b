@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_search
   before_action :logout_rollback
 
   def index
@@ -29,4 +30,9 @@ class UsersController < ApplicationController
   def logout_rollback
     redirect_to new_user_session_path unless user_signed_in?
   end
+
+  def set_search
+    @q = Item.search(params[:q])
+  end
+
 end

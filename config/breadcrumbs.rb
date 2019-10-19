@@ -40,6 +40,12 @@ crumb :items do |item|
   parent :root
 end
 
+crumb :search do |word|
+  word = Item.search(params[:q])
+  parent :root
+  link word.name_cont
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

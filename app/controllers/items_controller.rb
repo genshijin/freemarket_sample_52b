@@ -1,8 +1,12 @@
 class ItemsController < ApplicationController
-  before_action :logout_rollback, except: [:index, :show]
+  before_action :logout_rollback, except: [:index, :show, :search]
   before_action :set_item, only: [:show, :update, :edit, :destroy]
+  before_action :set_search
 
   def index
+    @q = Item.ransack(params[:a])
+    @search_items = @q.result(distinct: true)
+  
     @items= Item.order("id DESC").where.not(item_status: "stopping")
   end
 
@@ -51,6 +55,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @q = Item.ransack(search_params)
+    @items = @q.result(distinct: true)
+  end
 
   private
 
@@ -72,7 +80,16 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def search_params
+    params.require(:q).permit(:name_cont)
+  end
+
+  def set_search
+    @q = Item.search(params[:q])
+  end
+
   def logout_rollback
     redirect_to :root unless user_signed_in?
   end
+
 end

@@ -26,8 +26,8 @@
           ログイン
       
     .header__search
-      = form_with urls: '#', class: 'header__form' do |form|
-        = text_field_tag :keyword, "" , class: 'header__form__input', placeholder: 'なにかお探しですか？'
+      = search_form_for @q, url: search_items_path, class: 'header__form' do |f|
+        = f.text_field :name_cont, class: 'header__form__input', placeholder: 'なにかお探しですか？'
         = button_tag type: 'submit', class: 'header__form__icon' do
           %i.fa.fa-search
     %ul.header__navigation
