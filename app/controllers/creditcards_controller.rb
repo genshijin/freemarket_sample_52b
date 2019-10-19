@@ -3,6 +3,7 @@ class CreditcardsController < ApplicationController
   before_action :logout_rollback, except: [:index, :show]
   before_action :set_card
   before_action :get_payjp_info, only: [:index, :new, :create, :destroy]
+  before_action :set_search
 
   def index
     if @card.present?
@@ -83,5 +84,13 @@ class CreditcardsController < ApplicationController
     else
       Payjp.api_key = Rails.application.secrets.payjp_private_key
     end
+  end
+
+  def search_params
+    params.require(:q).permit(:name_cont)
+  end
+
+  def set_search
+    @q = Item.search(params[:q])
   end
 end

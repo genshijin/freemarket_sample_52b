@@ -7,6 +7,7 @@ class PurchaseController < ApplicationController
   before_action :get_payjp_info, only: [:index, :pay]
   before_action :seller_back, only: [:index, :pay]
   before_action :sold_back, except: [:sold, :done]
+  before_action :set_search
 
   def index
     if @card.present?
@@ -94,6 +95,14 @@ class PurchaseController < ApplicationController
     else
       Payjp.api_key = Rails.application.secrets.payjp_private_key
     end
+  end
+
+  def search_params
+    params.require(:q).permit(:name_cont)
+  end
+
+  def set_search
+    @q = Item.search(params[:q])
   end
 
 end
