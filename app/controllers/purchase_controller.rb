@@ -60,7 +60,7 @@ class PurchaseController < ApplicationController
 
   private
   def logout_rollback
-    redirect_to :root unless user_signed_in?
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   # 商品のセッター

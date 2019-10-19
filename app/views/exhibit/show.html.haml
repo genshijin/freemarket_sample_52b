@@ -1,5 +1,5 @@
 - @page_title = '出品商品画面'
-- breadcrumb :mypage
+- breadcrumb :items
 
 = content_for :header do
   = render 'shared/header'
@@ -146,3 +146,5 @@
           キャンセル
         .modal__btn__submit
           = link_to '削除する', item_path(@item), method: :delete,id: "delete_btn"
+
+= render 'shared/breadcrumb-items'
