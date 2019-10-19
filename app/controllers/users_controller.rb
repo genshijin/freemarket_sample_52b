@@ -31,13 +31,6 @@ class UsersController < ApplicationController
     redirect_to new_user_session_path unless user_signed_in?
   end
 
-  # def search
-  #   @q = Item.ransack(params[:a])
-  #   @search_items = @q.result(distinct: true)
-  # end
-
-  private
-
   def set_search
     @q = Item.search(params[:q])
   end
