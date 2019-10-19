@@ -1,5 +1,5 @@
 - @page_title = '出品商品画面'
-- breadcrumb :mypage
+- breadcrumb :items
 
 = content_for :header do
   = render 'shared/header'
@@ -20,7 +20,14 @@
           .sell-item__photo
             .sell-item__photo__all
               .sell-item__photo__main
-                = image_tag @item.image_url, alt: "", id: "translate-img"
+                - if @item.buyer_id.present? 
+                  .item-sold-out-big
+                    %div SOLD
+                - elsif @item.item_status == "stopping"
+                  .item-sold-out-big.stopping
+                    %div 公開停止中
+
+                = image_tag "#{@item.image}", alt: "", id: "translate-img"
               = render partial:'items/item-photo', locals:{ image: @images}
           %table.sell-item__detail-table
             %tbody
@@ -57,43 +64,54 @@
               %tr
                 %th ブランド
                 %td
+                  = link_to "ブランド名"
+              %tr
+                %th 商品のサイズ
+                %td FREE
               %tr
                 %th 商品の状態
-                %td 
+                %td
                   =@item.state.name
               %tr
                 %th 配送料の負担
-                %td 
+                %td
                   = @item.postage_burden.name
               %tr
                 %th 配送の方法
-                %td 
+                %td
                   =@item.shipping_way.name
               %tr
                 %th 配送元地域
                 %td
-                  = @item.prefecture.name
+                  = link_to "#{@item.prefecture.name}"
               %tr
                 %th 発送日の目安
-                %td 
+                %td
                   = @item.shipping_date.name
           .sell-item__price-box
-            %span.sell-item__price 
+            %span.sell-item__price
               ¥#{@item.price.to_s(:delimited)}
             %span.sell-item__tax  (税込)
             %span.sell-item__shipping-fee 送料込み
         .item-description
           %p.item-description__inner{style: "font-size: 18px"}
             =@item.comment
-      .item-change__box
-        %button.btn-default.btn-red{type: "submit"} 
-          = link_to "商品の編集", edit_item_path(@item)
-        %p 
-          or
-        %button.btn-default.btn-gray
-          = link_to "出品を一旦停止する","#"
-        %button.js-modal-open.btn-default.btn-gray
-          この商品を削除する
+      -if @item.item_status == "exhibition" || @item.item_status == "stopping"
+        .item-change__box
+          %button.btn-default.btn-red{type: "submit"} 
+            = link_to "商品の編集", edit_item_path(@item)
+          %p
+            or
+          - if @item.item_status == "exhibition"
+            = form_with model: @item, method: :patch, local: true do |f|
+              = f.hidden_field :item_status,value: :stopping
+              = f.submit "出品を一旦停止する",class: 'btn-default btn-gray'
+          - elsif @item.item_status == "stopping"
+            = form_with model: @item, method: :patch, local: true do |f|
+              = f.hidden_field :item_status,value: :exhibition
+              = f.submit "商品を再開する",class: 'btn-default btn-red'
+          %button.js-modal-open.btn-default.btn-gray
+            この商品を削除する
       .item-detail__message
         .message__container
           = render 'items/message'
@@ -103,8 +121,12 @@
               %p
                 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
               %textarea{name: 'body', class: '.textarea-default'}
-              %button{type: 'submit', class: 'btn-bray'}
-                %span コメントする
+              -if @item.item_status == "exhibition"
+                %button{type: 'submit', class: 'btn-bray'}
+                  %span コメントする
+              - else
+                %button{type: 'submit', class: 'btn-bray'}
+                  %span 売り切れのためコメントできません
 .modal.js-modal
   .modal__bg.js-modal-close
     .modal__content
@@ -125,7 +147,4 @@
         .modal__btn__submit
           = link_to '削除する', item_path(@item), method: :delete,id: "delete_btn"
 
-      
-
-
-                
+= render 'shared/breadcrumb-items'

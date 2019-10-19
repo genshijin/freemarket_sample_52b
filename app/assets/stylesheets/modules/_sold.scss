@@ -38,6 +38,33 @@
   left: 0;
 }
 
+.item-sold-out-big.stopping::after{
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 60px solid #888;
+  border-right: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid #888;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.item-sold-out-big.stopping > div{
+  left: 0;
+  z-index: 2;
+  letter-spacing: 2px;
+  font-weight: 600;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 34px;;
+  left:-5px;
+  color: #fff;
+  font-size:18px
+  }
+
 .item-sold-out-big > div{
 left: 0;
 z-index: 2;

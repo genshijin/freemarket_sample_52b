@@ -1,10 +1,10 @@
 .tab-contents
-  = link_to exhibit_path(item), class: 'mypage-tab__item' do
+  = link_to exhibit_path(item),data: {"turbolinks": false}, class: 'mypage-tab__item' do
     %figure.mypage-tab__item__icon
-      = image_tag item.image_url,class: "mypage-tab__item__icon__mercari",alt: ""
+      = image_tag "#{item.image}" ,class: "mypage-tab__item__icon__mercari",alt: ""
     .mypage-tab__item__body
       .mypage-tab__item__body__text
-        = item.name 
+        = item.name
       .listing
         .listing__count
           %i.far.fa-heart
@@ -14,6 +14,16 @@
           %i.far.fa-comment-alt
           %span
             0
-        .item_status
-          出品中
+        - if item.item_status == "exhibition"
+          .item_status.blue
+            出品中
+        - elsif item.item_status == "trading"
+          .item_status.red
+            発送待ち
+        - elsif item.item_status == "stopping"
+          .item_status.red
+            公開停止中
+        - else
+          .item_status.gray
+            取引済み
     %i.fa.fa-chevron-right

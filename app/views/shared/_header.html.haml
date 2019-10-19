@@ -39,5 +39,5 @@
         = link_to '#' do
           %i.fa.fa-tag.navigation-icon
           %span ブランドから探す
-- unless controller.controller_name == "items"
+- unless controller.controller_name == "items" || controller.controller_name == "exhibit"
   = render 'shared/breadcrumb'

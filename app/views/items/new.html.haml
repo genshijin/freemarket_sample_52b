@@ -9,7 +9,7 @@
           .sell-container__inner
             %h2.main__head
               %b 商品の情報を入力
-            = form_for @item,html: {class: "sell-form"} do |f|
+            = form_for @item, html: {class: "sell-form"} do |f|
               .sell-upload-box
                 %h3.sell-upload-box__head
                   %b 出品画像
@@ -26,6 +26,7 @@
                         またはクリックしてファイルをアップロード
                       .icon-camera
                         %i.fa.fa-camera{"aria-hidden": "true"}
+                = render partial: 'shared/item_error_messages', locals: {item: @item, column: "image"}
               .sell-content
                 .form-group
                   %label
@@ -33,11 +34,13 @@
                     %span.form-require 必須
                   %div
                     = f.text_field :name,class:'input-default',placeholder: "商品名（必須 40文字まで）", value: "#{@item.name}"
+                  = render partial: 'shared/item_error_messages', locals: {item: @item, column: "name"}
                 .form-group
                   %label
                     %b 商品の説明
                     %span.form-require 必須
                   = f.text_area :comment, maxlength: "1000", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", row: "5", class: "textarea-default"
+                  = render partial: 'shared/item_error_messages', locals: {item: @item, column: "comment"}
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 商品の詳細
@@ -51,6 +54,7 @@
                         .icon-arrow-bottom
                           %i.fa.fa-angle-down{"aria-hidden": "true"}
                         = f.collection_select :category_id, Category.all, :id, :name,class: 'select-default', prompt: "--"
+                      = render partial: 'shared/item_error_messages', locals: {item: @item, column: "category"}
                   .form-group
                     %label
                       %b 商品の状態
@@ -59,6 +63,7 @@
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                       = f.collection_select :state_id, State.all, :id, :name, prompt: "--",class: 'select-default'
+                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "state"}
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 配送について
@@ -72,6 +77,7 @@
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                       = f.collection_select :postage_burden_id, PostageBurden.all, :id, :name, prompt: "--",class: 'select-default'
+                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "postage_burden"}
                   .form-group
                     %label
                       %b 配送方法
@@ -80,6 +86,7 @@
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                       = f.collection_select :shipping_way_id, ShippingWay.all, :id, :name, prompt: "--",class: 'select-default'
+                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "shipping_way"}
                   .form-group
                     %label
                       %b 発送元の地域
@@ -88,6 +95,7 @@
                       = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--", class: '.select-default'
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
+                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "prefecture"}
                   .form-group
                     %label
                       %b 発送までの日数
@@ -96,6 +104,7 @@
                       .icon-arrow-bottom
                         %i.fa.fa-angle-down{"aria-hidden": "true"}
                       = f.collection_select :shipping_date_id, ShippingDate.all, :id, :name, prompt: "--", class: '.select-default'
+                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "shipping_date"}
               .sell-content.clearfix
                 %h3.sell-sub-head
                   %b 販売価格(300〜9,999,999)
@@ -110,15 +119,26 @@
                         .clearfix__right.sell-price-input
                           ¥
                           %div
-                            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: "#{@item.price}"
+                            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: "#{@item.price}",min:300,max:999999999
+                    = render partial: 'shared/item_error_messages', locals: {item: @item, column: "price"}
                     %li.clearfix
                       .clearfix__left
                         販売手数料(10%)
                         .clearfix__right{id: '01'}
+                          - if @item.price.nil?
+                            ¥
+                          - else
+                            - fee=@item.price*0.1
+                            #{fee.floor}
                     %li.clearfix.bold
                       .clearfix__left
                         %b 販売利益
                         .clearfix__right{id: '09'}
+                          - if @item.price.nil?
+                            ¥ 
+                          - else
+                            - profit=@item.price - fee.floor
+                            ¥#{profit.to_s(:delimited)}
               .model{role: "dialog", tabindex: "-1"}
                 .model-inner
               .sell-content.sell-btn-box

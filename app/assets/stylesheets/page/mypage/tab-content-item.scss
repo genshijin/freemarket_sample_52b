@@ -17,7 +17,6 @@
     }
   }
   .item_status{
-    background-color: #0099e8;
     margin: 6px 0 0 0;
     padding: 2px 6px;
     font-weight: 600;
@@ -25,5 +24,14 @@
     font-size: 12px;
     color: #fff;
     text-align: center;
+  }
+  .blue{
+    background-color: #0099e8;
+  }
+  .red{
+    background-color:#ea352d
+  }
+  .gray{
+    background-color:gray;
   }
 }

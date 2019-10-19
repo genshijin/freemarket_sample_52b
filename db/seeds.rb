@@ -7,34 +7,78 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # coding: utf-8
+Category.create!([
+                  {name: 'レディース'},
+                  {name: 'メンズ'},
+                  {name: 'ベビー・キッズ'},
+                  {name: 'インテリア・住まい・小物'},
+                  {name: '本・音楽・ゲーム'},
+                  {name: 'おもちゃ・ホビー・グッズ'},
+                  {name: 'コスメ・香水・美容'},
+                  {name: '家電・スマホ・カメラ'},
+                  {name: 'スポーツ・レジャー'},
+                  {name: 'ハンドメイド'},
+                  {name: 'チケット'},
+                  {name: '自動車・オートバイ'},
+                  {name: 'その他'}
+                 ]
+                )
+
 user = User.create(
-  nickname: "怪傑ゾロ",
-  email: "a@gmail.com",
-  password: "1234567",
-  password_confirmation: "1234567",
-  first_name: "ドン",
-  last_name: "ディエゴ",
-  first_name_kana: "ドン",
-  last_name_kana: "ディエゴ",
-  birth_year: 1,
-  birth_month: 1,
-  birth_day: 1,
-  phone_number: "000-0000-0000"
+  [{
+    nickname: "怪傑ゾロ",
+    email: "a@gmail.com",
+    password: "1234567",
+    password_confirmation: "1234567",
+    first_name: "ドン",
+    last_name: "ディエゴ",
+    first_name_kana: "ドン",
+    last_name_kana: "ディエゴ",
+    birth_year: 1,
+    birth_month: 1,
+    birth_day: 1,
+    phone_number: "000-0000-0000"
+  },
+  {
+    nickname: "山猫帝",
+    email: "b@gmail.com",
+    password: "1234567",
+    password_confirmation: "1234567",
+    first_name: "山",
+    last_name: "猫",
+    first_name_kana: "ヤマ",
+    last_name_kana: "ネコ",
+    birth_year: 1,
+    birth_month: 1,
+    birth_day: 1,
+    phone_number: "000-0000-0000"
+    }]
 )
-user.save!
 
 address = Address.create(
-  prefecture_id: 1,
-  city: "セアラ",
-  address: "カピストラノ",
-  postal_code: "123-4567",
-  first_name: "ドン",
-  last_name: "ディエゴ",
-  first_name_kana: "ドン",
-  last_name_kana: "ディエゴ",
-  user_id: user.id
+  [{
+    prefecture_id: 1,
+    city: "セアラ",
+    address: "カピストラノ",
+    postal_code: "123-4567",
+    first_name: "ドン",
+    last_name: "ディエゴ",
+    first_name_kana: "ドン",
+    last_name_kana: "ディエゴ",
+    user_id: 1
+  },
+  {
+    prefecture_id: 1,
+    city: "あ",
+    address: "あ",
+    postal_code: "123-4567",
+    first_name: "山",
+    last_name: "猫",
+    first_name_kana: "ヤマ",
+    last_name_kana: "ネコ",
+    user_id: 2
+  }]
 )
-address.save!
 
 Item.create!(
               [
@@ -63,21 +107,3 @@ Item.create!(
                 }
               ]
             )
-
-Category.create!([{name: '--'},
-                  {name: 'レディース'},
-                  {name: 'メンズ'},
-                  {name: 'ベビー・キッズ'},
-                  {name: 'インテリア・住まい・小物'},
-                  {name: '本・音楽・ゲーム'},
-                  {name: 'おもちゃ・ホビー・グッズ'},
-                  {name: 'コスメ・香水・美容'},
-                  {name: '家電・スマホ・カメラ'},
-                  {name: 'スポーツ・レジャー'},
-                  {name: 'ハンドメイド'},
-                  {name: 'チケット'},
-                  {name: '自動車・オートバイ'},
-                  {name: 'その他'}
-                 ]
-                )
-

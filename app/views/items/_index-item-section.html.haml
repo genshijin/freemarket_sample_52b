@@ -2,6 +2,9 @@
   %h3.item__title
     = link_to '新着アイテム', '#'
   .item__content
-    = render partial: 'shared/item-box', collection: @items, as: "item"
+    -if user_signed_in?
+      = render partial: 'shared/item-box-logined', collection: @items, as: "item"
+    -else
+      = render partial: 'shared/item-box', collection: @items, as: "item"
   .view-all
     = link_to 'すべての商品を見る', '#'

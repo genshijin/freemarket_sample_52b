@@ -322,7 +322,9 @@ select{
 }
 
 .sell-price .bold .clearfix__left{
+  padding-top:24px;
   font-size: 16px;
+  border-top: 1px solid #ccc
 }
 
 .sell-price .bold .clearfix__right{

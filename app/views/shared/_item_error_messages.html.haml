@@ -1,0 +1,5 @@
+- if item.errors.any?
+  - unless item.valid?
+    - if errors = item.errors.messages[column.to_sym].first
+      %ul.item_error
+        %li=errors

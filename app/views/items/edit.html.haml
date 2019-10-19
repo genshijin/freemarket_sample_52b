@@ -9,7 +9,7 @@
           .sell-container__inner
             %h2.main__head
               %b 商品の情報を入力
-            = form_with model: @item, method: :patch, local: true do |f|
+            = form_for @item, url: item_path, method: :patch, html: {class: "sell-form"} do |f|
               .sell-upload-box
                 %h3.sell-upload-box__head
                   %b 出品画像
@@ -115,18 +115,23 @@
                         .clearfix__right.sell-price-input
                           ¥
                           %div
-                            = f.text_field :price,class: 'input-price',placeholder: "例）300", value: "#{@item.price}"
+                            = f.text_field :price, class: 'input-price', placeholder: "例）300", value: "#{@item.price}"
                     %li.clearfix
                       .clearfix__left
                         販売手数料(10%)
-                        .clearfix__right 
-                          - fee=@item.price*0.1
-                          #{fee.floor}
+                        .clearfix__right{id: '01'}
+                          - if @item.price.nil?
+                            ¥
+                          - else
+                            - fee=@item.price*0.1
+                            #{fee.floor}
                     %li.clearfix.bold
                       .clearfix__left
                         %b 販売利益
-                        .clearfix__right
-                          %b
+                        .clearfix__right{id: '09'}
+                          - if @item.price.nil?
+                            ¥
+                          - else
                             - profit=@item.price - fee.floor
                             ¥#{profit.to_s(:delimited)}
               .model{role: "dialog", tabindex: "-1"}
