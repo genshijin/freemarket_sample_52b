@@ -12,4 +12,8 @@ class ExhibitController < ApplicationController
   def search_params
     params.require(:q).permit(:name_cont)
   end
+
+  def set_search
+    @q = Item.search(params[:q])
+  end
 end
