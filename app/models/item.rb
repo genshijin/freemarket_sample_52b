@@ -35,9 +35,9 @@ class Item < ApplicationRecord
       errors[:category] << "選択してください"
     end
 
-    # if image.blank?
-    #   errors[:image] << "画像がありません"
-    # end
+    if image.blank?
+      errors[:image] << "画像がありません"
+    end
 
     if state.blank?
       errors[:state] << "選択してください"

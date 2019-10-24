@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :logout_rollback, except: [:index, :show, :search]
+  skip_before_action :authenticate_user!, only: [:index, :show, :search]
   before_action :set_item, only: [:show, :update, :edit, :destroy]
-  before_action :set_search
+  before_action :ignore_rollback, only: [:edit, :destroy, :update]
 
   def index
     @q = Item.ransack(params[:a])
@@ -61,6 +61,9 @@ class ItemsController < ApplicationController
   end
 
   private
+  def search_params
+    params.require(:q).permit(:name_cont)
+  end
 
   def item_params
     params.require(:item).permit(:name,
@@ -80,16 +83,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def search_params
-    params.require(:q).permit(:name_cont)
-  end
-
-  def set_search
-    @q = Item.search(params[:q])
-  end
-
   def logout_rollback
     redirect_to :root unless user_signed_in?
+  end
+
+  def ignore_rollback
+    redirect_to item_path(@item.id) if @item.seller_id != current_user.id
   end
 
 end

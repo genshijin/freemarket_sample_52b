@@ -1,4 +1,5 @@
 class SignupController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :login_rollback
   before_action :validates_step1, only: :step2
   before_action :validates_step2, only: :step3
