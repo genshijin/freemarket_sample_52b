@@ -1,13 +1,11 @@
 class PurchaseController < ApplicationController
   require 'payjp'
-  before_action :logout_rollback
   before_action :set_item
   before_action :set_card, except: [:done, :sold]
   before_action :set_address, except: [:pay, :sold]
   before_action :get_payjp_info, only: [:index, :pay]
   before_action :seller_back, only: [:index, :pay]
   before_action :sold_back, except: [:sold, :done]
-  before_action :set_search
 
   def index
     if @card.present?
@@ -74,20 +72,11 @@ class PurchaseController < ApplicationController
     @buyer_address = Address.where('id = ?', current_user.id)
   end
 
-  # 出品者がアクセスした場合、商品ページに戻る
-  def seller_back
-    redirect_to item_path(@item.id) if @item.seller_id == current_user.id
-  end
-
-  # 購入者がいる場合、売り切れのビューへ飛ぶ
-  def sold_back
-    redirect_to action: "sold" if @item.buyer_id != nil
-  end
-
   # クレジットカード関連の処理
   def set_card
     @card = current_user.creditcard if current_user.creditcard.present?
   end
+
   # 環境ごとのpayjpの秘密鍵取得
   def get_payjp_info
     if Rails.env == 'development'
@@ -97,13 +86,14 @@ class PurchaseController < ApplicationController
     end
   end
 
-  def search_params
-    params.require(:q).permit(:name_cont)
+  # 出品者がアクセスした場合、商品ページに戻る
+  def seller_back
+    redirect_to item_path(@item.id) if @item.seller_id == current_user.id
   end
 
-  def set_search
-    @q = Item.search(params[:q])
+  # 購入者がいる場合、売り切れのビューへ飛ぶ
+  def sold_back
+    redirect_to action: "sold" if @item.buyer_id != nil
   end
-
 end
 

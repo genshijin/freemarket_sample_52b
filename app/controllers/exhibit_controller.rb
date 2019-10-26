@@ -1,5 +1,6 @@
 class ExhibitController < ApplicationController
-  before_action :set_search
+  before_action :set_item
+  before_action :ignore_rollback
 
   def show
     @item = Item.find(params[:id])
@@ -8,12 +9,15 @@ class ExhibitController < ApplicationController
   end
 
   private
-
-  def search_params
-    params.require(:q).permit(:name_cont)
+  def set_item
+    @item = Item.find(params[:id])
   end
 
-  def set_search
-    @q = Item.search(params[:q])
+  def logout_rollback
+    redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def ignore_rollback
+    redirect_to item_path(@item.id) if @item.seller_id != current_user.id
   end
 end

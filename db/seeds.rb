@@ -91,7 +91,8 @@ Item.create!(
                 prefecture_id: 5,
                 category_id: 1,
                 seller_id: 1,
-                shipping_way_id: 1
+                shipping_way_id: 1,
+                image: File.open("./app/assets/images/ruffy.jpeg")
                 },
                 {
                 name: 'ナミのぬいぐるみ',
@@ -103,7 +104,8 @@ Item.create!(
                 prefecture_id: 5,
                 category_id: 1,
                 seller_id: 1,
-                shipping_way_id: 1
+                shipping_way_id: 1,
+                image: File.open("./app/assets/images/sell-sample.jpg")
                 }
               ]
             )

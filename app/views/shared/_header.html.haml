@@ -24,7 +24,7 @@
           新規会員登録
         = link_to new_user_session_path, class: 'login-btn' do
           ログイン
-      
+
     .header__search
       = search_form_for @q, url: search_items_path, class: 'header__form' do |f|
         = f.text_field :name_cont, class: 'header__form__input', placeholder: 'なにかお探しですか？'
