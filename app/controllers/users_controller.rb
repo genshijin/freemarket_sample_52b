@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, 
 
   def index
     @item=Item.where(buyer:current_user[:id])
@@ -24,9 +25,8 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def logout_rollback
-    redirect_to new_user_session_path unless user_signed_in?
+  def set_user
+    @user = User.find_by(id: current_user[:id])
   end
 
 end
