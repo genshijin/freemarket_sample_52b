@@ -43,7 +43,7 @@ class PurchaseController < ApplicationController
       customer: @card.customer_id,
       currency: 'jpy'
     )
-    if @item.update(buyer_id: current_user.id)
+    if @item.update(buyer_id: current_user.id,item_status: :completed)
       redirect_to action: "done"
     else
       flash[:alert] = '購入に失敗しました。'
